@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lineage Power | Tier-1 Energy Storage &amp; Telecom Power Systems</title>
+  <meta name="description" content="India's premier manufacturer of 5 GWh utility-scale containerized BESS and mission-critical telecom passive power systems — engineered in Bengaluru, deployed globally. Part of Pace Digitek Limited Group.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating Rayzon-Style Navigation Bar (Transparent overlaying hero) -->
+  <header class="floating-header" id="navbar">
+    <div class="header-inner">
+      
+      <!-- Brand Logo (Rayzon-style geometric typography) -->
+      <a href="#home" class="brand-logo" aria-label="Lineage Power Home">
+        <div class="brand-symbol">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="6" fill="#00D26A" fill-opacity="0.15" stroke="#00D26A" stroke-width="1.5"/>
+            <path d="M19 4L8 18H16L13 28L24 14H16L19 4Z" fill="#00D26A"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="logo-main">LINEAGE <span>POWER</span></div>
+          <div class="logo-sub">PACE DIGITEK GROUP</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#why-lineage" class="nav-link">Why Lineage</a></li>
+          
+          <!-- Mega Menu Dropdown -->
+          <li class="nav-item has-dropdown">
+            <a href="#products" class="nav-link dropdown-toggle" id="productsLink">
+              Products <span class="nav-caret">▾</span>
+            </a>
+            <div class="mega-menu" id="megaMenu">
+              <div class="mega-menu-inner">
+                <div class="mega-col">
+                  <div class="mega-col-title">
+                    <span class="icon-bubble bess-bubble">⚡</span>
+                    <div>
+                      <h4>Energy Storage (BESS)</h4>
+                      <p>Utility-scale containerized platforms</p>
+                    </div>
+                  </div>
+                  <ul class="mega-list">
+                    <li><a href="#products" data-filter="bess" data-prod="5mwh-block">5 MWh DC Battery Block <span>20ft Containerized · 1500V</span></a></li>
+                    <li><a href="#products" data-filter="bess" data-prod="pcs">Power Conversion System (PCS) <span>Bi-directional AC/DC Inverter</span></a></li>
+                    <li><a href="#products" data-filter="bess" data-prod="bms">Battery Management System (BMS) <span>Cell-level telemetry</span></a></li>
+                    <li><a href="#products" data-filter="bess" data-prod="ems">Energy Management System (EMS) <span>Grid dispatch optimizer</span></a></li>
+                    <li><a href="#products" data-filter="bess" data-prod="ci-pack">C&amp;I Storage Systems <span>Peak shaving cabinets</span></a></li>
+                  </ul>
+                </div>
+
+                <div class="mega-col">
+                  <div class="mega-col-title">
+                    <span class="icon-bubble telecom-bubble">📡</span>
+                    <div>
+                      <h4>Telecom &amp; ICT Power</h4>
+                      <p>High-availability passive systems</p>
+                    </div>
+                  </div>
+                  <ul class="mega-list">
+                    <li><a href="#products" data-filter="telecom" data-prod="hybrid-dc">Hybrid DC Power System <span>Solar-Grid-DG hybrid</span></a></li>
+                    <li><a href="#products" data-filter="telecom" data-prod="dc-power">DC Power System <span>Modular 48V rectifiers</span></a></li>
+                    <li><a href="#products" data-filter="telecom" data-prod="charge-control">Charge Control Unit (CCU) <span>Intelligent balancing</span></a></li>
+                    <li><a href="#products" data-filter="telecom" data-prod="lithium-telecom">Lithium Telecom Battery <span>48V LiFePO4 rackmount</span></a></li>
+                    <li><a href="#products" data-filter="telecom" data-prod="outdoor-cabinet">Outdoor IP-55 Enclosure <span>Harsh climate shielding</span></a></li>
+                    <li><a href="#products" data-filter="telecom" data-prod="micro-sites">Micro Sites &amp; 5G Nodes <span>Compact pole power</span></a></li>
+                  </ul>
+                </div>
+
+                <div class="mega-col featured-mega-col">
+                  <div class="mega-spotlight">
+                    <span class="spotlight-tag">UTILITY BENCHMARK</span>
+                    <h5>5 MWh Liquid-Cooled BESS</h5>
+                    <p>India's landmark 20ft containerized storage block. Active liquid thermal loop maintains cells within ±2.5°C.</p>
+                    <div class="spotlight-metric">
+                      <div><span class="s-val">5.01 MWh</span><span class="s-lbl">DC Capacity</span></div>
+                      <div><span class="s-val">≥ 6,000</span><span class="s-lbl">Cycles @ 80% DoD</span></div>
+                    </div>
+                    <button class="btn btn-sm btn-emerald w-full" onclick="openSpecModal('5mwh-block')">View Spec Sheet</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item"><a href="#container-explorer" class="nav-link">3D Explorer</a></li>
+          <li class="nav-item"><a href="#calculator" class="nav-link">Sizing Tool</a></li>
+          <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="#group" class="nav-link">Group Companies</a></li>
+          <li class="nav-item"><a href="#newsroom" class="nav-link">Media</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Rayzon-Style Action Buttons -->
+      <div class="header-actions">
+        <!-- Rounded Pill Status Badge (Rayzon USA style) -->
+        <a href="#about" class="pill-btn desktop-only">
+          <span>Bengaluru 5 GWh</span>
+          <span class="pill-flag">⚡</span>
+        </a>
+
+        <!-- Solid Action Button -->
+        <button class="btn btn-emerald btn-sm" onclick="openRfqModal()">
+          Request Quote
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <span class="logo-main">LINEAGE <span>POWER</span></span>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn">&times;</button>
+    </div>
+    <nav class="mobile-nav">
+      <ul>
+        <li><a href="#home" class="mobile-link">Home</a></li>
+        <li><a href="#why-lineage" class="mobile-link">Why Lineage</a></li>
+        <li><a href="#products" class="mobile-link">Products &amp; Systems</a></li>
+        <li><a href="#container-explorer" class="mobile-link">3D Container Explorer</a></li>
+        <li><a href="#calculator" class="mobile-link">BESS Sizing Calculator</a></li>
+        <li><a href="#services" class="mobile-link">Services &amp; Lifecycle AMC</a></li>
+        <li><a href="#group" class="mobile-link">Pace Digitek Group</a></li>
+        <li><a href="#newsroom" class="mobile-link">Media &amp; News</a></li>
+        <li><a href="#contact" class="mobile-link">Contact Us</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <button class="btn btn-emerald btn-block" onclick="openRfqModal(); closeDrawer();">Request Proposal</button>
+        <div class="mobile-contact-info">
+          <p>📞 +91-80-284 377 92</p>
+          <p>✉️ info@lineagepowersystems.com</p>
+          <p>📍 Bengaluru, Karnataka, India</p>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Cinematic Rayzon-Style Hero Section -->
+  <section class="cinematic-hero" id="home">
+    
+    <!-- Rich Multi-Layered Industrial Background Artwork -->
+    <div class="hero-visual-backdrop">
+      <div class="hero-sky-gradient"></div>
+      <div class="hero-solar-mesh"></div>
+      <div class="hero-light-beams"></div>
+      
+      <!-- Vector High-Tech BESS Container Skyline Illustration -->
+      <div class="hero-containers-art">
+        <svg class="hero-skyline-svg" viewBox="0 0 1440 420" preserveAspectRatio="none" fill="none">
+          <defs>
+            <linearGradient id="containerGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1A2D5A" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#081024" stop-opacity="0.95"/>
+            </linearGradient>
+            <linearGradient id="containerGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#243C73" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#0B1530" stop-opacity="0.98"/>
+            </linearGradient>
+            <linearGradient id="solarGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00D26A" stop-opacity="0.3"/>
+              <stop offset="50%" stop-color="#0284C7" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#00D26A" stop-opacity="0.05"/>
+            </linearGradient>
+          </defs>
+          
+          <!-- Distant Solar Arrays -->
+          <polygon points="40,240 380,240 340,320 0,320" fill="url(#solarGlass)" stroke="rgba(0,210,106,0.3)" stroke-width="1"/>
+          <line x1="120" y1="240" x2="80" y2="320" stroke="rgba(255,255,255,0.15)"/>
+          <line x1="200" y1="240" x2="160" y2="320" stroke="rgba(255,255,255,0.15)"/>
+          <line x1="280" y1="240" x2="240" y2="320" stroke="rgba(255,255,255,0.15)"/>
+          
+          <polygon points="1060,240 1400,240 1440,320 1100,320" fill="url(#solarGlass)" stroke="rgba(2,132,199,0.3)" stroke-width="1"/>
+          <line x1="1140" y1="240" x2="1180" y2="320" stroke="rgba(255,255,255,0.15)"/>
+          <line x1="1220" y1="240" x2="1260" y2="320" stroke="rgba(255,255,255,0.15)"/>
+          <line x1="1300" y1="240" x2="1340" y2="320" stroke="rgba(255,255,255,0.15)"/>
+
+          <!-- 20ft BESS Container 1 (Left) -->
+          <rect x="240" y="160" width="280" height="200" rx="6" fill="url(#containerGrad1)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <rect x="255" y="175" width="50" height="20" rx="3" fill="#14203D" stroke="#00D26A" stroke-width="1"/>
+          <text x="262" y="189" fill="#00D26A" font-size="9" font-family="monospace" font-weight="bold">HVAC 1</text>
+          <line x1="240" y1="220" x2="520" y2="220" stroke="rgba(255,255,255,0.08)"/>
+          <line x1="310" y1="220" x2="310" y2="360" stroke="rgba(255,255,255,0.08)"/>
+          <line x1="380" y1="220" x2="380" y2="360" stroke="rgba(255,255,255,0.08)"/>
+          <line x1="450" y1="220" x2="450" y2="360" stroke="rgba(255,255,255,0.08)"/>
+          <circle cx="500" cy="185" r="4" fill="#00D26A"/>
+
+          <!-- 20ft BESS Container 2 (Center Hero Unit) -->
+          <rect x="560" y="120" width="360" height="240" rx="8" fill="url(#containerGrad2)" stroke="rgba(0,210,106,0.4)" stroke-width="2"/>
+          <!-- HVAC Chillers -->
+          <rect x="580" y="135" width="65" height="24" rx="4" fill="#0E1A33" stroke="#00B4D8" stroke-width="1.5"/>
+          <text x="590" y="151" fill="#00B4D8" font-size="10" font-family="monospace" font-weight="bold">CHILLER 1</text>
+          <rect x="655" y="135" width="65" height="24" rx="4" fill="#0E1A33" stroke="#00B4D8" stroke-width="1.5"/>
+          <text x="665" y="151" fill="#00B4D8" font-size="10" font-family="monospace" font-weight="bold">CHILLER 2</text>
+          
+          <!-- Master Status Beacon -->
+          <circle cx="895" cy="147" r="5" fill="#00D26A">
+            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <text x="825" y="151" fill="#00D26A" font-size="9" font-family="monospace">SYS OK</text>
+
+          <!-- Rack Doors & Corrugated Ribs -->
+          <line x1="560" y1="180" x2="920" y2="180" stroke="rgba(255,255,255,0.15)"/>
+          <line x1="650" y1="180" x2="650" y2="360" stroke="rgba(255,255,255,0.1)"/>
+          <line x1="740" y1="180" x2="740" y2="360" stroke="rgba(255,255,255,0.1)"/>
+          <line x1="830" y1="180" x2="830" y2="360" stroke="rgba(255,255,255,0.1)"/>
+          
+          <!-- Illumination Grille LEDs -->
+          <rect x="580" y="200" width="50" height="8" rx="2" fill="#00D26A" fill-opacity="0.8"/>
+          <rect x="580" y="220" width="50" height="8" rx="2" fill="#00D26A" fill-opacity="0.8"/>
+          <rect x="580" y="240" width="50" height="8" rx="2" fill="#00D26A" fill-opacity="0.8"/>
+          <rect x="580" y="260" width="50" height="8" rx="2" fill="#00D26A" fill-opacity="0.8"/>
+
+          <rect x="670" y="200" width="50" height="8" rx="2" fill="#00B4D8" fill-opacity="0.8"/>
+          <rect x="670" y="220" width="50" height="8" rx="2" fill="#00B4D8" fill-opacity="0.8"/>
+          <rect x="670" y="240" width="50" height="8" rx="2" fill="#00B4D8" fill-opacity="0.8"/>
+          <rect x="670" y="260" width="50" height="8" rx="2" fill="#00B4D8" fill-opacity="0.8"/>
+
+          <rect x="760" y="200" width="50" height="8" rx="2" fill="#00D26A" fill-opacity="0.8"/>
+          <rect x="760" y="220" width="50" height="8" rx="2" fill="#00D26A" fill-opacity="0.8"/>
+          <rect x="760" y="240" width="50" height="8" rx="2" fill="#00D26A" fill-opacity="0.8"/>
+          <rect x="760" y="260" width="50" height="8" rx="2" fill="#00D26A" fill-opacity="0.8"/>
+
+          <text x="650" y="340" fill="#E2E8F0" font-size="12" font-family="'Plus Jakarta Sans', sans-serif" font-weight="bold" letter-spacing="1">LINEAGE 5 MWh BESS</text>
+
+          <!-- 20ft BESS Container 3 (Right) -->
+          <rect x="960" y="170" width="280" height="190" rx="6" fill="url(#containerGrad1)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <rect x="980" y="185" width="50" height="20" rx="3" fill="#14203D" stroke="#00B4D8" stroke-width="1"/>
+          <text x="987" y="199" fill="#00B4D8" font-size="9" font-family="monospace" font-weight="bold">HVAC 2</text>
+          <circle cx="1220" cy="195" r="4" fill="#00D26A"/>
+
+          <!-- Concrete Ground Plinth Base -->
+          <rect x="0" y="360" width="1440" height="60" fill="#060C1C" stroke="rgba(0,210,106,0.2)" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <div class="hero-fog-overlay"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="container hero-content-wrapper">
+      
+      <!-- Credibility Pill Badge (Rayzon style) -->
+      <div class="hero-tag-pill">
+        <span class="pulse-indicator"></span>
+        <span class="pill-text">TIER-1 ENERGY STORAGE &amp; TELECOM POWER MANUFACTURER</span>
+        <span class="pill-badge-award">₹1,994M L&amp;T Order</span>
+      </div>
+
+      <!-- Bold Dramatic Headline -->
+      <h1 class="hero-headline">
+        POWERING THE TRANSITION TO <br>
+        <span class="hero-gradient-text">INFINITE CLEAN ENERGY</span>
+      </h1>
+
+      <!-- High-Impact Subtitle -->
+      <p class="hero-lead-text">
+        India's premier manufacturer of 5 GWh utility-scale containerized Battery Energy Storage Systems (BESS) and high-availability telecom passive power infrastructure — engineered under one roof in Bengaluru and trusted globally.
+      </p>
+
+      <!-- Rayzon-Style Hero Buttons -->
+      <div class="hero-action-row">
+        <a href="#products" class="btn btn-emerald btn-lg hero-cta-btn">
+          <span>Explore BESS Solutions</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="#container-explorer" class="btn btn-frosted btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+          <span>3D Container Explorer</span>
+        </a>
+        <a href="#calculator" class="btn btn-outline-white btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/></svg>
+          <span>Size Your Project</span>
+        </a>
+      </div>
+
+      <!-- Rayzon-Style Glass Metric Strip (Pinned at bottom of hero) -->
+      <div class="hero-stats-glass-strip">
+        <div class="stat-cell">
+          <span class="stat-number">5 GWh</span>
+          <span class="stat-caption">Annual BESS Capacity</span>
+        </div>
+        <div class="stat-separator"></div>
+        <div class="stat-cell">
+          <span class="stat-number">10,000+</span>
+          <span class="stat-caption">Telecom Sites Powered</span>
+        </div>
+        <div class="stat-separator"></div>
+        <div class="stat-cell">
+          <span class="stat-number">1,500 V</span>
+          <span class="stat-caption">High-Voltage DC Platform</span>
+        </div>
+        <div class="stat-separator"></div>
+        <div class="stat-cell">
+          <span class="stat-number">₹1,994M+</span>
+          <span class="stat-caption">Landmark EPC Order Book</span>
+        </div>
+        <div class="stat-separator"></div>
+        <div class="stat-cell">
+          <span class="stat-number">ISO Tri-Cert</span>
+          <span class="stat-caption">9001 · 14001 · 27001</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- "Why Lineage" Section (Rayzon Solar Signature Feature) -->
+  <section class="section why-lineage-section" id="why-lineage">
+    <div class="container">
+      <div class="section-heading-center">
+        <span class="kicker-tag">CREDIBILITY &amp; INNOVATION</span>
+        <h2 class="section-h2">Why Industry Leaders Choose Lineage Power</h2>
+        <p class="section-p">
+          From utility developers and tier-1 EPC contractors to telecom tower operators, we deliver uncompromised bankability, automated Indian manufacturing, and certified lifecycle reliability.
+        </p>
+      </div>
+
+      <div class="why-grid">
+        <!-- Card 1: Gigafactory -->
+        <div class="why-card">
+          <div class="why-card-glow"></div>
+          <div class="why-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"/><path d="M6 20V8l6-4 6 4v12"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+          </div>
+          <span class="why-num">01</span>
+          <h3>5 GWh Automated Bengaluru Gigafactory</h3>
+          <p>
+            Purpose-built advanced manufacturing complex with robotic cell-to-pack assembly lines, precision laser welding, and automated automated optical inspection (AOI) guaranteeing microscopic cell tolerance.
+          </p>
+          <ul class="why-checklist">
+            <li>Fully traceable cell serial numbers via MES</li>
+            <li>In-house CNC cabinet fabrication &amp; 7-tank coating</li>
+            <li>Direct OEM pricing with no intermediary overhead</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Liquid Cooling -->
+        <div class="why-card highlighted-why-card">
+          <div class="why-card-glow"></div>
+          <div class="why-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6"/><path d="M12 18v4"/><path d="M4.93 4.93l4.24 4.24"/><path d="M14.83 14.83l4.24 4.24"/><path d="M2 12h6"/><path d="M18 12h4"/><path d="M4.93 19.07l4.24-4.24"/><path d="M14.83 9.17l4.24-4.24"/></svg>
+          </div>
+          <span class="why-num">02</span>
+          <h3>Active Liquid Cooling Technology</h3>
+          <p>
+            Industrial-grade multi-channel liquid coolant plates maintain cell temperatures within a tight ±2.5°C delta, doubling battery operational lifespan and preventing localized thermal degradation in 50°C Indian summers.
+          </p>
+          <ul class="why-checklist">
+            <li>Uniform heat dissipation across 5,000+ cells</li>
+            <li>30% lower auxiliary energy consumption than air cooling</li>
+            <li>Integrated flow sensors and automatic pressure relief</li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Tier-1 EPC Bankability -->
+        <div class="why-card">
+          <div class="why-card-glow"></div>
+          <div class="why-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="why-num">03</span>
+          <h3>Tier-1 EPC Bankability &amp; Public Utilities</h3>
+          <p>
+            Trusted partner to top-tier infrastructure conglomerates including L&amp;T Construction for mega state grid projects (Bihar Kajra Solar Park) and major national telecom operators.
+          </p>
+          <ul class="why-checklist">
+            <li>₹1,994.20 Million single landmark order capability</li>
+            <li>Full compliance documentation for public tenders</li>
+            <li>Tested to UL9540A, IEC 62619, and NFPA 855 codes</li>
+          </ul>
+        </div>
+
+        <!-- Card 4: Multi-Tier BMS & Cloud Telemetry -->
+        <div class="why-card">
+          <div class="why-card-glow"></div>
+          <div class="why-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4"/><path d="M12 16V8"/></svg>
+          </div>
+          <span class="why-num">04</span>
+          <h3>Multi-Tier BMS &amp; ISO 27001 Cloud SCADA</h3>
+          <p>
+            Three-tier safety architecture (Cell, Rack, Container) paired with Central NOC cloud telemetry monitoring voltage, internal resistance, and state-of-charge with millisecond response times.
+          </p>
+          <ul class="why-checklist">
+            <li>AI anomaly detection prevents thermal runaway</li>
+            <li>Sub-second emergency breaker isolation</li>
+            <li>Encrypted telemetry certified to ISO 27001:2022</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive 3D Container Explorer Section -->
+  <section class="section container-explorer-section" id="container-explorer">
+    <div class="container">
+      <div class="section-heading-center">
+        <span class="kicker-tag text-cyan">INTERACTIVE ENGINEERING VISUALIZER</span>
+        <h2 class="section-h2">Inside the Lineage 5 MWh BESS Container</h2>
+        <p class="section-p">
+          Click on any hotspot on the container to explore our integrated thermal loop, safety suppression systems, modular LiFePO₄ racks, and central controllers.
+        </p>
+      </div>
+
+      <div class="explorer-layout">
+        
+        <!-- Interactive 20ft Container Diagram with Hotspots -->
+        <div class="explorer-visual-card">
+          <div class="container-hotspot-stage">
+            
+            <!-- 3D Styled Container Body -->
+            <div class="bess-schematic-3d">
+              
+              <!-- Hotspot 1: Liquid Chiller -->
+              <button class="hotspot-pin active" style="top: 14%; left: 24%;" data-spot="chiller" onclick="selectHotspot('chiller')">
+                <span class="pin-radar"></span>
+                <span class="pin-dot">01</span>
+                <span class="pin-label">Dual Liquid Chillers</span>
+              </button>
+
+              <!-- Hotspot 2: LiFePO4 Cell Racks -->
+              <button class="hotspot-pin" style="top: 52%; left: 42%;" data-spot="racks" onclick="selectHotspot('racks')">
+                <span class="pin-radar"></span>
+                <span class="pin-dot">02</span>
+                <span class="pin-label">LiFePO₄ Racks</span>
+              </button>
+
+              <!-- Hotspot 3: Aerosol Fire Suppression -->
+              <button class="hotspot-pin" style="top: 18%; left: 74%;" data-spot="safety" onclick="selectHotspot('safety')">
+                <span class="pin-radar"></span>
+                <span class="pin-dot">03</span>
+                <span class="pin-label">Aerosol Fire Safety</span>
+              </button>
+
+              <!-- Hotspot 4: Master BMS Controller -->
+              <button class="hotspot-pin" style="top: 68%; left: 86%;" data-spot="bms" onclick="selectHotspot('bms')">
+                <span class="pin-radar"></span>
+                <span class="pin-dot">04</span>
+                <span class="pin-label">Master BMS Stack</span>
+              </button>
+
+              <!-- Inner Render Illustration -->
+              <div class="container-cutaway-graphic">
+                <div class="c-hvac-deck">
+                  <div class="c-hvac-unit">HVAC 01 · 45kW</div>
+                  <div class="c-hvac-unit">HVAC 02 · 45kW</div>
+                </div>
+                <div class="c-rack-bays">
+                  <div class="c-bay"><span>BAY 1</span><div class="bay-bars"></div></div>
+                  <div class="c-bay"><span>BAY 2</span><div class="bay-bars"></div></div>
+                  <div class="c-bay"><span>BAY 3</span><div class="bay-bars"></div></div>
+                  <div class="c-bay"><span>BAY 4</span><div class="bay-bars"></div></div>
+                  <div class="c-bay"><span>BAY 5</span><div class="bay-bars"></div></div>
+                  <div class="c-bay"><span>BAY 6</span><div class="bay-bars"></div></div>
+                </div>
+                <div class="c-chassis-label">
+                  LINEAGE LP-5016 · 20FT ISO HIGH-CUBE CONTAINER · 1500V DC
+                </div>
+              </div>
+            </div>
+
+            <div class="hotspot-instruction">
+              💡 Click any of the 4 numbered hotspots above to inspect engineering architecture
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotspot Detail Card -->
+        <div class="explorer-detail-panel">
+          <div class="hotspot-info-card" id="hotspotCard">
+            <span class="hotspot-sub" id="spotTag">SUBSYSTEM 01 · THERMAL CONTROL</span>
+            <h3 class="hotspot-heading" id="spotTitle">Active Dual Liquid Chillers</h3>
+            <p class="hotspot-body" id="spotDesc">
+              Equipped with two redundant 45 kW industrial liquid chillers circulating dielectric glycol-water coolant directly through aluminum cold plates under every battery module.
+            </p>
+
+            <div class="hotspot-data-table">
+              <div class="h-data-row">
+                <span class="h-lbl">Cooling Capacity:</span>
+                <span class="h-val" id="spotData1">2x 45 kW Active Compressors</span>
+              </div>
+              <div class="h-data-row">
+                <span class="h-lbl">Temperature Delta:</span>
+                <span class="h-val" id="spotData2">Cell Delta ≤ ±2.5 °C</span>
+              </div>
+              <div class="h-data-row">
+                <span class="h-lbl">Operating Ambient:</span>
+                <span class="h-val" id="spotData3">-30 °C to +55 °C</span>
+              </div>
+              <div class="h-data-row">
+                <span class="h-lbl">Coolant Fluid:</span>
+                <span class="h-val" id="spotData4">Ethylene Glycol 50/50 mix</span>
+              </div>
+            </div>
+
+            <div class="hotspot-actions">
+              <button class="btn btn-emerald btn-sm" onclick="openSpecModal('5mwh-block')">
+                View Full Technical Spec
+              </button>
+              <button class="btn btn-outline-white btn-sm" onclick="applySizingToRfq()">
+                Request Container Sizing
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Product Catalog & Filter Section -->
+  <section class="section products-section" id="products">
+    <div class="container">
+      <div class="section-heading-center">
+        <span class="kicker-tag">PORTFOLIO</span>
+        <h2 class="section-h2">High-Availability Power &amp; Storage Systems</h2>
+        <p class="section-p">
+          16 field-proven solutions spanning utility-scale BESS container platforms to ruggedized -48V telecom rectifiers.
+        </p>
+
+        <!-- Category Filters -->
+        <div class="product-filter-pills" role="tablist">
+          <button class="filter-pill active" data-filter="all">All Products (16)</button>
+          <button class="filter-pill" data-filter="bess">Energy Storage BESS (5)</button>
+          <button class="filter-pill" data-filter="telecom">Telecom &amp; ICT Power (7)</button>
+          <button class="filter-pill" data-filter="hybrid">Hybrid &amp; Renewables (2)</button>
+          <button class="filter-pill" data-filter="scada">SCADA &amp; Telemetry (2)</button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="search-wrap">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="productSearchInput" class="search-field" placeholder="Search by model, chemistry (LiFePO4), rating (kW/MWh), or voltage...">
+        </div>
+      </div>
+
+      <!-- Products Grid (populated dynamically via app.js) -->
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- BESS Sizing Calculator Console -->
+  <section class="section calc-section" id="calculator">
+    <div class="container">
+      <div class="calc-console-card">
+        <div class="calc-grid">
+          
+          <div class="calc-controls">
+            <span class="kicker-tag text-emerald">DYNAMIC SIMULATION CONSOLE</span>
+            <h2 class="calc-h2">BESS Sizing &amp; Carbon Estimator</h2>
+            <p class="calc-intro-text">
+              Configure power requirements and discharge duration to calculate required 5 MWh container blocks, inverter capacity, and estimated annual carbon displacement.
+            </p>
+
+            <div class="control-group">
+              <label for="calcAppType" class="field-label">Grid Application Profile</label>
+              <select id="calcAppType" class="field-select">
+                <option value="utility-solar">Utility Solar PV Firming (0.5C Standard)</option>
+                <option value="peak-shaving">Grid Peak Shaving &amp; Frequency Regulation (1C Fast)</option>
+                <option value="telecom-offgrid">Telecom Off-Grid Islanded Microgrid</option>
+                <option value="ci-industrial">Commercial &amp; Industrial Demand Charge Mitigation</option>
+              </select>
+            </div>
+
+            <!-- Power Rating Slider -->
+            <div class="control-group">
+              <div class="slider-meta">
+                <label for="powerSlider" class="field-label">Required Peak Power (MW)</label>
+                <span class="val-pill" id="powerDisplay">25 MW</span>
+              </div>
+              <input type="range" id="powerSlider" min="1" max="100" value="25" class="range-slider">
+              <div class="slider-ticks">
+                <span>1 MW</span>
+                <span>25 MW</span>
+                <span>50 MW</span>
+                <span>100 MW</span>
+              </div>
+            </div>
+
+            <!-- Duration Slider -->
+            <div class="control-group">
+              <div class="slider-meta">
+                <label for="durationSlider" class="field-label">Discharge Duration (Hours)</label>
+                <span class="val-pill" id="durationDisplay">4 Hours</span>
+              </div>
+              <input type="range" id="durationSlider" min="1" max="8" value="4" step="0.5" class="range-slider">
+              <div class="slider-ticks">
+                <span>1 Hr</span>
+                <span>2 Hrs</span>
+                <span>4 Hrs</span>
+                <span>8 Hrs</span>
+              </div>
+            </div>
+
+            <!-- Solar Co-location -->
+            <div class="toggle-card">
+              <label class="switch">
+                <input type="checkbox" id="solarToggle" checked>
+                <span class="slider round"></span>
+              </label>
+              <div class="toggle-copy">
+                <strong>Co-located Solar PV Integration</strong>
+                <span>Calculates additional renewable firming capacity</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Output Telemetry Panel -->
+          <div class="calc-telemetry-output">
+            <div class="output-header">
+              <span class="calc-badge">SYSTEM DIMENSIONING</span>
+              <h3>Engineered Capacity</h3>
+            </div>
+
+            <div class="output-mega-stat">
+              <span class="m-val" id="totalMwhOutput">100.0 MWh</span>
+              <span class="m-sub">Total Storage Capacity (LiFePO₄)</span>
+            </div>
+
+            <div class="output-specs-list">
+              <div class="o-row">
+                <span class="o-lbl">Container Blocks (5.01 MWh):</span>
+                <span class="o-val" id="containerCountOutput">20 Units (20ft ISO)</span>
+              </div>
+              <div class="o-row">
+                <span class="o-lbl">Recommended PCS Inverter:</span>
+                <span class="o-val" id="pcsRatingOutput">25.0 MW AC</span>
+              </div>
+              <div class="o-row">
+                <span class="o-lbl">Control &amp; Safety Stack:</span>
+                <span class="o-val">3-Tier BMS + SCADA</span>
+              </div>
+              <div class="o-row">
+                <span class="o-lbl">Estimated Footprint:</span>
+                <span class="o-val" id="footprintOutput">~1,840 m²</span>
+              </div>
+              <div class="o-row green-row">
+                <span class="o-lbl">Est. Annual CO₂ Offset:</span>
+                <span class="o-val" id="carbonOutput">~41,500 Tons</span>
+              </div>
+            </div>
+
+            <div class="output-action-box">
+              <button class="btn btn-emerald btn-block btn-lg" onclick="applySizingToRfq()">
+                Inject Sizing into RFQ Proposal
+              </button>
+              <span class="output-disclaimer">
+                *Preliminary calculations based on standard Lineage 5 MWh container specifications (0.5C discharge, 95% RTE).
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Turnkey Lifecycle Services -->
+  <section class="section services-section" id="services">
+    <div class="container">
+      <div class="section-heading-center">
+        <span class="kicker-tag">END-TO-END EXECUTION</span>
+        <h2 class="section-h2">Lifecycle Engineering &amp; Services</h2>
+        <p class="section-p">
+          From application design and FAT validation to cloud telemetry and responsible circular decommissioning.
+        </p>
+      </div>
+
+      <div class="services-modern-grid">
+        <div class="s-card">
+          <div class="s-step">01</div>
+          <h4>Application Engineering &amp; Sizing</h4>
+          <p>Load profiling, SLD schematics, grid interconnection studies, and thermal modeling for utility tenders.</p>
+        </div>
+        <div class="s-card">
+          <div class="s-step">02</div>
+          <h4>Factory Acceptance Testing (FAT)</h4>
+          <p>100% full-load burn-in, thermal chamber testing, and fault simulation at our Bengaluru facility.</p>
+        </div>
+        <div class="s-card">
+          <div class="s-step">03</div>
+          <h4>On-Site Commissioning</h4>
+          <p>Civil pad integration, HV DC cabling, transformer hookups, SCADA testing, and utility synchronization.</p>
+        </div>
+        <div class="s-card">
+          <div class="s-step">04</div>
+          <h4>Cloud CNOC 24/7 Monitoring</h4>
+          <p>Central Network Operations Center with cell-level diagnostics, predictive fault alerts, and SLA tracking.</p>
+        </div>
+        <div class="s-card">
+          <div class="s-step">05</div>
+          <h4>Preventive AMC &amp; Field Spares</h4>
+          <p>Guaranteed uptime SLAs, rapid spare delivery from regional hubs, and continuous firmware security updates.</p>
+        </div>
+        <div class="s-card">
+          <div class="s-step">06</div>
+          <h4>Circular Decommissioning</h4>
+          <p>Safe battery cutover with zero downtime, certified LiFePO4 recycling, and documentation under EPR regulations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Corporate Ecosystem / Pace Digitek Group -->
+  <section class="section group-section" id="group">
+    <div class="container">
+      <div class="section-heading-center">
+        <span class="kicker-tag">GROUP ARCHITECTURE</span>
+        <h2 class="section-h2">The Pace Digitek Limited Group</h2>
+        <p class="section-p">
+          Operating within an integrated industrial group combining heavy EPC project execution with specialized power electronics manufacturing.
+        </p>
+      </div>
+
+      <div class="group-grid">
+        <div class="group-card holding-card">
+          <span class="g-badge">Holding Company</span>
+          <h3>Pace Digitek Limited</h3>
+          <span class="g-role">Engineering · Procurement · Construction (EPC)</span>
+          <p>Leads integrated project execution across power, telecom towers, solar PV, and digital infrastructure across India and international markets.</p>
+        </div>
+
+        <div class="group-card active-card">
+          <span class="g-badge active-g-badge">Manufacturing Arm</span>
+          <h3>Lineage Power Private Limited</h3>
+          <span class="g-role">Power Systems &amp; Energy Storage Manufacturing</span>
+          <p>Designs and manufactures containerized BESS, rectifiers, hybrid platforms, BMS/EMS, and SCADA platforms supplied globally from Bengaluru.</p>
+        </div>
+
+        <div class="group-card">
+          <span class="g-badge">Clean Energy</span>
+          <h3>TransgreenX Energy (TGX)</h3>
+          <span class="g-role">Renewable Power Generation &amp; Storage Assets</span>
+          <p>Develops, finances, and operates utility solar and hybrid storage assets powering next-generation commercial grids.</p>
+        </div>
+
+        <div class="group-card">
+          <span class="g-badge">Renewables</span>
+          <h3>Pace Renewable Energies</h3>
+          <span class="g-role">Solar Infrastructure &amp; Green Power</span>
+          <p>Executes solar park installations, high-voltage substation construction, and transmission interconnects.</p>
+        </div>
+
+        <div class="group-card">
+          <span class="g-badge">Sustainable Infra</span>
+          <h3>Pace Ecoplanet Solace</h3>
+          <span class="g-role">Eco Infrastructure &amp; Energy Efficiency</span>
+          <p>Specializes in environmental power solutions and energy conservation systems for commercial hubs.</p>
+        </div>
+
+        <div class="group-card">
+          <span class="g-badge">Strategic Tech</span>
+          <h3>Lineage Defence &amp; Aerospace</h3>
+          <span class="g-role">Mission-Critical Rugged Power Systems</span>
+          <p>Delivers high-reliability ruggedized power supplies and auxiliary energy storage for defence systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsroom / Media -->
+  <section class="section news-section" id="newsroom">
+    <div class="container">
+      <div class="news-header-flex">
+        <div>
+          <span class="kicker-tag">MEDIA &amp; ANNOUNCEMENTS</span>
+          <h2 class="section-h2">Latest Press Releases</h2>
+        </div>
+      </div>
+
+      <div class="news-grid">
+        <article class="news-item highlight-news-item">
+          <span class="news-cat">Major Milestone</span>
+          <span class="news-time">Q1 2025</span>
+          <h3>Lineage Power Secures ₹1,994.20 Million BESS Order from L&amp;T Construction</h3>
+          <p>Supplying LiFePO₄ liquid-cooled containerized BESS systems for the prestigious Bihar State Power Generation Kajra Solar Project.</p>
+        </article>
+
+        <article class="news-item">
+          <span class="news-cat">Executive Leadership</span>
+          <span class="news-time">Recent</span>
+          <h3>Ketan Chitnis Appointed as Chief Operating Officer</h3>
+          <p>Power industry veteran joins to spearhead operational excellence across the 5 GWh automated manufacturing facility in Bengaluru.</p>
+        </article>
+
+        <article class="news-item">
+          <span class="news-cat">Cybersecurity</span>
+          <span class="news-time">Recent</span>
+          <h3>Lineage Power Achieves ISO 27001:2022 Certification</h3>
+          <p>Recognizes enterprise-grade data protection and cloud telemetry security across all deployed SCADA and Central NOC systems.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & RFQ Section -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-box-grid">
+        
+        <div class="contact-intro-col">
+          <span class="kicker-tag text-emerald">DIRECT OEM RELATIONSHIP</span>
+          <h2 class="section-h2">Connect with Our Bengaluru Engineering Desk</h2>
+          <p class="contact-body-lead">
+            Discuss project sizing, request technical datasheets, or schedule a Factory Acceptance Testing (FAT) visit at our Bengaluru manufacturing hub.
+          </p>
+
+          <div class="contact-card-details">
+            <div class="detail-line">
+              <span class="d-label">Telephone:</span>
+              <span class="d-val"><a href="tel:+918028437792">+91-80-284 377 92</a> / <a href="tel:+918028437794">284 377 94</a></span>
+            </div>
+            <div class="detail-line">
+              <span class="d-label">Inquiries:</span>
+              <span class="d-val"><a href="mailto:info@lineagepowersystems.com">info@lineagepowersystems.com</a></span>
+            </div>
+            <div class="detail-line">
+              <span class="d-label">Facility Location:</span>
+              <span class="d-val">Lineage Power Private Limited, Bengaluru, Karnataka 560064, India</span>
+            </div>
+          </div>
+
+          <div class="factory-visit-pill">
+            <span class="pulse-indicator"></span>
+            <span>Factory visits welcomed for qualified EPCs and utility developers</span>
+          </div>
+        </div>
+
+        <!-- RFQ Form -->
+        <div class="rfq-form-card">
+          <h3>Request Technical Specifications or Proposal</h3>
+          <p class="form-subtext">Fill in your requirements and an application engineer will follow up within 24 hours.</p>
+
+          <form id="rfqForm" onsubmit="handleRfqSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="rfqName">Full Name *</label>
+                <input type="text" id="rfqName" required placeholder="e.g. Rajesh Sharma">
+              </div>
+              <div class="form-group">
+                <label for="rfqCompany">Company / Organization *</label>
+                <input type="text" id="rfqCompany" required placeholder="e.g. L&amp;T Construction / Airtel">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="rfqEmail">Business Email *</label>
+                <input type="email" id="rfqEmail" required placeholder="name@company.com">
+              </div>
+              <div class="form-group">
+                <label for="rfqPhone">Phone Number *</label>
+                <input type="tel" id="rfqPhone" required placeholder="+91 98765 43210">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="rfqSector">Industry Vertical</label>
+              <select id="rfqSector">
+                <option value="bess-utility">Utility-Scale Renewable / BESS Developer</option>
+                <option value="epc">EPC Contractor (Solar / Substation / Infra)</option>
+                <option value="telecom">Telecom Operator / TowerCo</option>
+                <option value="ci">Commercial &amp; Industrial Storage</option>
+                <option value="discom">State Discom / Transmission Utility</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="rfqCapacity">Project Capacity / Model Name</label>
+              <input type="text" id="rfqCapacity" placeholder="e.g. 50 MW / 200 MWh BESS or 500x 48V DC Systems">
+            </div>
+
+            <div class="form-group">
+              <label for="rfqMessage">Message / Specific Requirements</label>
+              <textarea id="rfqMessage" rows="3" placeholder="Target deployment timeline, site location, or technical clarifications..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-emerald btn-block btn-lg" id="rfqSubmitBtn">
+              Submit Request for Proposal
+            </button>
+            <div id="rfqStatus" class="form-status-msg"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Spec Sheet Modal -->
+  <div class="modal-overlay" id="specModalOverlay">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modalProductTitle">
+      <div class="modal-header">
+        <div>
+          <span class="modal-cat-tag" id="modalProductCategory">ENERGY STORAGE</span>
+          <h3 id="modalProductTitle">5 MWh DC Battery Block</h3>
+        </div>
+        <button class="modal-close" onclick="closeSpecModal()" aria-label="Close Modal">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modalProductContent"></div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline-white" onclick="closeSpecModal()">Close</button>
+        <button class="btn btn-emerald" onclick="initiateRfqForModalProduct()">Request Sizing &amp; Pricing</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modern Clean Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <div class="brand-logo">
+          <span class="logo-main">LINEAGE <span>POWER</span></span>
+        </div>
+        <p class="footer-desc">
+          Lineage Power Private Limited is an Indian manufacturer of telecom passive power and energy storage solutions, operating as part of the <strong>Pace Digitek Limited Group</strong>.
+        </p>
+        <div class="footer-badge-pill">
+          Holding Company: <a href="https://pacedigitek.com" target="_blank" rel="noopener">Pace Digitek Limited</a>
+        </div>
+        <div class="footer-cin">
+          CIN: U31100KA2008PTC047814 · ISO 9001 · 14001 · 27001
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#why-lineage">Why Lineage</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#container-explorer">3D Explorer</a></li>
+          <li><a href="#calculator">Sizing Tool</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#group">Group Companies</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Statutory &amp; CSR</h4>
+        <ul>
+          <li><a href="https://lineagepowers.com/csr/Composition-of-%20CSRcommittees.pdf" target="_blank" rel="noopener">CSR Committee ↗</a></li>
+          <li><a href="https://lineagepowers.com/csr/CSR%20Report%202024-25.pdf" target="_blank" rel="noopener">CSR Report 2024-25 ↗</a></li>
+          <li><a href="https://lineagepowers.com/csr/CSR%20Policy_LPPL-Sept%2025%2C%2025.pdf" target="_blank" rel="noopener">CSR Policy ↗</a></li>
+          <li><a href="https://lineagepowers.com/annual-return/FY%202024-25.pdf" target="_blank" rel="noopener">Annual Return FY25 ↗</a></li>
+          <li><a href="https://lineagepowers.com/annual-return/FY%202023-24.pdf" target="_blank" rel="noopener">Annual Return FY24 ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Group Entities</h4>
+        <ul>
+          <li><a href="#group">Pace Digitek Limited (Holding)</a></li>
+          <li><a href="#group">Lineage Power Private Limited</a></li>
+          <li><a href="#group">TransgreenX Energy (TGX)</a></li>
+          <li><a href="#group">Pace Renewable Energies</a></li>
+          <li><a href="#group">Pace Ecoplanet Solace</a></li>
+          <li><a href="#group">Lineage Defence &amp; Aerospace</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom-bar">
+      <p>&copy; 2026 Lineage Power Private Limited. All rights reserved. A Pace Digitek Limited Group Company.</p>
+      <div class="footer-legal-links">
+        <a href="#">Privacy Policy</a>
+        <span>·</span>
+        <a href="#">Terms of Use</a>
+        <span>·</span>
+        <a href="#">Compliance</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
