@@ -1,17 +1,17 @@
-# Lineage Power — Industrial Energy Storage & Telecom Power Systems UI
+# Senterra Energy — Industrial Energy Storage & Telecom Power Systems UI
 
-A modern, high-performance clean-tech web application inspired by **Lineage Power** (a Pace Digitek Limited Group company) and designed with the cinematic visual aesthetic of **Rayzon Solar**.
+A modern, high-performance clean-tech web application for **Senterra Energy** designed with the cinematic visual aesthetic of **Rayzon Solar**.
 
 ---
 
 ## ⚡ Overview
 
-Lineage Power is an Indian manufacturer of utility-scale Battery Energy Storage Systems (BESS) and mission-critical telecom passive power solutions engineered in Bengaluru, Karnataka.
+Senterra Energy is an Indian manufacturer of utility-scale Battery Energy Storage Systems (BESS) and mission-critical telecom passive power solutions engineered in Bengaluru, Karnataka.
 
 This project delivers a responsive web experience featuring:
 - **Floating Glassmorphic Header**: Transparent on top of the hero, transitioning into frosted glass on scroll with responsive left-anchored branding and centered navigation.
 - **Cinematic Clean-Energy Hero**: Industrial backdrop with vector containerized BESS arrays, solar field reflections, and live Central NOC telemetry indicators.
-- **"Why Lineage" Innovation Grid**: Credibility pillars detailing the 5 GWh automated Bengaluru gigafactory, active liquid thermal loops, Tier-1 EPC bankability (e.g. ₹1,994M L&T Kajra Solar project), and ISO 27001 SCADA.
+- **"Why Senterra" Innovation Grid**: Credibility pillars detailing the 5 GWh automated Bengaluru gigafactory, active liquid thermal loops, Tier-1 EPC bankability (e.g. ₹1,994M L&T Kajra Solar project), and ISO 27001 SCADA.
 - **Interactive 3D Container Explorer**: Clickable 20ft container schematic with 4 real-time hotspots (Dual Chillers, LiFePO₄ Racks, Aerosol Fire Safety, Master BMS).
 - **Dynamic BESS Sizing Calculator**: Interactive sliders for power (MW) and duration (Hours) calculating total MWh, container block counts, inverter rating, land footprint, and annual $CO_2$ displacement.
 - **Complete 16-Product Catalog**: Instant search, category filters (BESS, Telecom, Hybrid, SCADA), and technical spec sheet modals.
@@ -69,7 +69,7 @@ The script will automatically bind to port `8080` (or the next available port if
 
 ```
 ==================================================
- Lineage Power UI Server running successfully!
+ Senterra Energy UI Server running successfully!
  URL: http://localhost:8080
  Directory: /path/to/project
 ==================================================
@@ -139,7 +139,7 @@ http://localhost:8080
 
 1. **Top Floating Navigation (`#navbar`)**:
    - Left-anchored geometric brand mark.
-   - Centered single-line links (`Home`, `Why Lineage`, `Products ▾`, `3D Explorer`, `Sizing Tool`, `Services`, `Group Companies`, `Media`, `Contact Us`).
+   - Centered single-line links (`Home`, `Why Senterra`, `Products ▾`, `3D Explorer`, `Sizing Tool`, `Services`, `Contact Us`).
    - Mega-menu with category breakdowns and highlighted flagship specs.
    - Right action items: `Bengaluru 5 GWh ⚡` rounded pill button and `Request Quote` CTA.
 
@@ -148,7 +148,7 @@ http://localhost:8080
    - High-contrast typography and multi-layered twilight energy vector artwork.
    - Pinned frosted glass metric strip (5 GWh Capacity, 10,000+ Sites, 1,500V DC, ISO Tri-Certified).
 
-3. **Why Lineage (`#why-lineage`)**:
+3. **Why Senterra (`#why-senterra`)**:
    - 4 credibility cards with checklists: Automated Gigafactory, Liquid Thermal Technology, Tier-1 EPC Bankability, and Multi-Tier BMS SCADA.
 
 4. **3D Container Explorer (`#container-explorer`)**:
@@ -172,7 +172,6 @@ http://localhost:8080
    - RFQ form with validation and simulated submission confirmation.
 
 8. **Corporate Footer**:
-   - Directory of Pace Digitek Limited Group companies (Pace Digitek, Lineage Power, TGX, Pace Renewable Energies, Pace Ecoplanet Solace, Lineage Defence).
    - Direct links to statutory CSR reports (2022–25) and Annual Returns.
 
 ---
@@ -183,13 +182,13 @@ If you want to push this project to a new GitHub repository:
 
 1. **Create a new repository on GitHub**:
    - Go to [github.com/new](https://github.com/new).
-   - Enter a name (e.g. `lineage-power-ui`).
+   - Enter a name (e.g. `senterra-energy-ui`).
    - Choose Public or Private and click **Create repository** (do not initialize with a README since we already have one).
 
 2. **Stage and commit your files**:
    ```bash
    git add .
-   git commit -m "feat: complete Lineage Power clean-tech UI with BESS calculator and 3D explorer"
+   git commit -m "feat: complete Senterra Energy clean-tech UI with BESS calculator and 3D explorer"
    ```
 
 3. **Link to your GitHub remote and push**:
@@ -203,4 +202,4 @@ If you want to push this project to a new GitHub repository:
 
 ## 📄 License & Attribution
 
-Designed and engineered as a modern clean-tech enterprise web interface inspired by [Lineage Power](https://lineagepowers.com/) (Pace Digitek Limited Group) and [Rayzon Solar](https://rayzonsolar.com/). All trademarks, logos, and company details belong to their respective entity holders.
+Designed and engineered as a modern clean-tech enterprise web interface for [Senterra Energy](https://senterraenergy.com/) with transition aesthetics inspired by [Rayzon Solar](https://rayzonsolar.com/). All trademarks, logos, and company details belong to their respective entity holders.

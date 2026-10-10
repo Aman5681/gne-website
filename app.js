@@ -1,5 +1,5 @@
 /**
- * Lineage Power - Modern Industrial UI Interactive Logic (Rayzon Solar Inspired)
+ * Senterra Energy - Modern Industrial UI Interactive Logic (Rayzon Solar Inspired)
  * Products catalog, 3D Container Explorer, Technical Spec Viewer, BESS Estimator, RFQ Handler
  */
 
@@ -111,7 +111,7 @@ const PRODUCTS_DATA = [
       { title: "Liquid Cooled", text: "Uniform cell temp within ±2.5°C delta" },
       { title: "Turnkey FAT", text: "100% factory pre-commissioned in Bengaluru" }
     ],
-    fullDetails: "Engineered specifically for utility solar firming, transmission peak shaving, and frequency response. The container comes pre-wired with high-voltage DC combiners, HVAC chillers, multi-sensor gas detection, NFPA 855-aligned aerosol fire suppression, and Lineage Tier-3 Master BMS controllers."
+    fullDetails: "Engineered specifically for utility solar firming, transmission peak shaving, and frequency response. The container comes pre-wired with high-voltage DC combiners, HVAC chillers, multi-sensor gas detection, NFPA 855-aligned aerosol fire suppression, and Senterra Tier-3 Master BMS controllers."
   },
   {
     id: "pcs",
@@ -133,7 +133,7 @@ const PRODUCTS_DATA = [
       { title: "Black Start", text: "Grid forming & islanded mode operation" },
       { title: "Modular Inverter", text: "Hot-swappable power stacks" }
     ],
-    fullDetails: "The Lineage PCS connects high-voltage battery banks to medium-voltage transmission grids. Equipped with advanced vector control, low-voltage ride-through (LVRT/HVRT), and native fiber-optic SCADA integration."
+    fullDetails: "The Senterra PCS connects high-voltage battery banks to medium-voltage transmission grids. Equipped with advanced vector control, low-voltage ride-through (LVRT/HVRT), and native fiber-optic SCADA integration."
   },
   {
     id: "bms",
@@ -154,7 +154,7 @@ const PRODUCTS_DATA = [
       { title: "Predictive SoH", text: "Proprietary degradation modeling" },
       { title: "Cyber-Secure", text: "ISO 27001 firmware encryption" }
     ],
-    fullDetails: "Lineage BMS guarantees safe battery utilization across thousands of series-connected cells. Eliminates thermal runaway risks via early gas, smoke, and temperature anomaly warnings."
+    fullDetails: "Senterra BMS guarantees safe battery utilization across thousands of series-connected cells. Eliminates thermal runaway risks via early gas, smoke, and temperature anomaly warnings."
   },
   {
     id: "ems",
@@ -240,7 +240,7 @@ const PRODUCTS_DATA = [
       { title: "Lightning Protected", text: "Class B & C surge suppression built-in" },
       { title: "Wide AC Input", text: "Tolerates severe rural grid fluctuations" }
     ],
-    fullDetails: "Features Lineage's legendary rectifier architecture, delivering low harmonic distortion, high MTBF (>500,000 hours), and intelligent temperature-compensated battery charging."
+    fullDetails: "Features Senterra's legendary rectifier architecture, delivering low harmonic distortion, high MTBF (>500,000 hours), and intelligent temperature-compensated battery charging."
   },
   {
     id: "charge-control",
@@ -324,7 +324,7 @@ const PRODUCTS_DATA = [
       { title: "Smart Streetlighting", text: "Can tap directly from street lamp feeds" },
       { title: "Zero Footprint", text: "Eliminates need for land acquisition" }
     ],
-    fullDetails: "As 5G networks densify with millimeter-wave and micro-cells, Lineage Micro Sites provide clean, compact backup power without occupying ground space."
+    fullDetails: "As 5G networks densify with millimeter-wave and micro-cells, Senterra Micro Sites provide clean, compact backup power without occupying ground space."
   },
 
   // --- HYBRID & RENEWABLE POWER ---
@@ -353,7 +353,7 @@ const PRODUCTS_DATA = [
     id: "eco-power",
     category: "hybrid",
     categoryName: "Hybrid & Renewable Power",
-    title: "Lineage Eco Power",
+    title: "Senterra Eco Power",
     tagline: "Low-Carbon Sustainable Infrastructure",
     description: "Next-generation energy efficiency platforms combining high-efficiency power electronics, sleep-mode rectifiers, and green energy harvesting.",
     badgeClass: "badge-hybrid",
@@ -589,23 +589,23 @@ function closeSpecModal() {
 
 function initiateRfqForModalProduct() {
   const modalOverlay = document.getElementById("specModalOverlay");
-  const prodName = modalOverlay ? modalOverlay.dataset.activeProduct : "Lineage Power System";
+  const prodName = modalOverlay ? modalOverlay.dataset.activeProduct : "Senterra Energy System";
   closeSpecModal();
   initiateRfqForProduct(prodName);
 }
 
 function initiateRfqForProduct(prodName) {
   const capacityInput = document.getElementById("rfqCapacity");
-  if (capacityInput) {
-    capacityInput.value = `Interested in ${prodName} - please provide sizing and technical proposal`;
-  }
-  
   const contactSection = document.getElementById("contact");
-  if (contactSection) {
+  if (capacityInput && contactSection) {
+    capacityInput.value = `Interested in ${prodName} - please provide sizing and technical proposal`;
     contactSection.scrollIntoView({ behavior: "smooth" });
+    const nameInput = document.getElementById("rfqName");
+    if (nameInput) nameInput.focus();
+    showToast(`Selected "${prodName}". Enter your details to receive engineering datasheets.`);
+  } else {
+    window.location.href = `contact.html?product=${encodeURIComponent(prodName)}`;
   }
-
-  showToast(`Selected "${prodName}". Enter your details to receive engineering datasheets.`);
 }
 
 // 6. Dynamic BESS Sizing Calculator
@@ -705,9 +705,10 @@ function applySizingToRfq() {
   const contactSection = document.getElementById("contact");
   if (contactSection) {
     contactSection.scrollIntoView({ behavior: "smooth" });
+    showToast("Sizing estimate injected into Proposal Form!");
+  } else {
+    window.location.href = `contact.html?sizing=${encodeURIComponent(capacitySummary)}`;
   }
-
-  showToast("Sizing estimate injected into Proposal Form!");
 }
 
 // 7. RFQ Handler
@@ -720,7 +721,7 @@ function handleRfqSubmit(e) {
 
   if (submitBtn) {
     submitBtn.disabled = true;
-    submitBtn.textContent = "Transmitting to Lineage Engineering...";
+    submitBtn.textContent = "Transmitting to Senterra Engineering...";
   }
 
   setTimeout(() => {
@@ -732,7 +733,7 @@ function handleRfqSubmit(e) {
     if (statusMsg) {
       statusMsg.className = "form-status-msg success";
       statusMsg.innerHTML = `
-        <strong>Thank you, ${name}!</strong> Your proposal request for <em>${company}</em> has been securely submitted to Lineage Power Bengaluru. An application specialist will contact you within 24 business hours.
+        <strong>Thank you, ${name}!</strong> Your proposal request for <em>${company}</em> has been securely submitted to Senterra Energy Bengaluru. An application specialist will contact you within 24 business hours.
       `;
     }
 
@@ -746,6 +747,8 @@ function openRfqModal() {
     contactSection.scrollIntoView({ behavior: "smooth" });
     const nameInput = document.getElementById("rfqName");
     if (nameInput) nameInput.focus();
+  } else {
+    window.location.href = "contact.html";
   }
 }
 
@@ -806,13 +809,15 @@ function setupMobileNav() {
 // 10. Sticky / Floating Header Scroll & Key events
 function setupHeaderAndKeyEvents() {
   const navbar = document.getElementById("navbar");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 20) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
+  if (navbar) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  }
 
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
@@ -831,11 +836,616 @@ function setupHeaderAndKeyEvents() {
   }
 }
 
-// 11. Initialization
+// 11. Active Navigation Indicator for Multi-Page
+function setActiveNavLink() {
+  let currentFile = window.location.pathname.split("/").pop() || "index.html";
+  if (!currentFile || currentFile === "" || currentFile === "/") currentFile = "index.html";
+
+  document.querySelectorAll(".nav-link").forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href) return;
+    const targetFile = href.split("#")[0].split("?")[0];
+    if (targetFile === currentFile) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+
+  document.querySelectorAll(".mobile-link").forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href) return;
+    const targetFile = href.split("#")[0].split("?")[0];
+    if (targetFile === currentFile) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}
+
+// 12. Query Parameter Pre-fill for Contact Form
+function initContactFormFromQuery() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const prodParam = urlParams.get("product");
+  const sizingParam = urlParams.get("sizing");
+  const capInput = document.getElementById("rfqCapacity");
+  if (!capInput) return;
+
+  if (sizingParam) {
+    capInput.value = sizingParam;
+    showToast("Sizing estimate imported into Proposal Form!");
+  } else if (prodParam) {
+    capInput.value = `Interested in ${prodParam} - please provide sizing and technical proposal`;
+    showToast(`Inquiring about ${prodParam}`);
+  }
+}
+
+// 13. Rayzon Solar-Style Branded Page Transitions
+function setupPageTransitions() {
+  const loader = document.getElementById("pageLoader");
+  if (!loader) return;
+
+  if (new URLSearchParams(window.location.search).get("notransition") === "1") {
+    loader.style.display = "none";
+    return;
+  }
+
+  // On page load, wait 2.6s matching Rayzon Solar for the full brand sequence to complete, then wipe curtain up
+  setTimeout(() => {
+    loader.classList.add("loader-exit");
+  }, 2600);
+
+  // Back/forward cache restore
+  window.addEventListener("pageshow", () => {
+    loader.classList.add("loader-exit");
+    loader.classList.remove("loader-entering", "loader-enter");
+  });
+
+  // Intercept all internal page navigation links
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+    if (!href) return;
+
+    // Ignore anchors, telephone, email, javascript, external links
+    if (href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:") || href.startsWith("javascript:")) return;
+    if (link.target === "_blank") return;
+    if (href.startsWith("http://") || href.startsWith("https://")) {
+      try {
+        const url = new URL(href, window.location.href);
+        if (url.origin !== window.location.origin) return;
+      } catch (err) {
+        return;
+      }
+    }
+
+    // Determine target file
+    const targetFile = href.split("#")[0].split("?")[0];
+    let currentFile = window.location.pathname.split("/").pop() || "index.html";
+    if (!currentFile || currentFile === "" || currentFile === "/") currentFile = "index.html";
+
+    // If navigating to identical current page with hash anchor, allow smooth scroll
+    if (targetFile === currentFile && href.includes("#")) return;
+
+    // Trigger branded transition
+    e.preventDefault();
+
+    // Replay typography animation for fresh sequence
+    const loaderContent = loader.querySelector(".loader-content");
+    if (loaderContent) {
+      const clone = loaderContent.cloneNode(true);
+      loaderContent.parentNode.replaceChild(clone, loaderContent);
+    }
+
+    loader.classList.remove("loader-exit");
+    loader.classList.add("loader-enter");
+    void loader.offsetWidth; // force reflow
+    loader.classList.remove("loader-enter");
+    loader.classList.add("loader-entering");
+
+    // Hold for Rayzon Solar duration (2.4s) before navigating to the target page
+    setTimeout(() => {
+      window.location.href = href;
+    }, 2400);
+  });
+}
+
+// =========================================================================
+// 15. Top Viewport Scroll Progress Bar
+// =========================================================================
+function setupScrollProgress() {
+  const progressBar = document.getElementById("scrollProgress");
+  if (!progressBar) return;
+
+  const updateProgress = () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (totalHeight <= 0) {
+      progressBar.style.width = "0%";
+      return;
+    }
+    const scrolled = (window.scrollY / totalHeight) * 100;
+    progressBar.style.width = Math.min(100, Math.max(0, scrolled)) + "%";
+  };
+
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress);
+  updateProgress();
+}
+
+// =========================================================================
+// 16. IntersectionObserver Scroll Reveal & Stagger Sequence
+// =========================================================================
+function setupScrollReveal() {
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll(".senterra-section-header, .senterra-sol-card, .joule-sol-card, .senterra-why-card, .why-card, .senterra-frame-card, .epc-card").forEach(el => {
+      el.classList.add("is-revealed");
+    });
+    return;
+  }
+
+  // Section Headers Observer
+  const headerObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-revealed");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+
+  document.querySelectorAll(".senterra-section-header").forEach(header => {
+    header.classList.add("reveal-item");
+    headerObserver.observe(header);
+  });
+
+  // Staggered Cards Observer for Grids (0.08s delay increments)
+  const gridObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const cards = entry.target.querySelectorAll(".senterra-sol-card, .joule-sol-card, .senterra-why-card, .why-card, .senterra-frame-card, .epc-card");
+        cards.forEach((card, idx) => {
+          const delay = (idx * 0.08).toFixed(2);
+          card.style.transitionDelay = `${delay}s`;
+          card.style.setProperty("--why-delay", `${delay}s`);
+          requestAnimationFrame(() => {
+            card.classList.add("is-revealed");
+          });
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: "0px 0px -50px 0px" });
+
+  document.querySelectorAll(".senterra-ecosystem-grid, .senterra-why-grid, .senterra-framework-grid").forEach(grid => {
+    const cards = grid.querySelectorAll(".senterra-sol-card, .joule-sol-card, .senterra-why-card, .why-card, .senterra-frame-card, .epc-card");
+    cards.forEach(card => card.classList.add("reveal-item"));
+    gridObserver.observe(grid);
+  });
+}
+
+// =========================================================================
+// 17. Interactive Mouse Spotlight Glow on Cards
+// =========================================================================
+function setupCardSpotlights() {
+  const cards = document.querySelectorAll(".why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card");
+  cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.setProperty("--mouse-x", "-500px");
+      card.style.setProperty("--mouse-y", "-500px");
+    });
+  });
+}
+
+// =========================================================================
+// 18. Hero Parallax & Glass Depth
+// =========================================================================
+function setupHeroParallax() {
+  const heroCard = document.querySelector(".senterra-hero-card");
+  const heroBg = document.querySelector(".senterra-hero-bg");
+  if (!heroCard || !heroBg) return;
+
+  let ticking = false;
+
+  const updateParallax = () => {
+    const rect = heroCard.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+      const scrollDistance = -rect.top;
+      if (scrollDistance > 0) {
+        const progress = Math.min(1.2, scrollDistance / (heroCard.offsetHeight || 800));
+        const scale = (1 + progress * 0.12).toFixed(4);
+        const translateY = (progress * 48).toFixed(2);
+        heroBg.style.transform = `scale(${scale}) translateY(${translateY}px) translateZ(0)`;
+      } else {
+        heroBg.style.transform = "scale(1) translateY(0px) translateZ(0)";
+      }
+    }
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateParallax();
+}
+
+// =========================================================================
+// 19. Kind Energy: Lenis Smooth Inertia Scrolling
+// =========================================================================
+function initLenisSmoothScroll() {
+  if (typeof window.Lenis === "undefined") {
+    return;
+  }
+
+  try {
+    const lenis = new window.Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.5,
+      infinite: false
+    });
+
+    window.__lenis = lenis;
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    document.documentElement.classList.add("lenis-smooth");
+  } catch (err) {
+    console.warn("Lenis init fallback:", err);
+  }
+}
+
+// =========================================================================
+// 20. Kind Energy: Scroll-Driven SVG Energy Circuit Dividers
+// =========================================================================
+function setupCircuitDividers() {
+  const configs = [
+    { dividerId: "circuitDivider1", pathId: "circuitPath1", nodeId: "circuitNode1" },
+    { dividerId: "circuitDivider2", pathId: "circuitPath2", nodeId: "circuitNode2" }
+  ];
+
+  const dividers = [];
+
+  configs.forEach(cfg => {
+    const el = document.getElementById(cfg.dividerId);
+    const path = document.getElementById(cfg.pathId);
+    const node = document.getElementById(cfg.nodeId);
+    if (!el || !path) return;
+
+    let totalLength = 1200;
+    try {
+      totalLength = path.getTotalLength() || 1200;
+    } catch (e) {
+      totalLength = 1200;
+    }
+
+    path.style.strokeDasharray = `${totalLength} ${totalLength}`;
+    path.style.strokeDashoffset = `${totalLength}`;
+
+    dividers.push({ el, path, node, totalLength });
+  });
+
+  if (!dividers.length) return;
+
+  let ticking = false;
+
+  const updateCircuits = () => {
+    const vh = window.innerHeight;
+
+    dividers.forEach(item => {
+      const rect = item.el.getBoundingClientRect();
+      // Start tracing when the divider top enters 85% of viewport
+      // Complete tracing when the divider reaches 25% of viewport
+      const startPoint = vh * 0.85;
+      const endPoint = vh * 0.25;
+      const distance = startPoint - endPoint;
+
+      let progress = (startPoint - rect.top) / distance;
+      progress = Math.max(0, Math.min(1, progress));
+
+      const offset = item.totalLength * (1 - progress);
+      item.path.style.strokeDashoffset = `${offset}`;
+
+      if (item.node) {
+        try {
+          const ptDist = Math.max(0.1, Math.min(item.totalLength, item.totalLength * progress));
+          const point = item.path.getPointAtLength(ptDist);
+          item.node.setAttribute("transform", `translate(${point.x.toFixed(1)}, ${point.y.toFixed(1)})`);
+          item.node.style.opacity = progress > 0.02 ? "1" : "0";
+        } catch (e) {
+          // Fallback if SVG measurement is unavailable
+        }
+      }
+    });
+
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateCircuits);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", () => {
+    dividers.forEach(item => {
+      try {
+        item.totalLength = item.path.getTotalLength() || item.totalLength;
+        item.path.style.strokeDasharray = `${item.totalLength} ${item.totalLength}`;
+      } catch (e) {}
+    });
+    updateCircuits();
+  });
+
+  updateCircuits();
+}
+
+// =========================================================================
+// 21. Kind Energy: Kinetic Text Scrub / Word-by-Word Scroll Illumination
+// =========================================================================
+function setupTextScrub() {
+  const scrubTargets = document.querySelectorAll('[data-scroll-scrub="words"]');
+  if (!scrubTargets.length) return;
+
+  function wrapTextNodesInWords(root) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    const textNodes = [];
+    let n;
+    while ((n = walker.nextNode())) {
+      if (n.nodeValue && n.nodeValue.trim().length > 0) {
+        textNodes.push(n);
+      }
+    }
+
+    textNodes.forEach(textNode => {
+      const parts = textNode.nodeValue.split(/(\s+)/);
+      const fragment = document.createDocumentFragment();
+      parts.forEach(part => {
+        if (/^\s+$/.test(part)) {
+          fragment.appendChild(document.createTextNode(part));
+        } else if (part.length > 0) {
+          const span = document.createElement("span");
+          span.className = "scrub-word";
+          if (textNode.parentNode && textNode.parentNode.classList) {
+            if (textNode.parentNode.classList.contains("highlight-emerald")) {
+              span.classList.add("highlight-emerald");
+            }
+            if (textNode.parentNode.classList.contains("highlight-cyan")) {
+              span.classList.add("highlight-cyan");
+            }
+          }
+          span.textContent = part;
+          fragment.appendChild(span);
+        }
+      });
+      textNode.parentNode.replaceChild(fragment, textNode);
+    });
+  }
+
+  scrubTargets.forEach(el => wrapTextNodesInWords(el));
+
+  let ticking = false;
+
+  const updateScrub = () => {
+    const vh = window.innerHeight;
+
+    scrubTargets.forEach(container => {
+      const rect = container.getBoundingClientRect();
+      const words = container.querySelectorAll(".scrub-word");
+      if (!words.length) return;
+
+      const start = vh * 0.88;
+      const end = vh * 0.32;
+      const range = start - end;
+      let progress = (start - rect.top) / range;
+      progress = Math.max(0, Math.min(1, progress));
+
+      const activeIdx = Math.floor(progress * (words.length + 1));
+      words.forEach((w, i) => {
+        if (i < activeIdx && progress > 0) {
+          w.classList.add("illuminated");
+        } else {
+          w.classList.remove("illuminated");
+        }
+      });
+    });
+
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateScrub);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateScrub);
+  updateScrub();
+}
+
+// =========================================================================
+// 22. Kind Energy: Milestone Metrics Live Scroll-Triggered Counters
+// =========================================================================
+function setupMilestoneCounters() {
+  const counters = document.querySelectorAll(".kind-counter");
+  if (!counters.length) return;
+
+  const animateCounter = (el) => {
+    const target = parseInt(el.getAttribute("data-target"), 10) || 0;
+    const suffix = el.getAttribute("data-suffix") || "";
+    const duration = 1800; // ms
+    const startTime = performance.now();
+
+    const update = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      // easeOutExpo
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const currentVal = Math.round(ease * target);
+
+      el.textContent = currentVal.toLocaleString("en-US") + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target.toLocaleString("en-US") + suffix;
+      }
+    };
+
+    requestAnimationFrame(update);
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3, rootMargin: "0px 0px -40px 0px" });
+
+    counters.forEach(c => observer.observe(c));
+  } else {
+    counters.forEach(c => animateCounter(c));
+  }
+}
+
+// 13b. Ecosystem Solution Segmented Filter Tabs
+function setupSolutionTabs() {
+  const tabBtns = document.querySelectorAll(".sol-tab-btn");
+  const cards = document.querySelectorAll("#solutionsDeck .senterra-sol-card");
+  if (!tabBtns.length || !cards.length) return;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter");
+
+      tabBtns.forEach(b => {
+        b.classList.remove("active");
+        b.setAttribute("aria-selected", "false");
+      });
+      btn.classList.add("active");
+      btn.setAttribute("aria-selected", "true");
+
+      cards.forEach(card => {
+        const cardType = card.getAttribute("data-sol");
+        if (filter === "all" || cardType === filter) {
+          card.style.display = "flex";
+          card.style.opacity = "0";
+          card.style.transform = "translateY(12px)";
+          requestAnimationFrame(() => {
+            card.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          });
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+}
+
+// 13c. EPC Execution Framework Stage Filter Tabs
+function setupEpcTabs() {
+  const tabBtns = document.querySelectorAll(".epc-tab-btn");
+  const cards = document.querySelectorAll("#epcDeck .epc-card");
+  if (!tabBtns.length || !cards.length) return;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const stage = btn.getAttribute("data-epc");
+
+      tabBtns.forEach(b => {
+        b.classList.remove("active");
+        b.setAttribute("aria-selected", "false");
+      });
+      btn.classList.add("active");
+      btn.setAttribute("aria-selected", "true");
+
+      cards.forEach(card => {
+        const phase = card.getAttribute("data-phase");
+        if (stage === "all" || phase === stage) {
+          card.style.display = "flex";
+          card.style.opacity = "0";
+          card.style.transform = "translateY(12px)";
+          requestAnimationFrame(() => {
+            card.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          });
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+}
+
+// 14. Initialization
 document.addEventListener("DOMContentLoaded", () => {
+  setupPageTransitions();
+  setActiveNavLink();
   renderProducts();
   setupProductInteractions();
   setupCalculator();
   setupMobileNav();
   setupHeaderAndKeyEvents();
+  initContactFormFromQuery();
+  setupScrollProgress();
+  setupScrollReveal();
+  setupCardSpotlights();
+  setupHeroParallax();
+  initLenisSmoothScroll();
+  setupCircuitDividers();
+  setupTextScrub();
+  setupMilestoneCounters();
+  setupSolutionTabs();
+  setupEpcTabs();
+
+  const scrollParam = new URLSearchParams(window.location.search).get("scroll");
+  const scrollYParam = new URLSearchParams(window.location.search).get("scrollY");
+
+  if (scrollYParam) {
+    const y = parseInt(scrollYParam, 10);
+    setTimeout(() => {
+      window.scrollTo(0, y);
+      if (window.__lenis) {
+        try { window.__lenis.scrollTo(y, { immediate: true }); } catch (e) {}
+      }
+      window.dispatchEvent(new Event("scroll"));
+    }, 80);
+  } else if (scrollParam) {
+    const target = document.getElementById(scrollParam);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: "instant", block: "start" });
+        window.dispatchEvent(new Event("scroll"));
+      }, 80);
+    }
+  }
 });

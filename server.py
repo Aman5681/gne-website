@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple HTTP Server for Lineage Power website preview.
+Simple HTTP Server for Senterra Energy website preview.
 Serves files from the current working directory with proper MIME types.
 """
 import http.server
@@ -23,7 +23,7 @@ def run_server(port=PORT):
         try:
             with socketserver.TCPServer(("", p), CustomHTTPHandler) as httpd:
                 print(f"==================================================")
-                print(f" Lineage Power UI Server running successfully!")
+                print(f" Senterra Energy UI Server running successfully!")
                 print(f" URL: http://localhost:{p}")
                 print(f" Directory: {os.getcwd()}")
                 print(f"==================================================")
