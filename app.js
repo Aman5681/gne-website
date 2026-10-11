@@ -1019,7 +1019,7 @@ function setupScrollReveal() {
     });
   }, { threshold: 0.08, rootMargin: "0px 0px -50px 0px" });
 
-  document.querySelectorAll(".senterra-ecosystem-grid, .senterra-why-grid, .senterra-framework-grid").forEach(grid => {
+  document.querySelectorAll(".senterra-ecosystem-grid, .senterra-why-grid, .senterra-framework-grid, .why-grid").forEach(grid => {
     const cards = grid.querySelectorAll(".senterra-sol-card, .joule-sol-card, .senterra-why-card, .why-card, .senterra-frame-card, .epc-card");
     cards.forEach(card => card.classList.add("reveal-item"));
     gridObserver.observe(grid);
@@ -1406,6 +1406,40 @@ function setupEpcTabs() {
   });
 }
 
+// =========================================================================
+// Setup Why Senterra Credibility Filter Tabs (why-senterra.html)
+// =========================================================================
+function setupWhyFilterTabs() {
+  const tabBtns = document.querySelectorAll(".why-tab-btn");
+  const cards = document.querySelectorAll(".why-card[data-pillar]");
+  if (!tabBtns.length || !cards.length) return;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter");
+
+      tabBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      cards.forEach(card => {
+        const pillar = card.getAttribute("data-pillar");
+        if (filter === "all" || pillar === filter) {
+          card.style.display = "flex";
+          card.style.opacity = "0";
+          card.style.transform = "translateY(12px)";
+          requestAnimationFrame(() => {
+            card.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          });
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+}
+
 // 14. Initialization
 document.addEventListener("DOMContentLoaded", () => {
   setupPageTransitions();
@@ -1426,6 +1460,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMilestoneCounters();
   setupSolutionTabs();
   setupEpcTabs();
+  setupWhyFilterTabs();
 
   const scrollParam = new URLSearchParams(window.location.search).get("scroll");
   const scrollYParam = new URLSearchParams(window.location.search).get("scrollY");
