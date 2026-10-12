@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BESS Sizing Calculator | Real-Time Power & Capacity Simulation | Senterra Energy</title>
-  <meta name="description" content="Simulate your battery storage requirements in real time. Adjust power from 1 to 100 MW, duration from 1 to 8 hours, application profile, and solar co-location.">
+  <title>BESS Sizing & Architecture Studio | Real-Time Power Simulation | Senterra Energy</title>
+  <meta name="description" content="Interactive utility-scale and C&I BESS sizing console. Simulate MWh storage capacity, 20ft container count, PCS inverter ratings, land footprint, and 24-hour dispatch profiles in real time.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,7 +34,6 @@
       <div class="loader-subtext">ENERGY</div>
     </div>
   </div>
-
 
   <!-- Floating Navigation Bar -->
   <header class="floating-header" id="navbar">
@@ -157,7 +156,7 @@
         <button class="btn btn-emerald btn-block" onclick="openRfqModal(); closeDrawer();">Request Proposal</button>
         <div class="mobile-contact-info">
           <p>📞 +91 7014109098</p>
-          <p>✉️ info@senterraenergy.com</p>
+          <p>✉️ energy@senterra.energy</p>
           <p>📍 India</p>
         </div>
       </div>
@@ -165,138 +164,622 @@
   </div>
   <div class="drawer-overlay" id="drawerOverlay"></div>
 
-  <!-- Subpage Hero Banner -->
-  <section class="subpage-hero">
-    <div class="container subpage-hero-inner">
-      <div class="breadcrumbs">
+  <!-- =========================================================================
+       CYBER SIZING HERO COMMAND BANNER
+       ========================================================================= -->
+  <section class="calc-cyber-hero" id="calcHero">
+    <div class="calc-hero-grid-bg" aria-hidden="true"></div>
+    <div class="calc-hero-aurora" aria-hidden="true"></div>
+    <div class="calc-scanline" aria-hidden="true"></div>
+
+    <div class="container calc-cyber-hero-inner">
+      <!-- Breadcrumbs -->
+      <nav class="cyber-breadcrumbs" aria-label="Breadcrumbs">
         <a href="index.html">Home</a>
         <span class="crumb-sep">/</span>
-        <span class="crumb-current">Sizing Calculator</span>
+        <span class="crumb-current">Interactive BESS Sizing Studio</span>
+      </nav>
+
+      <!-- Live Engine Status Badge -->
+      <div class="calc-status-pill">
+        <span class="radar-beacon">
+          <span class="radar-ping"></span>
+          <span class="radar-dot"></span>
+        </span>
+        <span class="status-code">SIMULATION ENGINE: ACTIVE</span>
+        <span class="status-divider">|</span>
+        <span class="status-meta">CEA/CERC COMPLIANT · 1500V DC ARCHITECTURE · 5.01 MWH ISO BLOCKS</span>
       </div>
-      <span class="hero-kicker">PROJECT DESIGN SIMULATOR</span>
-      <h1>Interactive <span>BESS Sizing Console</span></h1>
-      <p class="subpage-lead">Dimension your utility-scale or C&I energy storage project in real-time. Estimate required MWh capacity, 20ft container count, PCS inverter ratings, and land footprint requirements.</p>
+
+      <!-- Headline -->
+      <h1 class="calc-hero-title">
+        Interactive Utility &amp; C&amp;I <br>
+        <span class="gradient-cyber-text">BESS Sizing &amp; Architecture Studio</span>
+      </h1>
+
+      <p class="calc-hero-lead">
+        Dimension your utility-scale or C&amp;I energy storage project in real time. Model required MWh storage capacity, 20ft container block counts, bi-directional inverter ratings, active liquid thermal cooling loads, and estimated land footprint with precision power engineering algorithms.
+      </p>
+
+      <!-- 4-Chip Sizing Benchmark Telemetry HUD -->
+      <div class="calc-telemetry-hud" id="calcTelemetryHud">
+        <div class="telemetry-hud-card" data-hud="unit-block">
+          <div class="hud-top-scan"></div>
+          <div class="hud-header">
+            <span class="hud-tag">NOMINAL MODULAR BLOCK</span>
+            <span class="hud-dot active pulse"></span>
+          </div>
+          <div class="hud-value">5.01 MWh</div>
+          <div class="hud-label">Standard 20ft High-Cube Block</div>
+          <div class="hud-detail">314Ah Prismatic LiFePO₄ Chemistry</div>
+        </div>
+
+        <div class="telemetry-hud-card" data-hud="voltage">
+          <div class="hud-top-scan"></div>
+          <div class="hud-header">
+            <span class="hud-tag">BUSWAY ARCHITECTURE</span>
+            <span class="hud-dot active"></span>
+          </div>
+          <div class="hud-value">1,500 VDC</div>
+          <div class="hud-label">High-Voltage DC Bus Link</div>
+          <div class="hud-detail">Lower IR losses &amp; higher RTE efficiency</div>
+        </div>
+
+        <div class="telemetry-hud-card" data-hud="longevity">
+          <div class="hud-top-scan"></div>
+          <div class="hud-header">
+            <span class="hud-tag">CYCLE ENDURANCE</span>
+            <span class="hud-dot active"></span>
+          </div>
+          <div class="hud-value">≥ 8,000</div>
+          <div class="hud-label">Full Duty Cycles @ 80% DoD</div>
+          <div class="hud-detail">15-year capacity retention warranty</div>
+        </div>
+
+        <div class="telemetry-hud-card" data-hud="thermal">
+          <div class="hud-top-scan"></div>
+          <div class="hud-header">
+            <span class="hud-tag">THERMAL TOLERANCE</span>
+            <span class="hud-dot active"></span>
+          </div>
+          <div class="hud-value">± 2.5 °C</div>
+          <div class="hud-label">Cell-to-Cell Liquid Variance</div>
+          <div class="hud-detail">Dual 45 kW active liquid chillers</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Main Page Content -->
-  <main class="standalone-section">
-    <section class="section calc-section" id="calculator">
+  <!-- =========================================================================
+       SECTION 1: THE DUAL-BAY SIZING CONSOLE & FIELD PRESETS
+       ========================================================================= -->
+  <main class="standalone-section calc-console-section" id="calcConsoleSection">
     <div class="container">
-      <div class="calc-console-card">
+
+      <!-- Fast-Select Quick Architecture Presets Bar -->
+      <div class="calc-presets-container">
+        <div class="presets-header">
+          <span class="presets-label">// ONE-CLICK ARCHITECTURE PRESETS</span>
+          <span class="presets-meta">SELECT A SYSTEM BENCHMARK TO AUTO-LOAD PARAMETERS</span>
+        </div>
+        <div class="calc-presets-bar">
+          <button type="button" class="calc-preset-pill active" onclick="applyCalcPreset('solar-peaker')">
+            <span class="preset-icon">☀️</span>
+            <span class="preset-name">50 MW / 200 MWh</span>
+            <span class="preset-desc">Utility Solar PV Shifting (4h)</span>
+          </button>
+
+          <button type="button" class="calc-preset-pill" onclick="applyCalcPreset('transmission-firming')">
+            <span class="preset-icon">⚡</span>
+            <span class="preset-name">25 MW / 100 MWh</span>
+            <span class="preset-desc">Transmission Grid Firming (4h)</span>
+          </button>
+
+          <button type="button" class="calc-preset-pill" onclick="applyCalcPreset('ci-industrial')">
+            <span class="preset-icon">🏭</span>
+            <span class="preset-name">10 MW / 20 MWh</span>
+            <span class="preset-desc">Industrial Demand Shaving (2h)</span>
+          </button>
+
+          <button type="button" class="calc-preset-pill" onclick="applyCalcPreset('island-microgrid')">
+            <span class="preset-icon">📡</span>
+            <span class="preset-name">2 MW / 8 MWh</span>
+            <span class="preset-desc">Islanded Microgrid (4h)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Dual-Bay Sizing Console Card -->
+      <div class="calc-console-card" id="calcConsoleCard">
+        <div class="card-ambient-spotlight"></div>
+        <div class="card-cyber-corners"></div>
+
         <div class="calc-grid">
           
+          <!-- LEFT CONTROL BAY (INPUTS) -->
           <div class="calc-controls">
-            <span class="kicker-tag text-emerald">DYNAMIC SIMULATION CONSOLE</span>
-            <h2 class="calc-h2">BESS Sizing &amp; Carbon Estimator</h2>
-            <p class="calc-intro-text">
-              Configure power requirements and discharge duration to calculate required 5 MWh container blocks, inverter capacity, and estimated annual carbon displacement.
-            </p>
-
-            <div class="control-group">
-              <label for="calcAppType" class="field-label">Grid Application Profile</label>
-              <select id="calcAppType" class="field-select">
-                <option value="utility-solar">Utility Solar PV Firming (0.5C Standard)</option>
-                <option value="peak-shaving">Grid Peak Shaving &amp; Frequency Regulation (1C Fast)</option>
-                <option value="telecom-offgrid">Telecom Off-Grid Islanded Microgrid</option>
-                <option value="ci-industrial">Commercial &amp; Industrial Demand Charge Mitigation</option>
-              </select>
+            <div class="controls-topbar">
+              <span class="kicker-tag text-emerald">DYNAMIC CONTROL BAY</span>
+              <span class="control-status-live">● ENGINE: ONLINE</span>
             </div>
 
-            <!-- Power Rating Slider -->
+            <h2 class="calc-h2">BESS Dimensioning Engine</h2>
+            <p class="calc-intro-text">
+              Configure your grid interconnect requirements. Parameters immediately balance 5.01 MWh ISO container quantities, bi-directional inverter ratings, auxiliary chiller power, and annual CO₂ displacement.
+            </p>
+
+            <!-- Application Profile Select -->
+            <div class="control-group">
+              <label for="calcAppType" class="field-label">Grid Application &amp; Interconnection Profile</label>
+              <div class="select-wrapper">
+                <select id="calcAppType" class="field-select">
+                  <option value="utility-solar">Utility Solar PV Firming &amp; Ramp Control (0.25C – 0.5C)</option>
+                  <option value="peak-shaving">Grid Peak Shaving &amp; Frequency Regulation (0.5C – 1C)</option>
+                  <option value="ci-industrial">Commercial &amp; Industrial Demand Mitigation (0.5C)</option>
+                  <option value="telecom-offgrid">Telecom &amp; Islanded Off-Grid Microgrid (0.25C)</option>
+                </select>
+                <span class="select-caret">▾</span>
+              </div>
+            </div>
+
+            <!-- Peak Power Rating Slider (1 - 100 MW) -->
             <div class="control-group">
               <div class="slider-meta">
-                <label for="powerSlider" class="field-label">Required Peak Power (MW)</label>
-                <span class="val-pill" id="powerDisplay">25 MW</span>
+                <div class="slider-label-row">
+                  <label for="powerSlider" class="field-label">Required Peak Power (MW)</label>
+                  <span class="field-hint">Bi-directional AC capacity at Point of Interconnection</span>
+                </div>
+                <span class="val-pill" id="powerDisplay">50 MW</span>
               </div>
-              <input type="range" id="powerSlider" min="1" max="100" value="25" class="range-slider">
+              <div class="slider-track-wrap">
+                <input type="range" id="powerSlider" min="1" max="100" value="50" class="range-slider">
+              </div>
               <div class="slider-ticks" id="powerTicks">
                 <span data-val="1">1 MW</span>
                 <span data-val="25">25 MW</span>
-                <span data-val="50">50 MW</span>
+                <span data-val="50" class="active-tick">50 MW</span>
                 <span data-val="75">75 MW</span>
                 <span data-val="100">100 MW</span>
               </div>
             </div>
 
-            <!-- Duration Slider -->
+            <!-- Discharge Duration Slider (1, 2, 4, 8 Hours) -->
             <div class="control-group">
               <div class="slider-meta">
-                <label for="durationSlider" class="field-label">Discharge Duration (Hours)</label>
+                <div class="slider-label-row">
+                  <label for="durationSlider" class="field-label">Discharge Duration (Hours)</label>
+                  <span class="field-hint">Continuous full-power battery discharge window</span>
+                </div>
                 <span class="val-pill" id="durationDisplay">4 Hours</span>
               </div>
-              <input type="range" id="durationSlider" min="0" max="3" value="2" step="1" class="range-slider">
+              <div class="slider-track-wrap">
+                <input type="range" id="durationSlider" min="0" max="3" value="2" step="1" class="range-slider">
+              </div>
               <div class="slider-ticks" id="durationTicks">
                 <span data-step="0">1 Hr</span>
                 <span data-step="1">2 Hrs</span>
-                <span data-step="2">4 Hrs</span>
+                <span data-step="2" class="active-tick">4 Hrs</span>
                 <span data-step="3">8 Hrs</span>
               </div>
             </div>
 
-            <!-- Solar Co-location -->
-            <div class="toggle-card">
-              <label class="switch">
-                <input type="checkbox" id="solarToggle" checked>
-                <span class="slider round"></span>
-              </label>
-              <div class="toggle-copy">
-                <strong>Co-located Solar PV Integration</strong>
-                <span>Calculates additional renewable firming capacity</span>
+            <!-- Advanced Simulation Tuning Switches -->
+            <div class="control-switches-grid">
+              
+              <!-- Solar Co-location -->
+              <div class="toggle-card">
+                <label class="switch">
+                  <input type="checkbox" id="solarToggle" checked>
+                  <span class="slider round"></span>
+                </label>
+                <div class="toggle-copy">
+                  <strong>Co-Located Solar PV Hybrid</strong>
+                  <span>Calculates daytime surplus capture</span>
+                </div>
               </div>
+
+              <!-- Depth of Discharge Switch -->
+              <div class="toggle-card">
+                <label class="switch">
+                  <input type="checkbox" id="dodToggle" checked>
+                  <span class="slider round"></span>
+                </label>
+                <div class="toggle-copy">
+                  <strong>80% DoD Conservative Life</strong>
+                  <span id="dodStatusLabel">Optimized for ≥ 8,000 cycles</span>
+                </div>
+              </div>
+
             </div>
+
           </div>
 
-          <!-- Output Telemetry Panel -->
-          <div class="calc-telemetry-output">
-            <div class="output-header">
-              <span class="calc-badge">SYSTEM DIMENSIONING</span>
-              <h3>Engineered Capacity</h3>
+          <!-- RIGHT TELEMETRY OUTPUT BAY -->
+          <div class="calc-telemetry-output" id="calcTelemetryOutput">
+            <div class="output-topbar">
+              <span class="calc-badge">SYSTEM DIMENSIONING TELEMETRY</span>
+              <span class="output-c-rate" id="cRateBadge">0.25C (4H SHIFT)</span>
             </div>
 
-            <div class="output-mega-stat">
-              <span class="m-val" id="totalMwhOutput">100.0 MWh</span>
-              <span class="m-sub">Total Storage Capacity (LiFePO₄)</span>
+            <!-- Glowing Cyber LCD Head -->
+            <div class="output-mega-stat-box">
+              <div class="mega-stat-row">
+                <div class="mega-stat-col">
+                  <span class="mega-stat-lbl">TOTAL DC STORAGE CAPACITY</span>
+                  <div class="mega-stat-val-wrap">
+                    <span class="m-val" id="totalMwhOutput">200.4 MWh</span>
+                    <span class="m-unit">DC</span>
+                  </div>
+                  <span class="m-sub">1500V LiFePO₄ Prismatic Stack</span>
+                </div>
+                <div class="stat-divider-line"></div>
+                <div class="mega-stat-col">
+                  <span class="mega-stat-lbl">BI-DIRECTIONAL PCS INVERTER</span>
+                  <div class="mega-stat-val-wrap text-cyan">
+                    <span class="m-val text-cyan" id="pcsRatingOutput">50.0 MW</span>
+                    <span class="m-unit text-cyan">AC</span>
+                  </div>
+                  <span class="m-sub">Medium Voltage Grid Coupling</span>
+                </div>
+              </div>
             </div>
 
+            <!-- Detailed Telemetry Rows with Dot Leaders -->
             <div class="output-specs-list">
               <div class="o-row">
-                <span class="o-lbl">Container Blocks (5.01 MWh):</span>
-                <span class="o-val" id="containerCountOutput">20 Units (20ft ISO)</span>
+                <span class="o-lbl">20ft ISO Container Blocks (5.01 MWh)</span>
+                <span class="o-dots"></span>
+                <span class="o-val text-emerald" id="containerCountOutput">40 Units</span>
               </div>
               <div class="o-row">
-                <span class="o-lbl">Recommended PCS Inverter:</span>
-                <span class="o-val" id="pcsRatingOutput">25.0 MW AC</span>
+                <span class="o-lbl">Integrated High-Voltage DC Racks</span>
+                <span class="o-dots"></span>
+                <span class="o-val" id="totalRacksOutput">720 Racks (18/Block)</span>
               </div>
               <div class="o-row">
-                <span class="o-lbl">Control &amp; Safety Stack:</span>
-                <span class="o-val">3-Tier BMS + SCADA</span>
+                <span class="o-lbl">Nominal DC Operating Voltage</span>
+                <span class="o-dots"></span>
+                <span class="o-val" id="dcVoltageOutput">1,000 V – 1,500 VDC</span>
               </div>
               <div class="o-row">
-                <span class="o-lbl">Estimated Footprint:</span>
-                <span class="o-val" id="footprintOutput">~1,840 m²</span>
+                <span class="o-lbl">Active Liquid Chillers (Dual Redundant)</span>
+                <span class="o-dots"></span>
+                <span class="o-val" id="chillersOutput">80x 45 kW Compressors</span>
               </div>
-              <div class="o-row green-row">
-                <span class="o-lbl">Est. Annual CO₂ Offset:</span>
-                <span class="o-val" id="carbonOutput">~41,500 Tons</span>
+              <div class="o-row">
+                <span class="o-lbl">Required Plinth Footprint (with Buffer)</span>
+                <span class="o-dots"></span>
+                <span class="o-val" id="footprintOutput">~3,680 m² (0.91 Acres)</span>
+              </div>
+              <div class="o-row">
+                <span class="o-lbl">Est. Annual CO₂ Emissions Abatement</span>
+                <span class="o-dots"></span>
+                <span class="o-val text-emerald" id="carbonOutput">~103,950 Tons CO₂e</span>
+              </div>
+              <div class="o-row">
+                <span class="o-lbl">Anticipated 15-Yr Energy Throughput</span>
+                <span class="o-dots"></span>
+                <span class="o-val" id="lifetimeThroughputOutput">~877 GWh Lifetime</span>
               </div>
             </div>
 
+            <!-- Action Buttons Row -->
             <div class="output-action-box">
               <button class="btn btn-emerald btn-block btn-lg" onclick="applySizingToRfq()">
-                Inject Sizing into RFQ Proposal
+                <span>Inject Sizing into Proposal Form</span>
+                <span class="btn-arrow">➔</span>
               </button>
+
+              <div class="secondary-actions-row">
+                <button type="button" class="btn btn-outline-cyber btn-sm" onclick="copySizingSummary(this)">
+                  <span class="copy-label">Copy Technical Summary 📋</span>
+                </button>
+                <a href="#containerVisualizerSection" class="btn btn-glass btn-sm">
+                  <span>View 2D Container Layout ↓</span>
+                </a>
+              </div>
+
               <span class="output-disclaimer">
-                *Preliminary calculations based on standard Senterra 5 MWh container specifications (0.5C discharge, 95% RTE).
+                *Dimensioning based on Senterra 5.01 MWh standard 20ft container specifications (0.5C discharge, 89.4% AC-to-AC RTE, cell variance ≤ ±2.5°C).
               </span>
             </div>
+
           </div>
 
         </div>
       </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       SECTION 2: REAL-TIME 2D CONTAINER SITE LAYOUT VISUALIZER
+       ========================================================================= -->
+  <section class="calc-visualizer-section" id="containerVisualizerSection">
+    <div class="container">
+      
+      <div class="senterra-section-header text-center">
+        <span class="senterra-kicker">SPATIAL FOOTPRINT &amp; ELECTRICAL TOPOLOGY</span>
+        <h2 class="senterra-title">Dynamic 20ft Container Site Layout</h2>
+        <p class="senterra-subtitle">
+          Real-time spatial projection of your engineered storage farm. Visualizing 5.01 MWh ISO containers, central PCS inverter skids, and high-voltage DC busways with NFPA 855 separation buffers.
+        </p>
+      </div>
+
+      <div class="site-layout-card">
+        
+        <!-- Central PCS / MV Substation Hub Graphic -->
+        <div class="substation-hub-strip">
+          <div class="hub-icon">⚡</div>
+          <div class="hub-info">
+            <span class="hub-tag">POINT OF INTERCONNECTION (POI)</span>
+            <h4 class="hub-title" id="poiHubTitle">50.0 MW Bi-Directional Inverter Skid &amp; 33 kV MV Step-Up Substation</h4>
+          </div>
+          <div class="hub-specs-pills">
+            <span class="spec-pill" id="poiGridPill">33 kV / 132 kV AC Interconnect</span>
+            <span class="spec-pill cyan-pill" id="poiEfficiencyPill">≥ 98.8% Inverter RTE</span>
+          </div>
+        </div>
+
+        <!-- Glowing Power Feeder Lines -->
+        <div class="feeder-trunk-lines">
+          <div class="trunk-line"></div>
+          <div class="feeder-pulse-node"></div>
+        </div>
+
+        <!-- Dynamic Container Blocks Grid -->
+        <div class="container-field-deck">
+          <div class="field-deck-header">
+            <span class="deck-title">// DEPLOYED 20FT CONTAINER ARRAY (<span id="containerDeckCount">40</span> BLOCKS)</span>
+            <span class="deck-hint">HOVER OVER ANY BLOCK FOR SUBSYSTEM TELEMETRY</span>
+          </div>
+
+          <div class="container-blocks-grid" id="containerBlocksGrid">
+            <!-- Dynamically populated by JS renderContainerLayout() -->
+          </div>
+        </div>
+
+        <!-- Field Dimensioning Summary Ribbon -->
+        <div class="field-summary-ribbon">
+          <div class="ribbon-item">
+            <span class="ribbon-lbl">STANDARD BLOCK FOOTPRINT</span>
+            <span class="ribbon-val">6.06m × 2.44m (14.8 m²)</span>
+          </div>
+          <div class="ribbon-item">
+            <span class="ribbon-lbl">NFPA 855 FIRE BUFFER</span>
+            <span class="ribbon-val">3.0m Separation Spacing</span>
+          </div>
+          <div class="ribbon-item">
+            <span class="ribbon-lbl">TOTAL ESTIMATED SITE AREA</span>
+            <span class="ribbon-val text-emerald" id="ribbonSiteArea">~3,680 m² (0.91 Acres)</span>
+          </div>
+          <div class="ribbon-item">
+            <span class="ribbon-lbl">THERMAL EXHAUST CLEARANCE</span>
+            <span class="ribbon-val">Dual 45 kW Liquid Chiller Top Discharge</span>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
-  </main>
+
+  <!-- =========================================================================
+       SECTION 3: 24-HOUR SOLAR FIRMING & DISPATCH PROFILE SIMULATOR
+       ========================================================================= -->
+  <section class="calc-dispatch-section" id="dispatchSimulationSection">
+    <div class="container">
+      
+      <div class="senterra-section-header text-center">
+        <span class="senterra-kicker">HOURLY POWER FLOW DYNAMICS</span>
+        <h2 class="senterra-title">24-Hour Diurnal Solar Firming &amp; Dispatch Profile</h2>
+        <p class="senterra-subtitle">
+          Modeled hourly energy dispatch showing daytime solar PV surplus absorption into LiFePO₄ storage and evening transmission injection during peak tariff arbitrage windows.
+        </p>
+      </div>
+
+      <div class="dispatch-chart-card">
+        
+        <!-- Chart Controls & Legend Topbar -->
+        <div class="dispatch-chart-topbar">
+          <div class="chart-legend-group">
+            <span class="legend-chip legend-solar">
+              <span class="legend-color-dot" style="background: #F59E0B;"></span>
+              <span>Solar PV Generation (MW)</span>
+            </span>
+            <span class="legend-chip legend-charge">
+              <span class="legend-color-dot" style="background: #00F0FF;"></span>
+              <span>BESS Charging Window (Surplus Absorption)</span>
+            </span>
+            <span class="legend-chip legend-discharge">
+              <span class="legend-color-dot" style="background: #00D26A;"></span>
+              <span>BESS Discharging Window (Peak Grid Injection)</span>
+            </span>
+          </div>
+
+          <div class="chart-meta-status">
+            <span class="radar-dot active"></span>
+            <span id="dispatchProfileLabel">0.25C Solar Firming Cycle</span>
+          </div>
+        </div>
+
+        <!-- Interactive SVG Dispatch Simulation Chart -->
+        <div class="dispatch-chart-viewport">
+          <svg viewBox="0 0 1000 340" class="dispatch-svg" id="dispatchSvg" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="solarGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.0"/>
+              </linearGradient>
+              <linearGradient id="chargeGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#00F0FF" stop-opacity="0.0"/>
+              </linearGradient>
+              <linearGradient id="dischargeGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00D26A" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#00D26A" stop-opacity="0.0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Grid Lines (Horizontal Power MW) -->
+            <line x1="60" y1="40" x2="980" y2="40" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+            <line x1="60" y1="100" x2="980" y2="100" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+            <line x1="60" y1="160" x2="980" y2="160" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+            <line x1="60" y1="220" x2="980" y2="220" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+            <line x1="60" y1="280" x2="980" y2="280" stroke="rgba(255,255,255,0.15)"/>
+
+            <!-- Y-Axis Labels -->
+            <text x="50" y="45" fill="#64748B" font-size="10" font-family="monospace" text-anchor="end" id="yAxis100">100 MW</text>
+            <text x="50" y="105" fill="#64748B" font-size="10" font-family="monospace" text-anchor="end" id="yAxis75">75 MW</text>
+            <text x="50" y="165" fill="#64748B" font-size="10" font-family="monospace" text-anchor="end" id="yAxis50">50 MW</text>
+            <text x="50" y="225" fill="#64748B" font-size="10" font-family="monospace" text-anchor="end" id="yAxis25">25 MW</text>
+            <text x="50" y="284" fill="#64748B" font-size="10" font-family="monospace" text-anchor="end">0 MW</text>
+
+            <!-- 1. Solar Generation Curve Fill & Path -->
+            <path id="solarCurveFill" d="M 220 280 Q 500 50 780 280 Z" fill="url(#solarGradient)"/>
+            <path id="solarCurveLine" d="M 220 280 Q 500 50 780 280" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+
+            <!-- 2. BESS Daytime Charging Block (Absorption: 10:00 to 14:00) -->
+            <path id="chargeCurveFill" d="M 400 280 L 400 160 L 600 160 L 600 280 Z" fill="url(#chargeGradient)"/>
+            <path id="chargeCurveLine" d="M 400 280 L 400 160 L 600 160 L 600 280" fill="none" stroke="#00F0FF" stroke-width="2.5" stroke-dasharray="3"/>
+
+            <!-- 3. BESS Evening Discharging Block (Peak Injection: 18:00 to 22:00) -->
+            <path id="dischargeCurveFill" d="M 720 280 L 720 160 L 920 160 L 920 280 Z" fill="url(#dischargeGradient)"/>
+            <path id="dischargeCurveLine" d="M 720 280 L 720 160 L 920 160 L 920 280" fill="none" stroke="#00D26A" stroke-width="2.5"/>
+
+            <!-- X-Axis Timeline Markers (Hours) -->
+            <text x="60" y="305" fill="#64748B" font-size="11" font-family="monospace" text-anchor="middle">00:00</text>
+            <text x="215" y="305" fill="#64748B" font-size="11" font-family="monospace" text-anchor="middle">04:00</text>
+            <text x="370" y="305" fill="#64748B" font-size="11" font-family="monospace" text-anchor="middle">08:00</text>
+            <text x="500" y="305" fill="#64748B" font-size="11" font-family="monospace" text-anchor="middle">12:00 (Noon)</text>
+            <text x="655" y="305" fill="#64748B" font-size="11" font-family="monospace" text-anchor="middle">16:00</text>
+            <text x="810" y="305" fill="#64748B" font-size="11" font-family="monospace" text-anchor="middle">20:00 (Peak)</text>
+            <text x="965" y="305" fill="#64748B" font-size="11" font-family="monospace" text-anchor="middle">24:00</text>
+          </svg>
+        </div>
+
+        <!-- Diurnal Cycle KPI Summary Strip -->
+        <div class="dispatch-kpi-strip">
+          <div class="d-kpi">
+            <span class="d-lbl">MIDDAY CHARGING ABSORPTION</span>
+            <span class="d-val text-cyan" id="middayAbsorbVal">200.0 MWh Captured</span>
+            <span class="d-sub">Absorbs peak solar PV curtailment</span>
+          </div>
+          <div class="d-kpi">
+            <span class="d-lbl">EVENING PEAK GRID INJECTION</span>
+            <span class="d-val text-emerald" id="eveningInjectVal">178.8 MWh Injected</span>
+            <span class="d-sub">89.4% Round-Trip Efficiency AC</span>
+          </div>
+          <div class="d-kpi">
+            <span class="d-lbl">MAX DISPATCH POWER</span>
+            <span class="d-val" id="maxDispatchVal">50.0 MW Sustained</span>
+            <span class="d-sub">4-Hour Full Discharge Window</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 4: 15-YEAR LIFECYCLE & FINANCIAL BENCHMARKS
+       ========================================================================= -->
+  <section class="calc-benchmarks-section" id="lcosBenchmarkSection">
+    <div class="container">
+      
+      <div class="senterra-section-header text-center">
+        <span class="senterra-kicker">BANKABLE LIFECYCLE ECONOMICS</span>
+        <h2 class="senterra-title">15-Year Financial &amp; Performance Benchmarks</h2>
+        <p class="senterra-subtitle">
+          Engineered for utility IPPs and large industrial facilities seeking guaranteed Levelized Cost of Storage (LCOS) and degradation predictability.
+        </p>
+      </div>
+
+      <div class="calc-benchmarks-grid">
+        
+        <!-- Card 1: LCOS Benchmark -->
+        <div class="benchmark-card">
+          <div class="card-ambient-spotlight"></div>
+          <div class="benchmark-badge">LEVELIZED COST OF STORAGE</div>
+          <div class="benchmark-val">₹ 4.15 – 4.65 <span class="val-unit">/ kWh</span></div>
+          <div class="benchmark-title">Competitive 15-Year LCOS</div>
+          <p class="benchmark-desc">
+            Amortized Capex and comprehensive Opex across 8,000 cycles with ≥ 89.4% round-trip efficiency. Designed to beat diesel genset peaking costs by over 60%.
+          </p>
+          <div class="benchmark-meta">
+            <span>● 8,000 CYCLES</span>
+            <span>● 15-YR AMORTIZATION</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Capacity Retention -->
+        <div class="benchmark-card cyan-benchmark">
+          <div class="card-ambient-spotlight"></div>
+          <div class="benchmark-badge cyan-badge">DEGRADATION RETENTION</div>
+          <div class="benchmark-val text-cyan">≥ 70% <span class="val-unit">SOH</span></div>
+          <div class="benchmark-title">End-of-Life State of Health</div>
+          <p class="benchmark-desc">
+            Active liquid cooling with cell variance within ±2.5°C slows lithium plating and capacity fade by over 40% compared to traditional forced-air cooled racks.
+          </p>
+          <div class="benchmark-meta">
+            <span>● ACTIVE LIQUID LOOP</span>
+            <span>● CELL DELTA ≤ ±2.5°C</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Lifetime Clean Energy Throughput -->
+        <div class="benchmark-card">
+          <div class="card-ambient-spotlight"></div>
+          <div class="benchmark-badge">CLEAN POWER IMPACT</div>
+          <div class="benchmark-val" id="bmThroughputVal">~877 <span class="val-unit">GWh</span></div>
+          <div class="benchmark-title">Lifetime Clean Energy Transferred</div>
+          <p class="benchmark-desc">
+            Enables continuous renewable power dispatch, displacing fossil thermal peakers and avoiding grid curtailment across transmission corridors.
+          </p>
+          <div class="benchmark-meta">
+            <span id="bmCarbonAbate">● ~1.55M TONS CO₂ DISPLACED</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 5: HIGH-VOLTAGE SIZING CTA COMMAND BANNER
+       ========================================================================= -->
+  <section class="calc-cta-banner" id="calcCtaBanner">
+    <div class="banner-laser-grid" aria-hidden="true"></div>
+    <div class="banner-pulse-halo" aria-hidden="true"></div>
+    <div class="container">
+      <div class="cyber-banner-inner">
+        <div class="cyber-banner-content">
+          <div class="banner-kicker-tag">
+            <span class="radar-dot active"></span>
+            <span>TURNKEY BESS PROPOSAL DESK</span>
+          </div>
+          <h2 class="banner-title">Need a Stamped Single-Line Diagram (SLD) or Tender Model?</h2>
+          <p class="banner-desc">
+            Our senior power systems engineers will model your Point of Interconnection (POI), run DigSILENT load flow simulations, and prepare a stamped Single-Line Diagram with bankable financial models.
+          </p>
+          <div class="banner-buttons-row">
+            <button type="button" class="btn btn-emerald btn-lg" onclick="applySizingToRfq()">
+              <span>Submit Sizing for Custom Proposal</span>
+              <span class="btn-arrow">➔</span>
+            </button>
+            <a href="tel:+917014109098" class="btn btn-outline-cyber btn-lg">
+              <span>Direct Engineering Hotline: +91 7014109098</span>
+            </a>
+            <a href="mailto:energy@senterra.energy" class="btn btn-glass btn-lg">
+              <span>Email: energy@senterra.energy</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Modern Clean Footer -->
   <footer class="site-footer">
@@ -308,7 +791,6 @@
         <p class="footer-desc">
           Senterra Energy Private Limited is an Indian clean-tech manufacturer of high-performance energy storage and advanced power solutions.
         </p>
-
       </div>
 
       <div class="footer-links-col">

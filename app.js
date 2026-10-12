@@ -362,7 +362,7 @@ function initiateRfqForProduct(prodName) {
   }
 }
 
-// 6. Dynamic BESS Sizing Calculator
+// 6. Dynamic BESS Sizing Calculator & Architecture Studio
 function setupCalculator() {
   const powerSlider = document.getElementById("powerSlider");
   const durationSlider = document.getElementById("durationSlider");
@@ -370,12 +370,28 @@ function setupCalculator() {
   const durationDisplay = document.getElementById("durationDisplay");
   const appTypeSelect = document.getElementById("calcAppType");
   const solarToggle = document.getElementById("solarToggle");
+  const dodToggle = document.getElementById("dodToggle");
 
+  // Output elements
   const totalMwhOutput = document.getElementById("totalMwhOutput");
   const containerCountOutput = document.getElementById("containerCountOutput");
   const pcsRatingOutput = document.getElementById("pcsRatingOutput");
   const footprintOutput = document.getElementById("footprintOutput");
   const carbonOutput = document.getElementById("carbonOutput");
+  const cRateBadge = document.getElementById("cRateBadge");
+  const totalRacksOutput = document.getElementById("totalRacksOutput");
+  const dcVoltageOutput = document.getElementById("dcVoltageOutput");
+  const chillersOutput = document.getElementById("chillersOutput");
+  const lifetimeThroughputOutput = document.getElementById("lifetimeThroughputOutput");
+  const poiHubTitle = document.getElementById("poiHubTitle");
+  const containerDeckCount = document.getElementById("containerDeckCount");
+  const ribbonSiteArea = document.getElementById("ribbonSiteArea");
+  const middayAbsorbVal = document.getElementById("middayAbsorbVal");
+  const eveningInjectVal = document.getElementById("eveningInjectVal");
+  const maxDispatchVal = document.getElementById("maxDispatchVal");
+  const dispatchProfileLabel = document.getElementById("dispatchProfileLabel");
+  const bmThroughputVal = document.getElementById("bmThroughputVal");
+  const bmCarbonAbate = document.getElementById("bmCarbonAbate");
 
   if (!powerSlider || !durationSlider) return;
 
@@ -383,18 +399,85 @@ function setupCalculator() {
 
   function updateSliderFill(slider, min, max, value) {
     const percent = Math.max(0, Math.min(100, ((value - min) / (max - min)) * 100));
-    slider.style.background = `linear-gradient(to right, #00D26A 0%, #00D26A ${percent}%, #1C2D54 ${percent}%, #1C2D54 100%)`;
+    slider.style.background = `linear-gradient(to right, #00D26A 0%, #00D26A ${percent}%, #101F3E ${percent}%, #101F3E 100%)`;
+  }
+
+  function renderContainerLayout(count) {
+    const grid = document.getElementById("containerBlocksGrid");
+    if (!grid) return;
+
+    const displayCount = Math.min(count, 48);
+    let html = "";
+    for (let i = 0; i < displayCount; i++) {
+      const blockNum = String(i + 1).padStart(2, '0');
+      html += `
+        <div class="container-block-unit" title="Container #${blockNum}: 5.01 MWh ISO High Cube · 18 Racks · Dual Chillers">
+          <div class="unit-top-indicator">
+            <span class="unit-status-dot"></span>
+            <span class="unit-iso-tag">20FT HC</span>
+          </div>
+          <svg class="unit-icon-svg" viewBox="0 0 24 14" fill="none">
+            <rect x="1" y="1" width="22" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="6" y1="1" x2="6" y2="13" stroke="currentColor" stroke-width="1"/>
+            <line x1="11" y1="1" x2="11" y2="13" stroke="currentColor" stroke-width="1"/>
+            <line x1="16" y1="1" x2="16" y2="13" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <span class="unit-name">BLOCK ${blockNum}</span>
+          <span class="unit-cap-pill">5.01 MWh</span>
+        </div>
+      `;
+    }
+
+    if (count > 48) {
+      const remaining = count - 48;
+      html += `
+        <div class="container-block-unit" style="border-style: dashed; justify-content: center; background: rgba(0,210,106,0.05);">
+          <span class="unit-name" style="color: var(--emerald);">+${remaining} BLOCKS</span>
+          <span class="unit-iso-tag">MODULAR EXPANSION</span>
+        </div>
+      `;
+    }
+
+    grid.innerHTML = html;
+  }
+
+  function updateDispatchSvg(powerMw, durationHours) {
+    const powerRatio = Math.max(0.1, Math.min(1.0, powerMw / 100));
+    const blockTopY = 280 - (powerRatio * 200);
+
+    const chargeFill = document.getElementById("chargeCurveFill");
+    const chargeLine = document.getElementById("chargeCurveLine");
+    const dischargeFill = document.getElementById("dischargeCurveFill");
+    const dischargeLine = document.getElementById("dischargeCurveLine");
+
+    if (chargeFill && chargeLine && dischargeFill && dischargeLine) {
+      let durationWidth = 120;
+      if (durationHours === 1) durationWidth = 70;
+      else if (durationHours === 2) durationWidth = 110;
+      else if (durationHours === 4) durationWidth = 200;
+      else if (durationHours === 8) durationWidth = 260;
+
+      const dischargeStartX = 720;
+      const dischargeEndX = Math.min(980, dischargeStartX + durationWidth);
+
+      chargeFill.setAttribute("d", `M 400 280 L 400 ${blockTopY.toFixed(1)} L 600 ${blockTopY.toFixed(1)} L 600 280 Z`);
+      chargeLine.setAttribute("d", `M 400 280 L 400 ${blockTopY.toFixed(1)} L 600 ${blockTopY.toFixed(1)} L 600 280`);
+
+      dischargeFill.setAttribute("d", `M ${dischargeStartX} 280 L ${dischargeStartX} ${blockTopY.toFixed(1)} L ${dischargeEndX} ${blockTopY.toFixed(1)} L ${dischargeEndX} 280 Z`);
+      dischargeLine.setAttribute("d", `M ${dischargeStartX} 280 L ${dischargeStartX} ${blockTopY.toFixed(1)} L ${dischargeEndX} ${blockTopY.toFixed(1)} L ${dischargeEndX} 280`);
+    }
   }
 
   function recalculate() {
     const powerMw = parseFloat(powerSlider.value);
     const durationIdx = parseInt(durationSlider.value, 10);
     const durationHours = DURATION_STEPS[durationIdx] !== undefined ? DURATION_STEPS[durationIdx] : parseFloat(durationSlider.value);
-    const appType = appTypeSelect.value;
-    const hasSolar = solarToggle.checked;
+    const appType = appTypeSelect ? appTypeSelect.value : "utility-solar";
+    const hasSolar = solarToggle ? solarToggle.checked : true;
+    const isConservativeDod = dodToggle ? dodToggle.checked : true;
 
-    powerDisplay.textContent = `${powerMw} MW`;
-    durationDisplay.textContent = `${durationHours} Hour${durationHours > 1 ? "s" : ""}`;
+    if (powerDisplay) powerDisplay.textContent = `${powerMw} MW`;
+    if (durationDisplay) durationDisplay.textContent = `${durationHours} Hour${durationHours > 1 ? "s" : ""}`;
 
     updateSliderFill(powerSlider, parseFloat(powerSlider.min || 1), parseFloat(powerSlider.max || 100), powerMw);
     updateSliderFill(durationSlider, parseFloat(durationSlider.min || 0), parseFloat(durationSlider.max || 3), durationIdx);
@@ -428,6 +511,12 @@ function setupCalculator() {
     if (appType === "telecom-offgrid") cRateFactor = 1.1;
     if (appType === "ci-industrial") cRateFactor = 1.02;
 
+    if (isConservativeDod) {
+      cRateFactor *= 1.0;
+    } else {
+      cRateFactor *= 0.95;
+    }
+
     const effectiveMwh = totalMwh * cRateFactor;
     const singleContainerCapacity = 5.01;
     let containerCount = Math.ceil(effectiveMwh / singleContainerCapacity);
@@ -435,13 +524,42 @@ function setupCalculator() {
 
     let pcsMw = powerMw;
     const footprintM2 = Math.round(containerCount * 92);
-    const annualCarbonTons = Math.round(effectiveMwh * 415 * (hasSolar ? 1.25 : 1.0));
+    const footprintAcres = (footprintM2 * 0.000247105).toFixed(2);
+    const annualCarbonTons = Math.round(effectiveMwh * 518 * (hasSolar ? 1.25 : 1.0));
+    const lifetimeGwh = Math.round(effectiveMwh * 365 * 15 * 0.8 / 1000);
 
-    totalMwhOutput.textContent = `${effectiveMwh.toFixed(1)} MWh`;
-    containerCountOutput.textContent = `${containerCount} Unit${containerCount > 1 ? "s" : ""} (20ft ISO Blocks)`;
-    pcsRatingOutput.textContent = `${pcsMw.toFixed(1)} MW AC Bi-Directional`;
-    footprintOutput.textContent = `~${footprintM2.toLocaleString()} m²`;
-    carbonOutput.textContent = `~${annualCarbonTons.toLocaleString()} Tons`;
+    const cRateValue = (1 / durationHours).toFixed(2);
+    let cRateDesc = `${cRateValue}C (${durationHours}H SHIFT)`;
+    if (durationHours === 1) cRateDesc = "1.0C (1H FAST DISPATCH)";
+    else if (durationHours === 2) cRateDesc = "0.5C (2H PEAK SHAVE)";
+    else if (durationHours === 4) cRateDesc = "0.25C (4H SOLAR SHIFT)";
+    else if (durationHours === 8) cRateDesc = "0.125C (8H OVERNIGHT)";
+
+    if (cRateBadge) cRateBadge.textContent = cRateDesc;
+    if (totalMwhOutput) totalMwhOutput.textContent = `${effectiveMwh.toFixed(1)} MWh`;
+    if (containerCountOutput) containerCountOutput.textContent = `${containerCount} Units`;
+    if (pcsRatingOutput) pcsRatingOutput.textContent = `${pcsMw.toFixed(1)} MW`;
+    if (footprintOutput) footprintOutput.textContent = `~${footprintM2.toLocaleString()} m² (${footprintAcres} Acres)`;
+    if (carbonOutput) carbonOutput.textContent = `~${annualCarbonTons.toLocaleString()} Tons CO₂e`;
+
+    if (totalRacksOutput) totalRacksOutput.textContent = `${(containerCount * 18).toLocaleString()} Racks (18/Block)`;
+    if (dcVoltageOutput) dcVoltageOutput.textContent = "1,000 V – 1,500 VDC";
+    if (chillersOutput) chillersOutput.textContent = `${containerCount * 2}x 45 kW Compressors`;
+    if (lifetimeThroughputOutput) lifetimeThroughputOutput.textContent = `~${lifetimeGwh.toLocaleString()} GWh Lifetime`;
+    if (poiHubTitle) poiHubTitle.textContent = `${pcsMw.toFixed(1)} MW Bi-Directional Inverter Skid & 33 kV MV Step-Up Substation`;
+    if (containerDeckCount) containerDeckCount.textContent = containerCount;
+    if (ribbonSiteArea) ribbonSiteArea.textContent = `~${footprintM2.toLocaleString()} m² (${footprintAcres} Acres)`;
+
+    if (middayAbsorbVal) middayAbsorbVal.textContent = `${effectiveMwh.toFixed(1)} MWh Captured`;
+    if (eveningInjectVal) eveningInjectVal.textContent = `${(effectiveMwh * 0.894).toFixed(1)} MWh Injected`;
+    if (maxDispatchVal) maxDispatchVal.textContent = `${powerMw} MW Sustained (${durationHours}h Discharge)`;
+    if (dispatchProfileLabel) dispatchProfileLabel.textContent = `${cRateValue}C Diurnal Dispatch Profile`;
+
+    if (bmThroughputVal) bmThroughputVal.innerHTML = `~${lifetimeGwh.toLocaleString()} <span class="val-unit">GWh</span>`;
+    if (bmCarbonAbate) bmCarbonAbate.textContent = `● ~${(Math.round(annualCarbonTons * 15 / 100000) / 10).toFixed(1)}M TONS CO₂ DISPLACED`;
+
+    renderContainerLayout(containerCount);
+    updateDispatchSvg(powerMw, durationHours);
 
     window.currentSizingEstimate = {
       powerMw,
@@ -449,12 +567,14 @@ function setupCalculator() {
       effectiveMwh: effectiveMwh.toFixed(1),
       containerCount,
       pcsMw: pcsMw.toFixed(1),
-      appType: appTypeSelect.options[appTypeSelect.selectedIndex].text,
-      solarIntegrated: hasSolar
+      appType: appTypeSelect ? appTypeSelect.options[appTypeSelect.selectedIndex].text : "Utility Storage",
+      solarIntegrated: hasSolar,
+      cRateDesc,
+      footprintM2,
+      annualCarbonTons
     };
   }
 
-  // Allow clicking directly on number line ticks to jump slider
   const powerTicks = document.querySelectorAll("#powerTicks span");
   powerTicks.forEach(span => {
     span.addEventListener("click", () => {
@@ -479,10 +599,82 @@ function setupCalculator() {
 
   powerSlider.addEventListener("input", recalculate);
   durationSlider.addEventListener("input", recalculate);
-  appTypeSelect.addEventListener("change", recalculate);
-  solarToggle.addEventListener("change", recalculate);
+  if (appTypeSelect) appTypeSelect.addEventListener("change", recalculate);
+  if (solarToggle) solarToggle.addEventListener("change", recalculate);
+  if (dodToggle) dodToggle.addEventListener("change", () => {
+    const lbl = document.getElementById("dodStatusLabel");
+    if (lbl) {
+      lbl.textContent = dodToggle.checked ? "Optimized for ≥ 8,000 cycles" : "Higher usable depth (≥ 6,000 cycles)";
+    }
+    recalculate();
+  });
 
   recalculate();
+}
+
+// Preset Handler for Sizing Console
+function applyCalcPreset(presetKey) {
+  const pills = document.querySelectorAll(".calc-preset-pill");
+  pills.forEach(p => p.classList.remove("active"));
+
+  const activeBtn = Array.from(pills).find(b => b.getAttribute("onclick")?.includes(presetKey));
+  if (activeBtn) activeBtn.classList.add("active");
+
+  const powerSlider = document.getElementById("powerSlider");
+  const durationSlider = document.getElementById("durationSlider");
+  const appTypeSelect = document.getElementById("calcAppType");
+  const solarToggle = document.getElementById("solarToggle");
+
+  if (!powerSlider || !durationSlider) return;
+
+  const presets = {
+    "solar-peaker": { power: 50, durationIdx: 2, app: "utility-solar", solar: true },
+    "transmission-firming": { power: 25, durationIdx: 2, app: "peak-shaving", solar: false },
+    "ci-industrial": { power: 10, durationIdx: 1, app: "ci-industrial", solar: true },
+    "island-microgrid": { power: 2, durationIdx: 2, app: "telecom-offgrid", solar: true }
+  };
+
+  const selected = presets[presetKey] || presets["solar-peaker"];
+  powerSlider.value = selected.power;
+  durationSlider.value = selected.durationIdx;
+  if (appTypeSelect) appTypeSelect.value = selected.app;
+  if (solarToggle) solarToggle.checked = selected.solar;
+
+  const consoleCard = document.getElementById("calcConsoleCard");
+  if (consoleCard) {
+    consoleCard.style.boxShadow = "0 0 40px rgba(0, 210, 106, 0.4)";
+    setTimeout(() => {
+      consoleCard.style.boxShadow = "";
+    }, 600);
+  }
+
+  powerSlider.dispatchEvent(new Event("input"));
+  showToast(`Loaded architecture preset: ${presetKey.replace("-", " ").toUpperCase()}`);
+}
+
+// Copy Specification Summary to Clipboard
+function copySizingSummary(buttonElement) {
+  const estimate = window.currentSizingEstimate;
+  if (!estimate) return;
+
+  const summaryText = `SENTERRA ENERGY - BESS SIZING ESTIMATE
+--------------------------------------------
+Power Rating: ${estimate.powerMw} MW AC
+Discharge Duration: ${estimate.durationHours} Hours
+Total DC Capacity: ${estimate.effectiveMwh} MWh
+Unit Blocks: ${estimate.containerCount}x 20ft ISO Containers (5.01 MWh each)
+PCS Inverter: ${estimate.pcsMw} MW Bi-Directional (33 kV Interconnect)
+Duty Cycle: ${estimate.cRateDesc}
+Application Profile: ${estimate.appType}
+Solar PV Co-Located: ${estimate.solarIntegrated ? "Yes" : "No"}
+Estimated Plinth Footprint: ~${estimate.footprintM2.toLocaleString()} m²
+Annual CO₂ Abatement: ~${estimate.annualCarbonTons.toLocaleString()} Tons CO₂e
+Cell Thermal Delta: ≤ ±2.5°C (Active Liquid Cooling)
+Cycle Longevity: ≥ 8,000 Cycles (@ 80% DoD)
+--------------------------------------------
+Generated via Senterra Energy Sizing Studio`;
+
+  copyContactDetail(summaryText, buttonElement);
 }
 
 function applySizingToRfq() {
@@ -516,7 +708,7 @@ function applySizingToRfq() {
     contactSection.scrollIntoView({ behavior: "smooth" });
     showToast("Sizing estimate injected into Proposal Form!");
   } else {
-    window.location.href = `contact.html?sizing=${encodeURIComponent(capacitySummary)}`;
+    window.location.href = `contact.html?sizing=${encodeURIComponent(estimate.powerMw + " MW / " + estimate.effectiveMwh + " MWh BESS (" + estimate.containerCount + "x Blocks)")}`;
   }
 }
 
@@ -960,7 +1152,7 @@ function setupScrollReveal() {
 // 17. Interactive Mouse Spotlight Glow on Cards
 // =========================================================================
 function setupCardSpotlights() {
-  const cards = document.querySelectorAll(".prod-card, .why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner, .why-kpi-ribbon, .kpi-ribbon-card, .dispatch-hologram-card, .telemetry-hud-card, .pipeline-step-card, .faq-accordion-item, .cyber-banner-inner, .rfq-cyber-terminal, .service-grand-card, .noc-tile");
+  const cards = document.querySelectorAll(".prod-card, .why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner, .why-kpi-ribbon, .kpi-ribbon-card, .dispatch-hologram-card, .telemetry-hud-card, .pipeline-step-card, .faq-accordion-item, .cyber-banner-inner, .rfq-cyber-terminal, .service-grand-card, .noc-tile, .benchmark-card, .calc-console-card, .calc-preset-pill, .site-layout-card, .dispatch-chart-card");
   cards.forEach(card => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
