@@ -756,7 +756,7 @@ function setupScrollReveal() {
 // 17. Interactive Mouse Spotlight Glow on Cards
 // =========================================================================
 function setupCardSpotlights() {
-  const cards = document.querySelectorAll(".why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card");
+  const cards = document.querySelectorAll(".why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner");
   cards.forEach(card => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
