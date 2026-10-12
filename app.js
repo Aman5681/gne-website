@@ -379,14 +379,46 @@ function setupCalculator() {
 
   if (!powerSlider || !durationSlider) return;
 
+  const DURATION_STEPS = [1, 2, 4, 8];
+
+  function updateSliderFill(slider, min, max, value) {
+    const percent = Math.max(0, Math.min(100, ((value - min) / (max - min)) * 100));
+    slider.style.background = `linear-gradient(to right, #00D26A 0%, #00D26A ${percent}%, #1C2D54 ${percent}%, #1C2D54 100%)`;
+  }
+
   function recalculate() {
     const powerMw = parseFloat(powerSlider.value);
-    const durationHours = parseFloat(durationSlider.value);
+    const durationIdx = parseInt(durationSlider.value, 10);
+    const durationHours = DURATION_STEPS[durationIdx] !== undefined ? DURATION_STEPS[durationIdx] : parseFloat(durationSlider.value);
     const appType = appTypeSelect.value;
     const hasSolar = solarToggle.checked;
 
     powerDisplay.textContent = `${powerMw} MW`;
     durationDisplay.textContent = `${durationHours} Hour${durationHours > 1 ? "s" : ""}`;
+
+    updateSliderFill(powerSlider, parseFloat(powerSlider.min || 1), parseFloat(powerSlider.max || 100), powerMw);
+    updateSliderFill(durationSlider, parseFloat(durationSlider.min || 0), parseFloat(durationSlider.max || 3), durationIdx);
+
+    // Highlight matching ticks on the number line
+    const powerTicks = document.querySelectorAll("#powerTicks span");
+    powerTicks.forEach(span => {
+      const v = parseFloat(span.dataset.val);
+      if (Math.abs(v - powerMw) < 1) {
+        span.classList.add("active-tick");
+      } else {
+        span.classList.remove("active-tick");
+      }
+    });
+
+    const durationTicks = document.querySelectorAll("#durationTicks span");
+    durationTicks.forEach(span => {
+      const s = parseInt(span.dataset.step, 10);
+      if (s === durationIdx) {
+        span.classList.add("active-tick");
+      } else {
+        span.classList.remove("active-tick");
+      }
+    });
 
     let totalMwh = powerMw * durationHours;
 
@@ -421,6 +453,29 @@ function setupCalculator() {
       solarIntegrated: hasSolar
     };
   }
+
+  // Allow clicking directly on number line ticks to jump slider
+  const powerTicks = document.querySelectorAll("#powerTicks span");
+  powerTicks.forEach(span => {
+    span.addEventListener("click", () => {
+      const val = span.dataset.val;
+      if (val !== undefined) {
+        powerSlider.value = val;
+        recalculate();
+      }
+    });
+  });
+
+  const durationTicks = document.querySelectorAll("#durationTicks span");
+  durationTicks.forEach(span => {
+    span.addEventListener("click", () => {
+      const step = span.dataset.step;
+      if (step !== undefined) {
+        durationSlider.value = step;
+        recalculate();
+      }
+    });
+  });
 
   powerSlider.addEventListener("input", recalculate);
   durationSlider.addEventListener("input", recalculate);

@@ -2239,7 +2239,24 @@ button, input, select, textarea {
   font-size: 11px;
   font-family: var(--font-mono);
   color: var(--text-dim);
-  margin-top: 6px;
+  margin-top: 8px;
+  padding: 0 2px;
+}
+
+.slider-ticks span {
+  cursor: pointer;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  user-select: none;
+}
+
+.slider-ticks span:hover {
+  color: #FFFFFF;
+}
+
+.slider-ticks span.active-tick {
+  color: var(--emerald, #00D26A);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 210, 106, 0.45);
 }
 
 .toggle-card {
