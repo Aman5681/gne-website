@@ -11,7 +11,7 @@ Senterra Energy is an Indian manufacturer of utility-scale Battery Energy Storag
 This project delivers a responsive web experience featuring:
 - **Floating Glassmorphic Header**: Transparent on top of the hero, transitioning into frosted glass on scroll with responsive left-anchored branding and centered navigation.
 - **Cinematic Clean-Energy Hero**: Industrial backdrop with vector containerized BESS arrays, solar field reflections, and live Central NOC telemetry indicators.
-- **"Why Senterra" Innovation Grid**: Credibility pillars detailing the 5 GWh automated Bengaluru gigafactory, active liquid thermal loops, Tier-1 EPC bankability (e.g. ₹1,994M L&T Kajra Solar project), and ISO 27001 SCADA.
+- **"Why Senterra" Innovation Grid**: Credibility pillars detailing active liquid thermal loops, Tier-1 EPC bankability, and comprehensive grid compliance.
 - **Interactive 3D Container Explorer**: Clickable 20ft container schematic with 4 real-time hotspots (Dual Chillers, LiFePO₄ Racks, Aerosol Fire Safety, Master BMS).
 - **Dynamic BESS Sizing Calculator**: Interactive sliders for power (MW) and duration (Hours) calculating total MWh, container block counts, inverter rating, land footprint, and annual $CO_2$ displacement.
 - **Complete 16-Product Catalog**: Instant search, category filters (BESS, Telecom, Hybrid, SCADA), and technical spec sheet modals.

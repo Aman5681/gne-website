@@ -833,8 +833,8 @@ button, input, select, textarea {
 
 .kpi-ribbon-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .kpi-ribbon-card {
@@ -954,13 +954,7 @@ button, input, select, textarea {
   gap: 7px;
 }
 
-@media (max-width: 992px) {
-  .kpi-ribbon-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .why-kpi-ribbon {
     padding: 18px 16px;
     margin-bottom: 24px;
