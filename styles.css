@@ -1360,26 +1360,47 @@ button, input, select, textarea {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .prod-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-glass);
+  background: linear-gradient(145deg, rgba(12, 24, 52, 0.85) 0%, rgba(6, 14, 30, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
-  padding: 26px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s ease;
 }
 
 .prod-card:hover {
-  background: var(--bg-card-hover);
+  background: linear-gradient(145deg, rgba(16, 32, 68, 0.9) 0%, rgba(8, 18, 38, 0.98) 100%);
   border-color: rgba(0, 210, 106, 0.5);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 28px rgba(0, 210, 106, 0.2);
+}
+
+.prod-card[data-category="ci"]:hover {
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 28px rgba(0, 240, 255, 0.2);
 }
 
 .prod-card-top {
@@ -1390,21 +1411,22 @@ button, input, select, textarea {
 }
 
 .prod-badge {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  padding: 3px 8px;
-  border-radius: 4px;
+  letter-spacing: 0.6px;
+  padding: 4px 10px;
+  border-radius: 6px;
 }
 
 .badge-bess { background: rgba(0, 210, 106, 0.15); color: var(--emerald); border: 1px solid rgba(0, 210, 106, 0.3); }
+.badge-cyan { background: rgba(0, 240, 255, 0.15); color: var(--cyan); border: 1px solid rgba(0, 240, 255, 0.3); }
 .badge-telecom { background: rgba(0, 180, 216, 0.15); color: var(--cyan); border: 1px solid rgba(0, 180, 216, 0.3); }
 .badge-hybrid { background: rgba(245, 158, 11, 0.15); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
 .badge-scada { background: rgba(168, 85, 247, 0.15); color: #C084FC; border: 1px solid rgba(168, 85, 247, 0.3); }
 
 .prod-title {
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 800;
   color: #FFFFFF;
   margin-bottom: 8px;
@@ -2369,7 +2391,7 @@ input:checked + .slider.round:before {
    Responsive Breakpoints
    ========================================================================== */
 
-@media (max-width: 1240px) {
+@media (max-width: 1320px) {
   .desktop-only {
     display: none;
   }

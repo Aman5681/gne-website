@@ -87,13 +87,14 @@ function selectHotspot(hotspotKey) {
   }, 150);
 }
 
-// 2. Comprehensive Products Catalog
+// 2. Comprehensive Products Catalog - Flagship BESS Solutions
 const PRODUCTS_DATA = [
-  // --- ENERGY STORAGE (BESS) ---
+  // --- UTILITY-SCALE BESS ---
   {
     id: "5mwh-block",
-    category: "bess",
-    categoryName: "Energy Storage (BESS)",
+    code: "SE-5MWH",
+    category: "utility",
+    categoryName: "Utility-Scale BESS",
     title: "5 MWh DC Battery Block",
     tagline: "Utility-Grade LiFePO₄ Containerized Storage",
     description: "Standardized 20ft ISO container delivering 5.01 MWh DC capacity. Integrated active liquid thermal management, aerosol fire extinguishing, and multi-tier BMS protection for utility renewables.",
@@ -113,83 +114,22 @@ const PRODUCTS_DATA = [
     ],
     fullDetails: "Engineered specifically for utility solar firming, transmission peak shaving, and frequency response. The container comes pre-wired with high-voltage DC combiners, HVAC chillers, multi-sensor gas detection, NFPA 855-aligned aerosol fire suppression, and Senterra Tier-3 Master BMS controllers."
   },
-  {
-    id: "pcs",
-    category: "bess",
-    categoryName: "Energy Storage (BESS)",
-    title: "Power Conversion System (PCS)",
-    tagline: "Bi-Directional High-Voltage AC/DC Inverter",
-    description: "Multi-megawatt bi-directional power conversion platform enabling seamless 4-quadrant grid synchronization, black start capability, and ultra-fast millisecond response.",
-    badgeClass: "badge-bess",
-    specs: [
-      { label: "Rated AC Output", value: "1.25 MW / 2.5 MW / 3.45 MW Skids" },
-      { label: "Max Efficiency", value: "98.9% Peak Conversion" },
-      { label: "Grid Frequency", value: "50 Hz / 60 Hz Auto-sensing" },
-      { label: "Harmonic Distortion", value: "< 3% THDi at rated power" },
-      { label: "Response Time", value: "< 20 ms Active Power Dispatch" }
-    ],
-    highlights: [
-      { title: "Four-Quadrant", text: "Active & reactive power regulation (P-Q)" },
-      { title: "Black Start", text: "Grid forming & islanded mode operation" },
-      { title: "Modular Inverter", text: "Hot-swappable power stacks" }
-    ],
-    fullDetails: "The Senterra PCS connects high-voltage battery banks to medium-voltage transmission grids. Equipped with advanced vector control, low-voltage ride-through (LVRT/HVRT), and native fiber-optic SCADA integration."
-  },
-  {
-    id: "bms",
-    category: "bess",
-    categoryName: "Energy Storage (BESS)",
-    title: "Battery Management System (BMS)",
-    tagline: "Cell-Level Precision Monitoring & Balancing",
-    description: "Three-tier BMS architecture (BMU, BCMU, BMMS) monitoring individual cell voltages, temperatures, state-of-charge (SoC), and state-of-health (SoH) in real time.",
-    badgeClass: "badge-bess",
-    specs: [
-      { label: "Architecture", value: "3-Tier (Cell, Module, Rack, Container)" },
-      { label: "Voltage Accuracy", value: "± 1.5 mV per cell" },
-      { label: "Balancing Method", value: "Active & Passive Dynamic Balancing" },
-      { label: "Comms Interface", value: "CAN 2.0B / RS485 / Modbus TCP/IP" }
-    ],
-    highlights: [
-      { title: "Fault Isolation", text: "Sub-second contactor trip on overcurrent" },
-      { title: "Predictive SoH", text: "Proprietary degradation modeling" },
-      { title: "Cyber-Secure", text: "ISO 27001 firmware encryption" }
-    ],
-    fullDetails: "Senterra BMS guarantees safe battery utilization across thousands of series-connected cells. Eliminates thermal runaway risks via early gas, smoke, and temperature anomaly warnings."
-  },
-  {
-    id: "ems",
-    category: "bess",
-    categoryName: "Energy Storage (BESS)",
-    title: "Energy Management System (EMS)",
-    tagline: "Grid-Level Dispatch Optimization & Analytics",
-    description: "Cloud and on-premise supervisory energy management software. Coordinates BESS dispatch, renewable solar forecasting, peak-shaving schedules, and electricity market bidding.",
-    badgeClass: "badge-bess",
-    specs: [
-      { label: "Deployment", value: "Edge Gateway + Cloud Central NOC" },
-      { label: "Protocols", value: "IEC 60870-5-104, DNP3, Modbus, MQTT" },
-      { label: "Data Retention", value: "10-Year High-Resolution Historian" },
-      { label: "Optimization Algos", value: "Day-Ahead Peak Shaving, Time-of-Use" }
-    ],
-    highlights: [
-      { title: "Real-time Telemetry", text: "Sub-second site visualization" },
-      { title: "Revenue Stacking", text: "Arbitrage + ancillary frequency service" },
-      { title: "SLA Tracker", text: "Automated availability calculation" }
-    ],
-    fullDetails: "Enables operators to maximize internal rate of return (IRR) on battery investments through algorithmic charging during off-peak solar hours and discharging during tariff peaks."
-  },
+
+  // --- COMMERCIAL & INDUSTRIAL BESS ---
   {
     id: "ci-pack",
-    category: "bess",
-    categoryName: "Energy Storage (BESS)",
+    code: "SE-CI-PACK",
+    category: "ci",
+    categoryName: "Commercial & Industrial (C&I)",
     title: "C&I Product & Pack",
     tagline: "Commercial & Industrial BESS Cabinets",
     description: "Modular 100 kWh to 500 kWh all-in-one outdoor storage cabinets tailored for factories, data centers, hospitals, and commercial solar microgrids.",
-    badgeClass: "badge-bess",
+    badgeClass: "badge-cyan",
     specs: [
-      { label: "Capacity Range", value: "100 kWh – 500 kWh modular" },
-      { label: "Integrated Components", value: "LiFePO4 Racks, PCS Inverter, Fire Sys" },
-      { label: "Footprint", value: "Compact < 2.5 m² per cabinet" },
-      { label: "Protection", value: "IP54 Outdoor Rated" }
+      { label: "Nominal Capacity Range", value: "100 kWh – 500 kWh Modular" },
+      { label: "Cell Chemistry", value: "Lithium Iron Phosphate (LiFePO₄)" },
+      { label: "Integrated Architecture", value: "LiFePO₄ Racks + PCS Inverter + Fire Aerosol" },
+      { label: "Enclosure & Footprint", value: "IP54 Outdoor Rated · < 2.5 m²" }
     ],
     highlights: [
       { title: "Plug-and-Play", text: "Factory integrated & pre-tested" },
@@ -197,220 +137,6 @@ const PRODUCTS_DATA = [
       { title: "Zero Diesel", text: "Silent, clean replacement for backup gensets" }
     ],
     fullDetails: "Engineered for commercial enterprises seeking uninterrupted clean power and demand charge mitigation without requiring extensive civil infrastructure."
-  },
-
-  // --- TELECOM & ICT POWER ---
-  {
-    id: "hybrid-dc",
-    category: "telecom",
-    categoryName: "Telecom & ICT Power",
-    title: "Hybrid DC Power System",
-    tagline: "Multi-Source Intelligent Energy Platform",
-    description: "Advanced multi-input DC power hub combining Solar PV (MPPT), Diesel Generator, Lithium Battery, and AC Grid to deliver 99.999% telecom site uptime.",
-    badgeClass: "badge-telecom",
-    specs: [
-      { label: "Output Voltage", value: "-48 VDC Nominal (-42V to -58V)" },
-      { label: "Power Output", value: "3 kW to 36 kW Modular Racks" },
-      { label: "Solar Integration", value: "Built-in MPPT Solar Charge Controllers" },
-      { label: "Efficiency", value: "> 96.5% Ultra-high efficiency" }
-    ],
-    highlights: [
-      { title: "DG Run-Hour Cut", text: "Reduces diesel usage by 60% – 85%" },
-      { title: "Intelligent Logic", text: "Priority solar consumption algorithm" },
-      { title: "NOC Connected", text: "GSM/4G telemetry for remote management" }
-    ],
-    fullDetails: "Field-tested across thousands of tower sites in harsh Indian ambient temperatures (-10°C to +55°C). Dynamically prioritizes solar energy first, battery second, and triggers DG only when necessary."
-  },
-  {
-    id: "dc-power",
-    category: "telecom",
-    categoryName: "Telecom & ICT Power",
-    title: "DC Power System (SMPS Rectifiers)",
-    tagline: "High-Availability 48V Telecom Rectifier Plants",
-    description: "Modular high-efficiency rectifier systems purpose-built for telecom base stations, fiber aggregation hubs, and data centers.",
-    badgeClass: "badge-telecom",
-    specs: [
-      { label: "Input Voltage", value: "90 VAC – 300 VAC Wide Operating Range" },
-      { label: "Output Capacity", value: "50A to 4000A System Capacities" },
-      { label: "Module Rating", value: "48V / 50A & 48V / 100A Swappable Modules" },
-      { label: "Power Factor", value: "≥ 0.99 with Active PFC" }
-    ],
-    highlights: [
-      { title: "Hot Swappable", text: "Replace rectifier modules without downtime" },
-      { title: "Lightning Protected", text: "Class B & C surge suppression built-in" },
-      { title: "Wide AC Input", text: "Tolerates severe rural grid fluctuations" }
-    ],
-    fullDetails: "Features Senterra's legendary rectifier architecture, delivering low harmonic distortion, high MTBF (>500,000 hours), and intelligent temperature-compensated battery charging."
-  },
-  {
-    id: "charge-control",
-    category: "telecom",
-    categoryName: "Telecom & ICT Power",
-    title: "Charge Control Unit (CCU)",
-    tagline: "Intelligent Battery Management & Protection",
-    description: "Microprocessor-based control module managing charge profiles, low-voltage disconnect (LVD), and multi-bank battery equalization.",
-    badgeClass: "badge-telecom",
-    specs: [
-      { label: "Microcontroller", value: "32-bit ARM Cortex Embedded" },
-      { label: "Disconnection", value: "Dual LVD (Priority & Non-Priority Loads)" },
-      { label: "Display", value: "Backlit Graphic LCD + Keypad Interface" },
-      { label: "Alarm Relays", value: "8 Configurable Dry Contact Alarms" }
-    ],
-    highlights: [
-      { title: "Deep Discharge Cut", text: "Protects costly lithium/VRLA banks" },
-      { title: "Equalization", text: "Extends battery operational life by 25%" },
-      { title: "SNMP & Modbus", text: "Central NOC telemetry support" }
-    ],
-    fullDetails: "Acts as the central nervous system for telecom power cabinets, maintaining battery health through precision voltage thresholds and load-shedding control."
-  },
-  {
-    id: "lithium-telecom",
-    category: "telecom",
-    categoryName: "Telecom & ICT Power",
-    title: "Lithium Telecom Battery (LiFePO₄)",
-    tagline: "High-Cycle 48V Rackmount Energy Storage",
-    description: "Compact 19-inch rack-mountable 48V LiFePO4 battery modules replacing traditional heavy lead-acid batteries with 4x cycle life and zero maintenance.",
-    badgeClass: "badge-telecom",
-    specs: [
-      { label: "Nominal Rating", value: "48V / 100Ah (4.8 kWh) & 48V / 150Ah" },
-      { label: "Cycle Life", value: "> 4,000 Cycles @ 80% DoD" },
-      { label: "Weight", value: "< 45 kg (1/3rd of lead-acid equivalent)" },
-      { label: "Form Factor", value: "Standard 3U / 4U 19-inch Rackmount" }
-    ],
-    highlights: [
-      { title: "Fast Charging", text: "Recharge to 90% in under 2 hours" },
-      { title: "Built-in BMS", text: "Over-voltage, short-circuit, & temp cutoffs" },
-      { title: "Parallel Expansion", text: "Up to 16 packs in parallel (76.8 kWh)" }
-    ],
-    fullDetails: "Designed for small footprint telecom shelters and rooftop towers where weight and space constraints are critical. Performs exceptionally in high ambient temperatures without air conditioning."
-  },
-  {
-    id: "outdoor-cabinet",
-    category: "telecom",
-    categoryName: "Telecom & ICT Power",
-    title: "Outdoor IP-55 Enclosure Cabinet",
-    tagline: "Weatherproof Thermal Enclosure for Field Gear",
-    description: "Double-walled aluminum or galvannealed steel outdoor cabinets with integrated DC air conditioning or heat exchangers for extreme ambient deployments.",
-    badgeClass: "badge-telecom",
-    specs: [
-      { label: "Ingress Rating", value: "IP-55 Dust & Water Jet Protected" },
-      { label: "Thermal Control", value: "Direct Heat Exchanger / 1500W DC AC" },
-      { label: "Material", value: "Corrosion-resistant Aluzinc / GI Sheets" },
-      { label: "Vandal Resistance", value: "3-Point Concealed Espagnolette Lock" }
-    ],
-    highlights: [
-      { title: "Harsh Climate", text: "Tested against sand, dust, and heavy monsoon" },
-      { title: "Thermal Shield", text: "PUF insulation minimizes internal heat gain" },
-      { title: "Space Efficient", text: "Houses Rectifiers, Lithium batteries & CCU" }
-    ],
-    fullDetails: "Protects sensitive telecom electronics from ambient dust, moisture, and extreme solar radiation, drastically extending equipment service lifespan."
-  },
-  {
-    id: "micro-sites",
-    category: "telecom",
-    categoryName: "Telecom & ICT Power",
-    title: "Micro Sites & 5G Edge Infrastructure",
-    tagline: "Ultra-Compact Integrated Telecom Nodes",
-    description: "All-in-one pole-mounted or wall-mounted power units designed specifically for 5G small cells, smart city nodes, and edge computing gateways.",
-    badgeClass: "badge-telecom",
-    specs: [
-      { label: "Mounting", value: "Pole, Wall, or Rooftop Mount" },
-      { label: "Power Output", value: "1 kW – 4 kW DC Output" },
-      { label: "Battery Included", value: "Integrated 48V/50Ah LiFePO4 Pack" },
-      { label: "Form Factor", value: "Ultra-compact < 0.2 m³ envelope" }
-    ],
-    highlights: [
-      { title: "Rapid Deploy", text: "Single technician install in under 45 mins" },
-      { title: "Smart Streetlighting", text: "Can tap directly from street lamp feeds" },
-      { title: "Zero Footprint", text: "Eliminates need for land acquisition" }
-    ],
-    fullDetails: "As 5G networks densify with millimeter-wave and micro-cells, Senterra Micro Sites provide clean, compact backup power without occupying ground space."
-  },
-
-  // --- HYBRID & RENEWABLE POWER ---
-  {
-    id: "hybrid-power",
-    category: "hybrid",
-    categoryName: "Hybrid & Renewable Power",
-    title: "Hybrid Power Solutions",
-    tagline: "Solar-Battery-Grid Microgrid Ecosystem",
-    description: "Integrated solar generation, battery buffer, and grid synchronization system for off-grid rural communities, telecom towers, and isolated enterprise facilities.",
-    badgeClass: "badge-hybrid",
-    specs: [
-      { label: "Solar Array Support", value: "Up to 50 kWp Solar PV Input" },
-      { label: "Storage Capacity", value: "48V / 200Ah to 1000Ah Battery Banks" },
-      { label: "Fuel Reduction", value: "Up to 90% DG fuel displacement" },
-      { label: "Operating Mode", value: "Islanded, Grid-Tied, or Weak-Grid Backup" }
-    ],
-    highlights: [
-      { title: "Max Green Energy", text: "Priority solar utilization architecture" },
-      { title: "ROI in < 2 Years", text: "Drastic payback from eliminated diesel bills" },
-      { title: "Remote Telemetry", text: "Instant solar yield and battery health metrics" }
-    ],
-    fullDetails: "Empowers remote operations to run almost entirely on clean solar power, reserving expensive diesel generators solely for protracted cloudy conditions."
-  },
-  {
-    id: "eco-power",
-    category: "hybrid",
-    categoryName: "Hybrid & Renewable Power",
-    title: "Senterra Eco Power",
-    tagline: "Low-Carbon Sustainable Infrastructure",
-    description: "Next-generation energy efficiency platforms combining high-efficiency power electronics, sleep-mode rectifiers, and green energy harvesting.",
-    badgeClass: "badge-hybrid",
-    specs: [
-      { label: "Efficiency Tier", value: "97.2% Peak Rectifier Efficiency" },
-      { label: "Standby Consumption", value: "< 2 Watts in Deep Sleep Mode" },
-      { label: "Carbon Certification", value: "EPR Compliant & Carbon Credit Ready" }
-    ],
-    highlights: [
-      { title: "Energy Star Rated", text: "Drastically lowers telecom OPEX electricity" },
-      { title: "Eco Materials", text: "RoHS compliant recyclable components" }
-    ],
-    fullDetails: "Helps telecom tower operators achieve their corporate Net-Zero and ESG targets by pruning parasitic power losses across thousands of network locations."
-  },
-
-  // --- SCADA & TELEMETRY ---
-  {
-    id: "remote-monitoring",
-    category: "scada",
-    categoryName: "SCADA & Telemetry",
-    title: "Cloud CNOC & Remote Monitoring",
-    tagline: "Real-Time Central Network Operations Platform",
-    description: "Cloud-hosted asset telemetry software aggregating real-time parameters from tens of thousands of deployed BESS containers, rectifiers, and hybrid sites.",
-    badgeClass: "badge-scada",
-    specs: [
-      { label: "Capacity", value: "Supports 100,000+ Connected Endpoints" },
-      { label: "Connectivity", value: "4G LTE, 5G, Ethernet, LoRa, Satellite" },
-      { label: "Alert Latency", value: "< 2 seconds SMS / Email / Push webhook" },
-      { label: "Security", value: "End-to-End TLS 1.3 & ISO 27001 Certified" }
-    ],
-    highlights: [
-      { title: "Predictive Maintenance", text: "AI anomaly detection detects issues early" },
-      { title: "Theft Prevention", text: "Vibration & fuel siphon tamper triggers" },
-      { title: "Custom Analytics", text: "Executive fuel, energy, and SLA dashboards" }
-    ],
-    fullDetails: "Enables operators to monitor site health, battery SOC, grid outages, and energy consumption from a single centralized web dashboard without physical site visits."
-  },
-  {
-    id: "power-scada",
-    category: "scada",
-    categoryName: "SCADA & Telemetry",
-    title: "Power System SCADA",
-    tagline: "Industrial Supervisory Control & Data Acquisition",
-    description: "High-integrity utility-grade SCADA platform engineered for electrical substations, utility BESS installations, and heavy industrial switchyards.",
-    badgeClass: "badge-scada",
-    specs: [
-      { label: "Standard", value: "IEC 61850 Substation Automation Ready" },
-      { label: "Architecture", value: "Dual Redundant Server Master-Slave" },
-      { label: "HMI Interface", value: "Vector Graphics Dynamic SLD Mimic Screens" },
-      { label: "Historian", value: "High-speed sequence-of-events (SOE) recorder" }
-    ],
-    highlights: [
-      { title: "1 ms Resolution", text: "High-speed fault event timestamps" },
-      { title: "Interlock Logic", text: "Prevents accidental switchgear operations" },
-      { title: "Cyber Hardened", text: "NERC CIP and IEC 62443 security standards" }
-    ],
-    fullDetails: "Delivers complete visibility and deterministic remote control over circuit breakers, transformers, PCS inverters, and battery container disconnects."
   }
 ];
 
@@ -422,7 +148,7 @@ function renderProducts(filter = "all", searchQuery = "") {
   const normalizedQuery = searchQuery.trim().toLowerCase();
 
   const filtered = PRODUCTS_DATA.filter(prod => {
-    const matchesFilter = (filter === "all") || (prod.category === filter);
+    const matchesFilter = (filter === "all") || (filter === "bess") || (prod.category === filter);
     const matchesSearch = !normalizedQuery || 
       prod.title.toLowerCase().includes(normalizedQuery) ||
       prod.description.toLowerCase().includes(normalizedQuery) ||
@@ -446,13 +172,13 @@ function renderProducts(filter = "all", searchQuery = "") {
       <div>
         <div class="prod-card-top">
           <span class="prod-badge ${prod.badgeClass}">${prod.categoryName}</span>
-          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">LP-${prod.id.slice(0, 4).toUpperCase()}</span>
+          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim); letter-spacing: 0.5px;">${prod.code}</span>
         </div>
         <h3 class="prod-title">${prod.title}</h3>
         <p class="prod-desc">${prod.description}</p>
         
         <div class="prod-specs-box">
-          ${prod.specs.slice(0, 3).map(s => `
+          ${prod.specs.slice(0, 4).map(s => `
             <div class="spec-line">
               <span class="spec-lbl">${s.label}:</span>
               <span class="spec-val">${s.value}</span>
