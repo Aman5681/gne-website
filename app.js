@@ -960,7 +960,7 @@ function setupScrollReveal() {
 // 17. Interactive Mouse Spotlight Glow on Cards
 // =========================================================================
 function setupCardSpotlights() {
-  const cards = document.querySelectorAll(".prod-card, .why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner, .why-kpi-ribbon, .kpi-ribbon-card, .dispatch-hologram-card, .telemetry-hud-card, .pipeline-step-card, .faq-accordion-item, .cyber-banner-inner, .rfq-cyber-terminal");
+  const cards = document.querySelectorAll(".prod-card, .why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner, .why-kpi-ribbon, .kpi-ribbon-card, .dispatch-hologram-card, .telemetry-hud-card, .pipeline-step-card, .faq-accordion-item, .cyber-banner-inner, .rfq-cyber-terminal, .service-grand-card, .noc-tile");
   cards.forEach(card => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
@@ -1409,6 +1409,158 @@ function setupWhyFilterTabs() {
   });
 }
 
+// =========================================================================
+// 23. Services Suite: Kinetic Scroll Motion & Central Circuit Spine
+// =========================================================================
+function setupServicesScrollMotion() {
+  const cards = document.querySelectorAll(".service-grand-card");
+  const spineGlow = document.getElementById("servicesSpineGlow");
+  const spineContainer = document.querySelector(".services-circuit-spine");
+  if (!cards.length) return;
+
+  let ticking = false;
+
+  const updateScrollMotion = () => {
+    const vh = window.innerHeight;
+    const vhCenter = vh * 0.5;
+
+    // 1. Kinetic counter-drift and parallax rotation for the 8 cards
+    cards.forEach((card, idx) => {
+      const rect = card.getBoundingClientRect();
+      if (rect.bottom > -150 && rect.top < vh + 150) {
+        const cardCenter = rect.top + rect.height * 0.5;
+        const norm = (cardCenter - vhCenter) / vhCenter;
+        const clampedNorm = Math.max(-1.5, Math.min(1.5, norm));
+
+        // Column 1 (idx 0,2,4,6) vs Column 2 (idx 1,3,5,7)
+        const isCol2 = idx % 2 === 1;
+        const driftFactor = isCol2 ? 26 : -26;
+        const driftY = (clampedNorm * driftFactor).toFixed(1);
+        const tiltFactor = isCol2 ? -1.1 : 1.1;
+        const tilt = (clampedNorm * tiltFactor).toFixed(2);
+
+        card.style.setProperty("--scroll-drift-y", `${driftY}px`);
+        card.style.setProperty("--scroll-tilt", `${tilt}deg`);
+      }
+    });
+
+    // 2. Track laser glow along central circuit spine
+    if (spineGlow && spineContainer) {
+      const spineRect = spineContainer.getBoundingClientRect();
+      const spineHeight = spineRect.height;
+      if (spineHeight > 0) {
+        const progress = (vhCenter - spineRect.top) / spineHeight;
+        const clampedProgress = Math.max(0, Math.min(1, progress));
+        const maxTravel = spineHeight - 60;
+        const topPos = clampedProgress * maxTravel;
+        spineGlow.style.top = `${topPos.toFixed(1)}px`;
+      }
+    }
+
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateScrollMotion);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateScrollMotion);
+      ticking = true;
+    }
+  });
+
+  updateScrollMotion();
+
+  // 3. Interactive 3D physical tilt on cursor hover
+  cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY * -4.5).toFixed(2);
+      const rotateY = ((x - centerX) / centerX * 4.5).toFixed(2);
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(calc(var(--scroll-drift-y, 0px) - 6px)) rotate(var(--scroll-tilt, 0deg))`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+}
+
+// =========================================================================
+// 24. Services Suite: 24/7 Central NOC Live Telemetry Cockpit
+// =========================================================================
+function setupNocLiveSimulation() {
+  const clockEl = document.getElementById("nocClock");
+  const freqEl = document.getElementById("nocFreqVal");
+  const tickerContent = document.getElementById("nocTickerContent");
+
+  if (!clockEl && !freqEl && !tickerContent) return;
+
+  // Live Digital Clock updating every second
+  const updateClock = () => {
+    if (clockEl) {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString("en-GB", { hour12: false }) + " IST";
+      clockEl.textContent = timeStr;
+    }
+  };
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // Dynamic grid frequency fluctuation (50.00 Hz ± 0.02)
+  if (freqEl) {
+    setInterval(() => {
+      const delta = (Math.random() * 0.04 - 0.02);
+      const freq = (50.00 + delta).toFixed(2);
+      freqEl.textContent = `${freq} Hz`;
+    }, 2200);
+  }
+
+  // Simulated live event telemetry stream
+  if (tickerContent) {
+    const logPool = [
+      { sys: "BLOCK_04_KAJRA", text: "Active liquid chiller circulating coolant at 14.4 L/min. Cell variance steady at ±1.6°C.", color: "text-emerald" },
+      { sys: "BLOCK_11_SOLAR_HYBRID", text: "State of Charge 86.2% · Automated peak-shaving dispatch schedule synchronized with SLDC.", color: "text-cyan" },
+      { sys: "BLOCK_08_CI_MICROGRID", text: "Grid frequency steady at 50.01 Hz · Aerosol safety loop status nominal · 0 alarms.", color: "text-emerald" },
+      { sys: "BLOCK_02_WIND_FIRMING", text: "Ramp-rate governor responding at 12 MW/s · Thermal delta ≤ 1.7°C across all 18 racks.", color: "text-cyan" },
+      { sys: "BLOCK_19_TRANSMISSION", text: "Automated black-start synchronization check complete · ISO 27001 encrypted gateway online.", color: "text-emerald" },
+      { sys: "BLOCK_06_FACTORY_FAT", text: "Bay 3 burn-in cycle 84% completed · DC bus insulation resistance > 100 MΩ.", color: "text-cyan" }
+    ];
+    let logIdx = 0;
+    setInterval(() => {
+      const item = logPool[logIdx % logPool.length];
+      logIdx++;
+      const now = new Date();
+      const timeStr = `[${now.toLocaleTimeString("en-GB", { hour12: false })}]`;
+      const newLine = document.createElement("div");
+      newLine.className = "ticker-line";
+      newLine.style.opacity = "0";
+      newLine.style.transform = "translateY(8px)";
+      newLine.style.transition = "all 0.3s ease";
+      newLine.innerHTML = `<span class="tick-time">${timeStr}</span> <span class="tick-sys ${item.color}">${item.sys}</span> :: ${item.text}`;
+      
+      tickerContent.insertBefore(newLine, tickerContent.firstChild);
+      requestAnimationFrame(() => {
+        newLine.style.opacity = "1";
+        newLine.style.transform = "translateY(0)";
+      });
+
+      while (tickerContent.children.length > 3) {
+        tickerContent.removeChild(tickerContent.lastChild);
+      }
+    }, 4500);
+  }
+}
+
 // 14. Initialization
 document.addEventListener("DOMContentLoaded", () => {
   setupPageTransitions();
@@ -1431,6 +1583,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupEpcTabs();
   setupWhyFilterTabs();
   setupContact3DTilt();
+  setupServicesScrollMotion();
+  setupNocLiveSimulation();
 
   const scrollParam = new URLSearchParams(window.location.search).get("scroll");
   const scrollYParam = new URLSearchParams(window.location.search).get("scrollY");

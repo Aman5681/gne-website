@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lifecycle Services & AMC | Turnkey Execution & 24/7 CNOC | Senterra Energy</title>
-  <meta name="description" content="Turnkey engineering services from Senterra Energy: load profiling, Factory Acceptance Testing (FAT), on-site commissioning, 24/7 cloud NOC monitoring, and circular recycling.">
+  <title>Turnkey Lifecycle Engineering & Field AMC | 24/7 Central NOC | Senterra Energy</title>
+  <meta name="description" content="Turnkey BESS lifecycle engineering from Senterra Energy: power systems sizing, string-level FAT burn-in, on-site commissioning, 24/7 Central NOC telemetry, preventive AMC, and EPR circular recycling.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,7 +34,6 @@
       <div class="loader-subtext">ENERGY</div>
     </div>
   </div>
-
 
   <!-- Floating Navigation Bar -->
   <header class="floating-header" id="navbar">
@@ -157,7 +156,7 @@
         <button class="btn btn-emerald btn-block" onclick="openRfqModal(); closeDrawer();">Request Proposal</button>
         <div class="mobile-contact-info">
           <p>📞 +91 7014109098</p>
-          <p>✉️ info@senterraenergy.com</p>
+          <p>✉️ energy@senterra.energy</p>
           <p>📍 India</p>
         </div>
       </div>
@@ -165,67 +164,656 @@
   </div>
   <div class="drawer-overlay" id="drawerOverlay"></div>
 
-  <!-- Subpage Hero Banner -->
-  <section class="subpage-hero">
-    <div class="container subpage-hero-inner">
-      <div class="breadcrumbs">
+  <!-- =========================================================================
+       CYBER SERVICES COMMAND HERO
+       ========================================================================= -->
+  <section class="services-cyber-hero" id="servicesHero">
+    <div class="services-hero-grid-bg" aria-hidden="true"></div>
+    <div class="services-hero-aurora" aria-hidden="true"></div>
+    <div class="services-scanline" aria-hidden="true"></div>
+
+    <div class="container services-cyber-hero-inner">
+      <!-- Breadcrumbs -->
+      <nav class="cyber-breadcrumbs" aria-label="Breadcrumbs">
         <a href="index.html">Home</a>
         <span class="crumb-sep">/</span>
-        <span class="crumb-current">Services & Lifecycle AMC</span>
+        <span class="crumb-current">Turnkey Lifecycle Engineering &amp; Services</span>
+      </nav>
+
+      <!-- Live SLA Status Badge -->
+      <div class="services-status-pill">
+        <span class="radar-beacon">
+          <span class="radar-ping"></span>
+          <span class="radar-dot"></span>
+        </span>
+        <span class="status-code">SYSTEM_SLA: OPERATIONAL</span>
+        <span class="status-divider">|</span>
+        <span class="status-meta">≥ 98.5% UPTIME · 24/7 CENTRAL NOC · PAN-INDIA FIELD OPERATIONS</span>
       </div>
-      <span class="hero-kicker">END-TO-END EXECUTION</span>
-      <h1>Turnkey Lifecycle <span>Engineering & Services</span></h1>
-      <p class="subpage-lead">From initial application sizing and Factory Acceptance Testing (FAT) to cloud NOC monitoring and circular LiFePO₄ recycling, we stand behind your systems for their entire lifecycle.</p>
+
+      <!-- Headline -->
+      <h1 class="services-hero-title">
+        Turnkey BESS Lifecycle <br>
+        <span class="gradient-cyber-text">Engineering &amp; Field AMC</span>
+      </h1>
+
+      <p class="services-hero-lead">
+        From initial grid interconnection feasibility and string-level Factory Acceptance Testing (FAT) to 24/7 Central NOC telemetry and closed-loop circular LiFePO₄ recycling. Senterra Energy engineers provide comprehensive cradle-to-cradle lifecycle assurance for utility and industrial storage assets nationwide.
+      </p>
+
+      <!-- 4-Chip Services Telemetry HUD Strip -->
+      <div class="services-telemetry-hud" id="servicesTelemetryHud">
+        <div class="telemetry-hud-card" data-hud="uptime">
+          <div class="hud-top-scan"></div>
+          <div class="hud-header">
+            <span class="hud-tag">AVAILABILITY SLA</span>
+            <span class="hud-dot active pulse"></span>
+          </div>
+          <div class="hud-value">≥ 98.5%</div>
+          <div class="hud-label">Guaranteed System Uptime</div>
+          <div class="hud-detail">Contractual uptime penalty protection</div>
+        </div>
+
+        <div class="telemetry-hud-card" data-hud="cnoc">
+          <div class="hud-top-scan"></div>
+          <div class="hud-header">
+            <span class="hud-tag">CENTRAL NOC TELEMETRY</span>
+            <span class="hud-dot active"></span>
+          </div>
+          <div class="hud-value">24/7/365</div>
+          <div class="hud-label">Millisecond Cloud Diagnostics</div>
+          <div class="hud-detail">Cell-level voltage &amp; thermal streaming</div>
+        </div>
+
+        <div class="telemetry-hud-card" data-hud="dispatch">
+          <div class="hud-top-scan"></div>
+          <div class="hud-header">
+            <span class="hud-tag">FIELD RESPONSE SLA</span>
+            <span class="hud-dot active"></span>
+          </div>
+          <div class="hud-value">&lt; 4 Hours</div>
+          <div class="hud-label">Emergency Technician Dispatch</div>
+          <div class="hud-detail">Regional warehousing across India</div>
+        </div>
+
+        <div class="telemetry-hud-card" data-hud="warranty">
+          <div class="hud-top-scan"></div>
+          <div class="hud-header">
+            <span class="hud-tag">LIFECYCLE WARRANTY</span>
+            <span class="hud-dot active"></span>
+          </div>
+          <div class="hud-value">15 Years</div>
+          <div class="hud-label">Capacity Retention Warranty</div>
+          <div class="hud-detail">≥ 70% retention at 6,000–8,000 cycles</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Main Page Content -->
-  <main class="standalone-section">
-    <section class="section services-section" id="services">
+  <!-- =========================================================================
+       SECTION 1: EIGHT GRAND SERVICES SHOWCASE CARDS (KINETIC SCROLL PARALLAX)
+       ========================================================================= -->
+  <main class="standalone-section services-showcase-section" id="servicesShowcase">
     <div class="container">
-      <div class="section-heading-center">
-        <span class="kicker-tag">END-TO-END EXECUTION</span>
-        <h2 class="section-h2">Lifecycle Engineering &amp; Services</h2>
-        <p class="section-p">
-          From application design and FAT validation to cloud telemetry and responsible circular decommissioning.
+      
+      <!-- Section Header -->
+      <div class="senterra-section-header text-center">
+        <span class="senterra-kicker">CRADLE-TO-CRADLE BESS LIFECYCLE</span>
+        <h2 class="senterra-title">Eight Pillars of Turnkey Lifecycle Engineering</h2>
+        <p class="senterra-subtitle">
+          Our senior power systems engineers execute an end-to-end disciplined lifecycle protocol to eliminate thermal degradation risks, guarantee round-trip efficiency (RTE), and maximize 15-year asset ROI.
         </p>
       </div>
 
-      <div class="services-modern-grid">
-        <div class="s-card">
-          <div class="s-step">01</div>
-          <h4>Application Engineering &amp; Sizing</h4>
-          <p>Load profiling, SLD schematics, grid interconnection studies, and thermal modeling for utility tenders.</p>
+      <!-- Kinetic Scroll Parallax Grid with Animated Laser Circuit Spine -->
+      <div class="services-parallax-container">
+        
+        <!-- Central Animated Laser Circuit Spine -->
+        <div class="services-circuit-spine" aria-hidden="true">
+          <div class="spine-line">
+            <div class="spine-glow-head" id="servicesSpineGlow"></div>
+          </div>
         </div>
-        <div class="s-card">
-          <div class="s-step">02</div>
-          <h4>Factory Acceptance Testing (FAT)</h4>
-          <p>100% full-load burn-in, thermal chamber testing, and comprehensive factory acceptance fault simulation.</p>
+
+        <!-- 8 Grand Cards Grid -->
+        <div class="services-grand-grid" id="servicesCardsGrid">
+          
+          <!-- Card 01 -->
+          <article class="service-grand-card" data-card-idx="1" data-parallax-speed="-0.04">
+            <div class="card-ambient-spotlight"></div>
+            <div class="card-glass-panel"></div>
+            <div class="card-cyber-corners"></div>
+            
+            <div class="card-top-row">
+              <div class="card-index-chip">01</div>
+              <div class="card-category-pill">GRID MODELING</div>
+              <div class="card-live-status">● PRE-FEASIBILITY</div>
+            </div>
+
+            <div class="card-icon-container">
+              <div class="icon-halo-ring"></div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00D26A" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                <circle cx="9" cy="3" r="1" fill="#00D26A"/>
+                <circle cx="15" cy="21" r="1" fill="#00D26A"/>
+              </svg>
+            </div>
+
+            <h3 class="card-service-title">Application Engineering &amp; Power Systems Sizing</h3>
+            <p class="card-service-desc">
+              High-precision simulation of Point of Interconnection (POI) at 11 kV through 220 kV. Our power engineers evaluate feeder thermal constraints, solar/wind curtailment duration curves, and regional time-of-day (ToD) tariff arbitrage windows to calculate exact container counts, C-rate duty cycles, and auxiliary power consumption.
+            </p>
+
+            <div class="card-deliverables-list">
+              <span class="deliverable-tag">Single-Line Diagram (SLD)</span>
+              <span class="deliverable-tag">MATLAB / DigSILENT Simulation</span>
+              <span class="deliverable-tag">15-Year LCOS &amp; Degradation Model</span>
+            </div>
+
+            <div class="card-footer-cta">
+              <a href="contact.html?req=sizing" class="service-action-link">
+                <span>Request Sizing Brief</span>
+                <span class="link-arrow">➔</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 02 -->
+          <article class="service-grand-card" data-card-idx="2" data-parallax-speed="0.05">
+            <div class="card-ambient-spotlight"></div>
+            <div class="card-glass-panel"></div>
+            <div class="card-cyber-corners"></div>
+            
+            <div class="card-top-row">
+              <div class="card-index-chip cyan-chip">02</div>
+              <div class="card-category-pill cyan-pill">FACTORY QA &amp; FAT</div>
+              <div class="card-live-status text-cyan">● 100% PRE-SHIP BURN-IN</div>
+            </div>
+
+            <div class="card-icon-container cyan-container">
+              <div class="icon-halo-ring cyan-halo"></div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+                <circle cx="17" cy="6" r="2"/>
+                <circle cx="17" cy="18" r="2"/>
+              </svg>
+            </div>
+
+            <h3 class="card-service-title">String-Level Factory Acceptance Testing (FAT)</h3>
+            <p class="card-service-desc">
+              Every 5 MWh containerized block undergoes 100% full-load electrical and thermal burn-in testing prior to transport. Senterra engineers execute full C-rate charge/discharge cycles in climate-controlled testing bays (-10°C to +55°C), balancing active liquid chiller flow rates to guarantee cell-to-cell delta-T within ±2.5°C alongside aerosol safety trip tests.
+            </p>
+
+            <div class="card-deliverables-list">
+              <span class="deliverable-tag cyan-tag">100% Full-Load Power Burn-In</span>
+              <span class="deliverable-tag cyan-tag">Thermal Chiller Flow Calibration</span>
+              <span class="deliverable-tag cyan-tag">Dielectric &amp; Fault Injection Validation</span>
+            </div>
+
+            <div class="card-footer-cta">
+              <a href="contact.html?req=fat" class="service-action-link">
+                <span>Schedule FAT Witness</span>
+                <span class="link-arrow">➔</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 03 -->
+          <article class="service-grand-card" data-card-idx="3" data-parallax-speed="-0.03">
+            <div class="card-ambient-spotlight"></div>
+            <div class="card-glass-panel"></div>
+            <div class="card-cyber-corners"></div>
+            
+            <div class="card-top-row">
+              <div class="card-index-chip">03</div>
+              <div class="card-category-pill">SITE EPC EXECUTION</div>
+              <div class="card-live-status">● TURNKEY COMMISSIONING</div>
+            </div>
+
+            <div class="card-icon-container">
+              <div class="icon-halo-ring"></div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00D26A" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+
+            <h3 class="card-service-title">Turnkey Civil &amp; Electrical On-Site Commissioning</h3>
+            <p class="card-service-desc">
+              End-to-end site erection and power grid integration overseen directly by Senterra field engineers. From foundation plinth loading and seismic anchoring to 1500V DC heavy busway cabling, medium-voltage (MV) transformer skid hookup, and utility anti-islanding synchronizations, we ensure zero-friction grid energization.
+            </p>
+
+            <div class="card-deliverables-list">
+              <span class="deliverable-tag">Civil Pad Loading &amp; Seismic Anchoring</span>
+              <span class="deliverable-tag">1500V DC Heavy Busway Cabling</span>
+              <span class="deliverable-tag">MV Transformer Skid &amp; Grid Sync</span>
+            </div>
+
+            <div class="card-footer-cta">
+              <a href="contact.html?req=commissioning" class="service-action-link">
+                <span>Explore Site Execution</span>
+                <span class="link-arrow">➔</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 04 -->
+          <article class="service-grand-card" data-card-idx="4" data-parallax-speed="0.04">
+            <div class="card-ambient-spotlight"></div>
+            <div class="card-glass-panel"></div>
+            <div class="card-cyber-corners"></div>
+            
+            <div class="card-top-row">
+              <div class="card-index-chip cyan-chip">04</div>
+              <div class="card-category-pill cyan-pill">EDGE AI TELEMETRY</div>
+              <div class="card-live-status text-cyan">● 24/7/365 REAL-TIME</div>
+            </div>
+
+            <div class="card-icon-container cyan-container">
+              <div class="icon-halo-ring cyan-halo"></div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                <path d="M2 12h20"/>
+              </svg>
+            </div>
+
+            <h3 class="card-service-title">Central NOC 24/7 Cloud Telemetry &amp; AI Analytics</h3>
+            <p class="card-service-desc">
+              Continuous round-the-clock fleet surveillance powered by Senterra's Central Network Operations Center (CNOC). Industrial IoT edge gateways stream over 10,000 live data points per container, feeding neural networks that detect early thermal runaway biomarkers, track module degradation, and optimize daily dispatch schedules.
+            </p>
+
+            <div class="card-deliverables-list">
+              <span class="deliverable-tag cyan-tag">Sub-Second Cell Voltage &amp; Temp Telemetry</span>
+              <span class="deliverable-tag cyan-tag">Predictive Thermal Anomaly Detection</span>
+              <span class="deliverable-tag cyan-tag">Automated SLDC Dispatch Reporting</span>
+            </div>
+
+            <div class="card-footer-cta">
+              <a href="#nocConsole" class="service-action-link">
+                <span>View NOC Live Architecture</span>
+                <span class="link-arrow">➔</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 05 -->
+          <article class="service-grand-card" data-card-idx="5" data-parallax-speed="-0.04">
+            <div class="card-ambient-spotlight"></div>
+            <div class="card-glass-panel"></div>
+            <div class="card-cyber-corners"></div>
+            
+            <div class="card-top-row">
+              <div class="card-index-chip">05</div>
+              <div class="card-category-pill">PREVENTIVE SLA</div>
+              <div class="card-live-status">● ≥ 98.5% UPTIME SLA</div>
+            </div>
+
+            <div class="card-icon-container">
+              <div class="icon-halo-ring"></div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00D26A" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+
+            <h3 class="card-service-title">Preventive AMC &amp; Guaranteed Uptime SLAs</h3>
+            <p class="card-service-desc">
+              Bankable multi-year Annual Maintenance Contracts (AMC) backed by contractual uptime penalty clauses. Preventative maintenance protocols encompass bi-annual dielectric chiller coolant flushing, compressor diagnostics, aerosol fire suppression inspections, DC contactor resistance testing, and infrared thermographic audits.
+            </p>
+
+            <div class="card-deliverables-list">
+              <span class="deliverable-tag">Contractual ≥ 98.5% Availability SLA</span>
+              <span class="deliverable-tag">Active Chiller Loop Dielectric Flush</span>
+              <span class="deliverable-tag">Calibrated Thermographic Infrared Audits</span>
+            </div>
+
+            <div class="card-footer-cta">
+              <a href="#slaMatrix" class="service-action-link">
+                <span>Compare AMC Service Tiers</span>
+                <span class="link-arrow">➔</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 06 -->
+          <article class="service-grand-card" data-card-idx="6" data-parallax-speed="0.05">
+            <div class="card-ambient-spotlight"></div>
+            <div class="card-glass-panel"></div>
+            <div class="card-cyber-corners"></div>
+            
+            <div class="card-top-row">
+              <div class="card-index-chip cyan-chip">06</div>
+              <div class="card-category-pill cyan-pill">LOGISTICS &amp; SPARES</div>
+              <div class="card-live-status text-cyan">● &lt; 4-HR DISPATCH SLA</div>
+            </div>
+
+            <div class="card-icon-container cyan-container">
+              <div class="icon-halo-ring cyan-halo"></div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"/>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+
+            <h3 class="card-service-title">Rapid Spares Dispatch &amp; Nationwide Field Engineering</h3>
+            <p class="card-service-desc">
+              Strategically positioned buffer warehouses across India maintain fully tested spare battery modules, master BMS controllers, high-speed DC fuses, coolant pumps, and inverter sub-modules. Dedicated mobile field engineering units ensure emergency on-site triage within four hours across all major solar parks.
+            </p>
+
+            <div class="card-deliverables-list">
+              <span class="deliverable-tag cyan-tag">Regional Strategic Buffer Warehousing</span>
+              <span class="deliverable-tag cyan-tag">&lt; 4-Hour Emergency Field Mobilization</span>
+              <span class="deliverable-tag cyan-tag">Pre-Commissioned Hot-Swap Module Stock</span>
+            </div>
+
+            <div class="card-footer-cta">
+              <a href="contact.html?req=spares" class="service-action-link">
+                <span>Inquire Spares Buffer</span>
+                <span class="link-arrow">➔</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 07 -->
+          <article class="service-grand-card" data-card-idx="7" data-parallax-speed="-0.03">
+            <div class="card-ambient-spotlight"></div>
+            <div class="card-glass-panel"></div>
+            <div class="card-cyber-corners"></div>
+            
+            <div class="card-top-row">
+              <div class="card-index-chip">07</div>
+              <div class="card-category-pill">SCADA INTERCONNECT</div>
+              <div class="card-live-status">● CEA / CERC COMPLIANT</div>
+            </div>
+
+            <div class="card-icon-container">
+              <div class="icon-halo-ring"></div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00D26A" stroke-width="2">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+                <rect x="9" y="9" width="6" height="6"/>
+                <line x1="9" y1="1" x2="9" y2="4"/>
+                <line x1="15" y1="1" x2="15" y2="4"/>
+                <line x1="9" y1="20" x2="9" y2="23"/>
+                <line x1="15" y1="20" x2="15" y2="23"/>
+                <line x1="20" y1="9" x2="23" y2="9"/>
+                <line x1="20" y1="14" x2="23" y2="14"/>
+                <line x1="1" y1="9" x2="4" y2="9"/>
+                <line x1="1" y1="14" x2="4" y2="14"/>
+              </svg>
+            </div>
+
+            <h3 class="card-service-title">SCADA Integration &amp; Real-Time Grid Dispatch</h3>
+            <p class="card-service-desc">
+              Hardware and software protocol integration with State Load Dispatch Centers (SLDC) and Regional Load Dispatch Centers (RLDC). Native translation layers support IEC 60870-5-104, DNP3, Modbus TCP/IP, and IEC 61850 substation automation with strict NERC-CIP and CEA cyber security compliance.
+            </p>
+
+            <div class="card-deliverables-list">
+              <span class="deliverable-tag">Native IEC 60870-5-104 &amp; IEC 61850</span>
+              <span class="deliverable-tag">SLDC / RLDC Synchronous Telemetry Feeds</span>
+              <span class="deliverable-tag">Encrypted Air-Gapped Cybersecurity Tunnel</span>
+            </div>
+
+            <div class="card-footer-cta">
+              <a href="contact.html?req=scada" class="service-action-link">
+                <span>Review SCADA Integration</span>
+                <span class="link-arrow">➔</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 08 -->
+          <article class="service-grand-card" data-card-idx="8" data-parallax-speed="0.04">
+            <div class="card-ambient-spotlight"></div>
+            <div class="card-glass-panel"></div>
+            <div class="card-cyber-corners"></div>
+            
+            <div class="card-top-row">
+              <div class="card-index-chip cyan-chip">08</div>
+              <div class="card-category-pill cyan-pill">CIRCULAR RECYCLING</div>
+              <div class="card-live-status text-cyan">● 100% EPR COMPLIANT</div>
+            </div>
+
+            <div class="card-icon-container cyan-container">
+              <div class="icon-halo-ring cyan-halo"></div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                <circle cx="12" cy="12" r="3" fill="#00F0FF" fill-opacity="0.3"/>
+              </svg>
+            </div>
+
+            <h3 class="card-service-title">Circular Decommissioning &amp; EPR Battery Recycling</h3>
+            <p class="card-service-desc">
+              Responsible end-of-life battery cutover with zero downtime. Senterra executes safe high-voltage de-energization, second-life stationary commercial qualification tests, and closed-loop hydrometallurgical material recycling under Central Pollution Control Board (CPCB) Extended Producer Responsibility (EPR) mandates.
+            </p>
+
+            <div class="card-deliverables-list">
+              <span class="deliverable-tag cyan-tag">Safe HV String Cutover &amp; De-Energization</span>
+              <span class="deliverable-tag cyan-tag">Second-Life Stationary Grading &amp; Testing</span>
+              <span class="deliverable-tag cyan-tag">Certified Closed-Loop Hydrometallurgy</span>
+            </div>
+
+            <div class="card-footer-cta">
+              <a href="contact.html?req=recycling" class="service-action-link">
+                <span>Request EPR Recycling Audit</span>
+                <span class="link-arrow">➔</span>
+              </a>
+            </div>
+          </article>
+
         </div>
-        <div class="s-card">
-          <div class="s-step">03</div>
-          <h4>On-Site Commissioning</h4>
-          <p>Civil pad integration, HV DC cabling, transformer hookups, SCADA testing, and utility synchronization.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       SECTION 2: 24/7 CENTRAL NOC (CNOC) FLEET TELEMETRY CONSOLE
+       ========================================================================= -->
+  <section class="services-noc-console-section" id="nocConsole">
+    <div class="noc-ambient-glow" aria-hidden="true"></div>
+    <div class="container">
+      
+      <div class="senterra-section-header text-center">
+        <span class="senterra-kicker">CENTRAL NETWORK OPERATIONS COCKPIT</span>
+        <h2 class="senterra-title">24/7 Central NOC Live Telemetry Command</h2>
+        <p class="senterra-subtitle">
+          Real-time oversight across Senterra utility-scale installations nationwide. AI-driven predictive health algorithms track cell-level telemetry around the clock.
+        </p>
+      </div>
+
+      <!-- High-Tech NOC Terminal Box -->
+      <div class="noc-terminal-frame">
+        <div class="noc-terminal-topbar">
+          <div class="terminal-id">
+            <span class="terminal-badge">// CNOC_MONITOR_V4.2</span>
+            <span class="terminal-loc">NATIONWIDE FLEET GRID</span>
+          </div>
+          <div class="terminal-stat">
+            <span class="radar-dot active"></span>
+            <span class="text-emerald">ACTIVE CLUSTER: 42 BESS BLOCKS CONNECTED · 0 CRITICAL ANOMALIES</span>
+          </div>
+          <div class="terminal-clock">
+            <span id="nocClock">21:47:14 IST</span>
+          </div>
         </div>
-        <div class="s-card">
-          <div class="s-step">04</div>
-          <h4>Cloud CNOC 24/7 Monitoring</h4>
-          <p>Central Network Operations Center with cell-level diagnostics, predictive fault alerts, and SLA tracking.</p>
+
+        <!-- NOC Live Metric Tiles -->
+        <div class="noc-tiles-grid">
+          <div class="noc-tile">
+            <div class="tile-header">
+              <span class="tile-label">FLEET HEALTH (SOH)</span>
+              <span class="tile-tag">OPTIMAL</span>
+            </div>
+            <div class="tile-number">99.2%</div>
+            <div class="tile-sub">Average across 210 MWh deployed assets</div>
+            <div class="tile-progress-bar">
+              <div class="progress-fill" style="width: 99.2%;"></div>
+            </div>
+          </div>
+
+          <div class="noc-tile">
+            <div class="tile-header">
+              <span class="tile-label">CELL-TO-CELL ΔT</span>
+              <span class="tile-tag cyan-tag">ACTIVE LIQUID LOOP</span>
+            </div>
+            <div class="tile-number text-cyan">± 1.8°C</div>
+            <div class="tile-sub">Active chillers maintaining ±2.5°C threshold</div>
+            <div class="tile-progress-bar cyan-bar">
+              <div class="progress-fill cyan-fill" style="width: 72%;"></div>
+            </div>
+          </div>
+
+          <div class="noc-tile">
+            <div class="tile-header">
+              <span class="tile-label">AVG ROUND-TRIP EFFICIENCY</span>
+              <span class="tile-tag">AC-TO-AC</span>
+            </div>
+            <div class="tile-number">89.4%</div>
+            <div class="tile-sub">Comprehensive auxiliary loop included</div>
+            <div class="tile-progress-bar">
+              <div class="progress-fill" style="width: 89.4%;"></div>
+            </div>
+          </div>
+
+          <div class="noc-tile">
+            <div class="tile-header">
+              <span class="tile-label">GRID FREQUENCY SYNC</span>
+              <span class="tile-tag cyan-tag">FFR ARMED</span>
+            </div>
+            <div class="tile-number text-cyan" id="nocFreqVal">50.01 Hz</div>
+            <div class="tile-sub">Synchronous governor fast response active</div>
+            <div class="tile-progress-bar cyan-bar">
+              <div class="progress-fill cyan-fill" style="width: 99.8%;"></div>
+            </div>
+          </div>
         </div>
-        <div class="s-card">
-          <div class="s-step">05</div>
-          <h4>Preventive AMC &amp; Field Spares</h4>
-          <p>Guaranteed uptime SLAs, rapid spare delivery from regional hubs, and continuous firmware security updates.</p>
+
+        <!-- Simulated Live Event Stream Ticker -->
+        <div class="noc-stream-ticker">
+          <div class="ticker-header">
+            <span class="terminal-code">// REAL-TIME STREAMING TELEMETRY LOG</span>
+            <span class="stream-ping">● PING: 18ms</span>
+          </div>
+          <div class="ticker-content" id="nocTickerContent">
+            <div class="ticker-line"><span class="tick-time">[21:47:12]</span> <span class="tick-sys text-emerald">BLOCK_04_KAJRA</span> :: Active liquid chiller circulating coolant at 14.2 L/min. Cell variance steady at ±1.6°C.</div>
+            <div class="ticker-line"><span class="tick-time">[21:46:58]</span> <span class="tick-sys text-cyan">BLOCK_11_SOLAR_HYBRID</span> :: State of Charge 84.6% · Automated peak-shaving dispatch schedule synchronized with SLDC.</div>
+            <div class="ticker-line"><span class="tick-time">[21:46:31]</span> <span class="tick-sys text-emerald">BLOCK_08_CI_MICROGRID</span> :: Grid frequency steady at 50.00 Hz · Aerosol safety loop status nominal · 0 alarms.</div>
+          </div>
         </div>
-        <div class="s-card">
-          <div class="s-step">06</div>
-          <h4>Circular Decommissioning</h4>
-          <p>Safe battery cutover with zero downtime, certified LiFePO4 recycling, and documentation under EPR regulations.</p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 3: BANKABLE SLA & AMC SERVICE LEVEL MATRIX
+       ========================================================================= -->
+  <section class="services-sla-matrix-section" id="slaMatrix">
+    <div class="container">
+      
+      <div class="senterra-section-header text-center">
+        <span class="senterra-kicker">CONTRACTUAL ASSURANCE TIERS</span>
+        <h2 class="senterra-title">SLA &amp; Lifecycle Maintenance Matrix</h2>
+        <p class="senterra-subtitle">
+          Tailored service packages designed for utility IPPs, transmission utilities, and critical industrial commercial facilities.
+        </p>
+      </div>
+
+      <div class="sla-matrix-card">
+        <div class="matrix-table-wrap">
+          <table class="cyber-sla-table">
+            <thead>
+              <tr>
+                <th class="col-metric">Service Level Parameter</th>
+                <th class="col-tier1">Tier-1 Standard AMC</th>
+                <th class="col-tier2 highlight-col">Mission-Critical Utility AMC (Recommended)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="metric-name">Contractual Operational Uptime SLA</td>
+                <td class="metric-val">≥ 98.0% Availability</td>
+                <td class="metric-val highlight-val">≥ 99.2% Availability with Contractual Liquidated Damages</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Emergency On-Site Field Dispatch</td>
+                <td class="metric-val">&lt; 12 Hours Response</td>
+                <td class="metric-val highlight-val">&lt; 4 Hours Nationwide Guaranteed Response</td>
+              </tr>
+              <tr>
+                <td class="metric-name">24/7 Central NOC Cloud Telemetry</td>
+                <td class="metric-val">Included (15-min aggregation)</td>
+                <td class="metric-val highlight-val">Included (Sub-Second High-Speed Streaming + AI Diagnostics)</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Regional Strategic Spares Warehousing</td>
+                <td class="metric-val">Standard Regional Buffer</td>
+                <td class="metric-val highlight-val">Dedicated Hot-Swap Module &amp; Master BMS Pool</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Chiller Dielectric Coolant Flush &amp; Service</td>
+                <td class="metric-val">Annual Scheduled Service</td>
+                <td class="metric-val highlight-val">Bi-Annual Service + Predictive Coolant Chemistry Analysis</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Factory Acceptance Testing (FAT) Witness</td>
+                <td class="metric-val">Standard Video Stream FAT</td>
+                <td class="metric-val highlight-val">Full On-Site Factory Access + Witnessed Fault Simulation</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Dedicated Senior BESS Systems Engineer</td>
+                <td class="metric-val">Dedicated Support Desk</td>
+                <td class="metric-val highlight-val">Named Senior BESS Engineer with 24/7 Direct Voice Hotline</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 4: HIGH-VOLTAGE SERVICES CTA COMMAND BANNER
+       ========================================================================= -->
+  <section class="services-cta-banner">
+    <div class="banner-laser-grid" aria-hidden="true"></div>
+    <div class="banner-pulse-halo" aria-hidden="true"></div>
+    <div class="container">
+      <div class="cyber-banner-inner">
+        <div class="cyber-banner-content">
+          <div class="banner-kicker-tag">
+            <span class="radar-dot active"></span>
+            <span>DIRECT OEM SERVICES DESK</span>
+          </div>
+          <h2 class="banner-title">Need Bankable Turnkey Execution or a Customized AMC?</h2>
+          <p class="banner-desc">
+            Consult directly with our senior application engineers and commissioning specialists. We tailor service level agreements and FAT protocols to meet your exact utility tender requirements.
+          </p>
+          <div class="banner-buttons-row">
+            <button type="button" class="btn btn-emerald btn-lg" onclick="openRfqModal()">
+              <span>Request Lifecycle AMC Proposal</span>
+              <span class="btn-arrow">→</span>
+            </button>
+            <a href="tel:+917014109098" class="btn btn-outline-cyber btn-lg">
+              <span>Direct Hotline: +91 7014109098</span>
+            </a>
+            <a href="mailto:energy@senterra.energy" class="btn btn-glass btn-lg">
+              <span>Email: energy@senterra.energy</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  </main>
 
   <!-- Modern Clean Footer -->
   <footer class="site-footer">
@@ -237,7 +825,6 @@
         <p class="footer-desc">
           Senterra Energy Private Limited is an Indian clean-tech manufacturer of high-performance energy storage and advanced power solutions.
         </p>
-
       </div>
 
       <div class="footer-links-col">

@@ -2416,49 +2416,701 @@ input:checked + .slider.round:before {
 }
 
 /* ==========================================================================
-   Services Grid
+   Turnkey Lifecycle Engineering & Services Suite (8 Grand Cards & Parallax)
    ========================================================================== */
 
-.services-modern-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 24px;
-}
-
-.s-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
-  padding: 30px;
+/* Services Cyber Hero */
+.services-cyber-hero {
   position: relative;
-  transition: all var(--transition-smooth);
+  overflow: hidden;
+  padding: 130px 0 50px;
+  background: #060B12;
+  min-height: 540px;
 }
 
-.s-card:hover {
-  background: var(--bg-card-hover);
-  transform: translateY(-4px);
-  border-color: var(--border-glass-strong);
+.services-hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 210, 106, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 210, 106, 0.045) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 60%, transparent 100%);
+  pointer-events: none;
 }
 
-.s-step {
+.services-hero-aurora {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 960px;
+  height: 480px;
+  background: radial-gradient(ellipse at center, rgba(0, 210, 106, 0.16) 0%, rgba(0, 240, 255, 0.09) 45%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.services-scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.25) 51%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 1;
+}
+
+.services-cyber-hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.services-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  background: rgba(0, 210, 106, 0.08);
+  border: 1px solid rgba(0, 210, 106, 0.32);
+  border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--emerald);
+  margin-bottom: 24px;
+  box-shadow: 0 0 24px rgba(0, 210, 106, 0.15);
+}
+
+.services-hero-title {
+  font-size: clamp(32px, 4.2vw, 52px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #FFFFFF;
+  letter-spacing: -0.025em;
+  margin-bottom: 18px;
+}
+
+.services-hero-lead {
+  max-width: 840px;
+  font-size: 16px;
+  color: var(--text-slate);
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+/* Services Telemetry HUD */
+.services-telemetry-hud {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* ==========================================================================
+   Section 1: The 8 Grand Showcase Cards & Kinetic Parallax Grid
+   ========================================================================== */
+
+.services-showcase-section {
+  position: relative;
+  background: #070D18;
+  padding: 60px 0 100px;
+}
+
+.services-parallax-container {
+  position: relative;
+  margin-top: 50px;
+}
+
+/* Central Circuit Spine */
+.services-circuit-spine {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.spine-line {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.spine-glow-head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, #00D26A, #00F0FF);
+  border-radius: 999px;
+  box-shadow: 0 0 16px #00D26A, 0 0 24px #00F0FF;
+  transition: top 0.1s ease-out;
+}
+
+/* 2-Column Grand Grid */
+.services-grand-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Grand Card Styling */
+.service-grand-card {
+  position: relative;
+  background: rgba(10, 22, 45, 0.75);
+  border: 1px solid rgba(0, 210, 106, 0.22);
+  border-radius: var(--radius-xl);
+  padding: 38px 34px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(var(--scroll-drift-y, 0px)) rotate(var(--scroll-tilt, 0deg));
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.service-grand-card:nth-child(even) {
+  border-color: rgba(0, 240, 255, 0.22);
+}
+
+.service-grand-card:hover {
+  border-color: rgba(0, 210, 106, 0.65);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 210, 106, 0.22);
+}
+
+.service-grand-card:nth-child(even):hover {
+  border-color: rgba(0, 240, 255, 0.65);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 240, 255, 0.22);
+}
+
+.card-ambient-spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(450px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(0, 210, 106, 0.14), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.service-grand-card:hover .card-ambient-spotlight {
+  opacity: 1;
+}
+
+.service-grand-card:nth-child(even) .card-ambient-spotlight {
+  background: radial-gradient(450px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(0, 240, 255, 0.14), transparent 70%);
+}
+
+.service-grand-card:hover .card-icon-container {
+  transform: scale(1.08);
+  border-color: var(--emerald);
+  box-shadow: 0 0 20px rgba(0, 210, 106, 0.35);
+}
+
+.service-grand-card:hover .card-icon-container.cyan-container {
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+}
+
+.card-cyber-corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.card-cyber-corners::before,
+.card-cyber-corners::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(0, 210, 106, 0.4);
+}
+
+.card-cyber-corners::before {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.card-cyber-corners::after {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+/* Card Top Meta */
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card-index-chip {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--emerald);
+  background: rgba(0, 210, 106, 0.1);
+  border: 1px solid rgba(0, 210, 106, 0.3);
+  padding: 4px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 14px rgba(0, 210, 106, 0.15);
+}
+
+.card-index-chip.cyan-chip {
+  color: var(--cyan);
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.15);
+}
+
+.card-category-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--emerald);
+  background: rgba(0, 210, 106, 0.08);
+  border: 1px solid rgba(0, 210, 106, 0.25);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.card-category-pill.cyan-pill {
+  color: var(--cyan);
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.25);
+}
+
+.card-live-status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--emerald);
+  letter-spacing: 0.06em;
+}
+
+/* Icon Container */
+.card-icon-container {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: rgba(0, 210, 106, 0.1);
+  border: 1px solid rgba(0, 210, 106, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
+}
+
+.card-icon-container.cyan-container {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(0, 240, 255, 0.35);
+}
+
+.icon-halo-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 210, 106, 0.25);
+  animation: radarPingPulse 3s infinite;
+}
+
+.icon-halo-ring.cyan-halo {
+  border-color: rgba(0, 240, 255, 0.25);
+}
+
+/* Content */
+.card-service-title {
+  font-size: 21px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.card-service-desc {
+  font-size: 14px;
+  color: var(--text-slate);
+  line-height: 1.65;
+  margin-bottom: 22px;
+  flex: 1;
+}
+
+/* Deliverable Tags */
+.card-deliverables-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.deliverable-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 210, 106, 0.28);
+  padding: 5px 11px;
+  border-radius: 5px;
+}
+
+.deliverable-tag.cyan-tag {
+  border-color: rgba(0, 240, 255, 0.28);
+}
+
+/* Card Footer Link */
+.card-footer-cta {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 18px;
+}
+
+.service-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--emerald);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: all var(--transition-fast);
+}
+
+.service-action-link:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(0, 210, 106, 0.5);
+}
+
+.service-action-link .link-arrow {
+  transition: transform 0.25s ease;
+}
+
+.service-action-link:hover .link-arrow {
+  transform: translateX(5px);
+}
+
+/* ==========================================================================
+   Section 2: 24/7 Central NOC (CNOC) Fleet Telemetry Console
+   ========================================================================== */
+
+.services-noc-console-section {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0;
+  background: #060B12;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.noc-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(0, 210, 106, 0.09) 0%, rgba(0, 240, 255, 0.05) 50%, transparent 75%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.noc-terminal-frame {
+  background: #07101E;
+  border: 1px solid rgba(0, 210, 106, 0.35);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(0, 210, 106, 0.12);
+  margin-top: 48px;
+}
+
+.noc-terminal-topbar {
+  background: #040812;
+  border-bottom: 1px solid rgba(0, 210, 106, 0.2);
+  padding: 14px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.terminal-badge {
+  color: var(--emerald);
+  font-weight: 800;
+  margin-right: 8px;
+}
+
+.terminal-loc {
+  color: var(--text-dim);
+}
+
+.terminal-clock {
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+/* NOC Tiles Grid */
+.noc-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  padding: 30px 26px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.noc-tile {
+  background: rgba(10, 22, 45, 0.65);
+  border: 1px solid rgba(0, 210, 106, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.tile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tile-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+.tile-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
   font-weight: 800;
   color: var(--emerald);
-  margin-bottom: 14px;
+  background: rgba(0, 210, 106, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
 }
 
-.s-card h4 {
-  font-size: 18px;
+.tile-tag.cyan-tag {
+  color: var(--cyan);
+  background: rgba(0, 240, 255, 0.1);
+}
+
+.tile-number {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.tile-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.tile-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00D26A, #00B050);
+  border-radius: 999px;
+  box-shadow: 0 0 8px #00D26A;
+}
+
+.progress-fill.cyan-fill {
+  background: linear-gradient(90deg, #00F0FF, #00B4D8);
+  box-shadow: 0 0 8px #00F0FF;
+}
+
+/* Stream Ticker */
+.noc-stream-ticker {
+  padding: 20px 26px 26px;
+  background: #050C16;
+}
+
+.ticker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+
+.stream-ping {
+  color: var(--emerald);
+  font-weight: 700;
+}
+
+.ticker-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-slate);
+}
+
+.ticker-line {
+  line-height: 1.5;
+}
+
+.tick-time {
+  color: var(--text-dim);
+}
+
+.tick-sys {
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Section 3: Bankable SLA & AMC Service Level Matrix Table
+   ========================================================================== */
+
+.services-sla-matrix-section {
+  padding: 90px 0;
+  background: #070D18;
+}
+
+.sla-matrix-card {
+  background: rgba(10, 22, 45, 0.7);
+  border: 1px solid rgba(0, 210, 106, 0.28);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+  margin-top: 48px;
+}
+
+.matrix-table-wrap {
+  overflow-x: auto;
+}
+
+.cyber-sla-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+.cyber-sla-table th {
+  padding: 20px 24px;
+  background: #040812;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--text-slate);
+  border-bottom: 1px solid rgba(0, 210, 106, 0.25);
+}
+
+.cyber-sla-table th.highlight-col {
+  color: var(--emerald);
+  background: rgba(0, 210, 106, 0.08);
+  border-bottom-color: var(--emerald);
+}
+
+.cyber-sla-table td {
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-slate);
+  vertical-align: middle;
+}
+
+.cyber-sla-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.metric-name {
   font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 10px;
 }
 
-.s-card p {
+.metric-val {
   font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.6;
+}
+
+.metric-val.highlight-val {
+  font-weight: 700;
+  color: #FFFFFF;
+  background: rgba(0, 210, 106, 0.04);
+  border-left: 1px solid rgba(0, 210, 106, 0.15);
+  border-right: 1px solid rgba(0, 210, 106, 0.15);
+}
+
+/* ==========================================================================
+   Section 4: Services CTA Command Banner
+   ========================================================================== */
+
+.services-cta-banner {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0 110px;
+  background: #060B11;
+}
+
+/* Responsive adjustments for Services Suite */
+@media (max-width: 1024px) {
+  .services-grand-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .services-circuit-spine {
+    display: none;
+  }
+  .services-telemetry-hud {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .noc-tiles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-telemetry-hud {
+    grid-template-columns: 1fr;
+  }
+  .noc-tiles-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-grand-card {
+    padding: 28px 22px;
+  }
 }
 
 /* ==========================================================================
