@@ -542,7 +542,7 @@ function handleRfqSubmit(e) {
     if (statusMsg) {
       statusMsg.className = "form-status-msg success";
       statusMsg.innerHTML = `
-        <strong>Thank you, ${name}!</strong> Your proposal request for <em>${company}</em> has been securely submitted to Senterra Energy Bengaluru. An application specialist will contact you within 24 business hours.
+        <strong>Thank you, ${name}!</strong> Your proposal request for <em>${company}</em> has been securely submitted to Senterra Energy. An application specialist will contact you within 24 business hours.
       `;
     }
 
@@ -558,6 +558,119 @@ function openRfqModal() {
     if (nameInput) nameInput.focus();
   } else {
     window.location.href = "contact.html";
+  }
+}
+
+// Copy contact detail to clipboard with animated feedback
+function copyContactDetail(text, buttonElement) {
+  if (!navigator.clipboard) {
+    const tempInput = document.createElement("input");
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+  } else {
+    navigator.clipboard.writeText(text).catch(() => {});
+  }
+
+  if (buttonElement) {
+    const labelSpan = buttonElement.querySelector(".copy-label") || buttonElement;
+    const originalText = labelSpan.textContent;
+    buttonElement.classList.add("copied-state");
+    labelSpan.textContent = "Copied! ✓";
+    showToast(`Copied to clipboard: ${text}`);
+
+    setTimeout(() => {
+      buttonElement.classList.remove("copied-state");
+      labelSpan.textContent = originalText;
+    }, 2200);
+  }
+}
+
+// Fast-Select Scenario Presets for RFQ Cyber Terminal
+function applyRfqPreset(presetKey) {
+  const pills = document.querySelectorAll(".preset-pill");
+  pills.forEach(p => p.classList.remove("active"));
+  
+  const activeBtn = Array.from(pills).find(b => b.getAttribute("onclick")?.includes(presetKey));
+  if (activeBtn) activeBtn.classList.add("active");
+
+  const sectorSelect = document.getElementById("rfqSector");
+  const capacityInput = document.getElementById("rfqCapacity");
+  const voltageSelect = document.getElementById("rfqVoltage");
+  const dutySelect = document.getElementById("rfqDutyCycle");
+  const messageArea = document.getElementById("rfqMessage");
+
+  if (!capacityInput) return;
+
+  const presets = {
+    utility: {
+      sector: "bess-utility",
+      capacity: "50 MW / 200 MWh Utility BESS (4-Hour Solar Shifting)",
+      voltage: "33kv",
+      duty: "4h",
+      message: "Requesting preliminary Single-Line Diagram (SLD), 20ft container footprint layout, active liquid cooling simulation (±2.5°C cell variance), and 15-year LCOS financial model for a utility-scale solar-plus-storage grid interconnect."
+    },
+    ci: {
+      sector: "ci",
+      capacity: "2x 250 kW / 500 kWh Outdoor Storage Cabinets",
+      voltage: "lt",
+      duty: "2h",
+      message: "Behind-the-meter industrial peak demand shaving and diesel generator displacement at our manufacturing facility. Requiring turnkey outdoor cabinets with integrated EMS."
+    },
+    hybrid: {
+      sector: "epc",
+      capacity: "10 MW / 40 MWh Solar + BESS Co-located DC Block",
+      voltage: "33kv",
+      duty: "4h",
+      message: "Co-located DC-coupled solar PV firming, ramp-rate control, and morning/evening peak injection for regional transmission feeder integration."
+    },
+    telecom: {
+      sector: "telecom",
+      capacity: "500x 48V DC 100Ah High-Density LiFePO₄ Cycle Packs",
+      voltage: "lt",
+      duty: "telecom",
+      message: "Modernizing rural and high-temperature telecom tower sites. Replacing legacy VRLA batteries with high-cycle prismatic LiFePO₄ modules with centralized cloud telemetry."
+    }
+  };
+
+  const selected = presets[presetKey] || presets.utility;
+
+  if (sectorSelect) sectorSelect.value = selected.sector;
+  capacityInput.value = selected.capacity;
+  if (voltageSelect) voltageSelect.value = selected.voltage;
+  if (dutySelect) dutySelect.value = selected.duty;
+  if (messageArea) messageArea.value = selected.message;
+
+  // Pulse inputs with cyan glowing border effect
+  const inputsToPulse = [capacityInput, messageArea, sectorSelect, voltageSelect, dutySelect].filter(Boolean);
+  inputsToPulse.forEach(inp => {
+    const parentWrap = inp.closest(".input-wrap");
+    if (parentWrap) {
+      parentWrap.classList.remove("pulse-glow");
+      void parentWrap.offsetWidth;
+      parentWrap.classList.add("pulse-glow");
+      setTimeout(() => parentWrap.classList.remove("pulse-glow"), 1200);
+    }
+  });
+
+  showToast(`Applied preset configuration: ${presetKey.toUpperCase()}`);
+}
+
+// Technical FAQ Matrix Accordion Toggle
+function toggleFaqAccordion(button) {
+  const item = button.closest(".faq-accordion-item");
+  if (!item) return;
+
+  const isOpen = item.classList.contains("active");
+
+  if (isOpen) {
+    item.classList.remove("active");
+    button.setAttribute("aria-expanded", "false");
+  } else {
+    item.classList.add("active");
+    button.setAttribute("aria-expanded", "true");
   }
 }
 
@@ -822,7 +935,7 @@ function setupScrollReveal() {
   const gridObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const cards = entry.target.querySelectorAll(".senterra-sol-card, .joule-sol-card, .senterra-why-card, .why-card, .senterra-frame-card, .epc-card");
+        const cards = entry.target.querySelectorAll(".senterra-sol-card, .joule-sol-card, .senterra-why-card, .why-card, .senterra-frame-card, .epc-card, .telemetry-hud-card, .pipeline-step-card, .dispatch-hologram-card, .faq-accordion-item");
         cards.forEach((card, idx) => {
           const delay = (idx * 0.08).toFixed(2);
           card.style.transitionDelay = `${delay}s`;
@@ -847,7 +960,7 @@ function setupScrollReveal() {
 // 17. Interactive Mouse Spotlight Glow on Cards
 // =========================================================================
 function setupCardSpotlights() {
-  const cards = document.querySelectorAll(".prod-card, .why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner, .why-kpi-ribbon, .kpi-ribbon-card");
+  const cards = document.querySelectorAll(".prod-card, .why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner, .why-kpi-ribbon, .kpi-ribbon-card, .dispatch-hologram-card, .telemetry-hud-card, .pipeline-step-card, .faq-accordion-item, .cyber-banner-inner, .rfq-cyber-terminal");
   cards.forEach(card => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
@@ -860,6 +973,29 @@ function setupCardSpotlights() {
     card.addEventListener("mouseleave", () => {
       card.style.setProperty("--mouse-x", "-500px");
       card.style.setProperty("--mouse-y", "-500px");
+    });
+  });
+}
+
+// =========================================================================
+// 17b. Interactive 3D Card Tilt for Cyber Contact Cards
+// =========================================================================
+function setupContact3DTilt() {
+  const tiltCards = document.querySelectorAll(".dispatch-hologram-card, .pipeline-step-card, .telemetry-hud-card");
+  tiltCards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY * -6).toFixed(2);
+      const rotateY = ((x - centerX) / centerX * 6).toFixed(2);
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
     });
   });
 }
@@ -1294,6 +1430,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSolutionTabs();
   setupEpcTabs();
   setupWhyFilterTabs();
+  setupContact3DTilt();
 
   const scrollParam = new URLSearchParams(window.location.search).get("scroll");
   const scrollYParam = new URLSearchParams(window.location.search).get("scrollY");

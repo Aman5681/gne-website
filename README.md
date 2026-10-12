@@ -6,7 +6,7 @@ A modern, high-performance clean-tech web application for **Senterra Energy** de
 
 ## ⚡ Overview
 
-Senterra Energy is an Indian manufacturer of utility-scale Battery Energy Storage Systems (BESS) and mission-critical telecom passive power solutions engineered in Bengaluru, Karnataka.
+Senterra Energy is an Indian manufacturer of utility-scale Battery Energy Storage Systems (BESS) and mission-critical telecom passive power solutions engineered for high-availability grid deployments nationwide.
 
 This project delivers a responsive web experience featuring:
 - **Floating Glassmorphic Header**: Transparent on top of the hero, transitioning into frosted glass on scroll with responsive left-anchored branding and centered navigation.
@@ -141,7 +141,7 @@ http://localhost:8080
    - Left-anchored geometric brand mark.
    - Centered single-line links (`Home`, `Why Senterra`, `Products ▾`, `3D Explorer`, `Sizing Tool`, `Services`, `Contact Us`).
    - Mega-menu with category breakdowns and highlighted flagship specs.
-   - Right action items: `Bengaluru 5 GWh ⚡` rounded pill button and `Request Quote` CTA.
+   - Right action items: `5 GWh Capacity ⚡` rounded pill button and `Request Quote` CTA.
 
 2. **Hero Section (`#home`)**:
    - ₹1,994M L&T Kajra Solar project award milestone tag.
@@ -168,8 +168,8 @@ http://localhost:8080
    - "Inject Sizing into RFQ Proposal" button.
 
 7. **Contact & Proposal Desk (`#contact`)**:
-   - Direct OEM telephone numbers (`+91-80-284 377 92`), email, and Bengaluru facility location.
-   - RFQ form with validation and simulated submission confirmation.
+   - Direct OEM telephone number (`+91 7014109098`), email (`energy@senterra.energy`), and pan-India engineering desk.
+   - Cyber RFQ simulation terminal with validation and instant dispatch transmission.
 
 8. **Corporate Footer**:
    - Direct links to statutory CSR reports (2022–25) and Annual Returns.
