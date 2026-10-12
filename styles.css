@@ -2869,6 +2869,10 @@ input:checked + .slider.round:before {
   margin-bottom: 48px;
 }
 
+.footer-grid:has(> :last-child:nth-child(3)) {
+  grid-template-columns: 1.8fr 1fr 1.2fr;
+}
+
 .footer-desc {
   font-size: 13px;
   color: var(--text-muted);
