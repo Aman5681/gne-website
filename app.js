@@ -167,37 +167,65 @@ function renderProducts(filter = "all", searchQuery = "") {
     return;
   }
 
-  container.innerHTML = filtered.map(prod => `
-    <article class="prod-card" data-category="${prod.category}">
-      <div>
+  container.innerHTML = filtered.map(prod => {
+    const isCyan = prod.category === "ci";
+    return `
+    <article class="prod-card ${isCyan ? 'cyan-card' : ''}" data-category="${prod.category}">
+      <div class="prod-card-accent-line"></div>
+      <div class="prod-card-body">
         <div class="prod-card-top">
-          <span class="prod-badge ${prod.badgeClass}">${prod.categoryName}</span>
-          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim); letter-spacing: 0.5px;">${prod.code}</span>
+          <span class="prod-badge ${prod.badgeClass}">
+            <span class="badge-dot"></span>
+            ${prod.categoryName}
+          </span>
+          <span class="prod-model-code">${prod.code}</span>
         </div>
+        
         <h3 class="prod-title">${prod.title}</h3>
+        <div class="prod-tagline-chip">⚡ ${prod.tagline}</div>
         <p class="prod-desc">${prod.description}</p>
         
-        <div class="prod-specs-box">
-          ${prod.specs.slice(0, 4).map(s => `
-            <div class="spec-line">
-              <span class="spec-lbl">${s.label}:</span>
-              <span class="spec-val">${s.value}</span>
-            </div>
+        <!-- Precision Technical Telemetry Grid (Dot Leaders) -->
+        <div class="tech-spec-console">
+          <div class="spec-console-header">
+            <span class="console-label">// SYSTEM TELEMETRY</span>
+            <span class="console-status">${isCyan ? 'READY // MODULAR' : 'OPTIMIZED // UTILITY'}</span>
+          </div>
+          <div class="spec-console-list">
+            ${prod.specs.slice(0, 4).map(s => `
+              <div class="tech-spec-row">
+                <span class="spec-key">${s.label}</span>
+                <span class="spec-dots"></span>
+                <span class="spec-val">${s.value}</span>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+
+        <!-- Capability Tags -->
+        <div class="prod-capability-tags">
+          ${prod.highlights.map(h => `
+            <span class="cap-tag"><span class="cap-check">✓</span> <strong>${h.title}:</strong> ${h.text}</span>
           `).join("")}
         </div>
       </div>
 
       <div class="prod-card-actions">
-        <button class="btn btn-outline-white btn-sm" style="flex: 1;" onclick="openSpecModal('${prod.id}')">
+        <button class="spec-action-btn" onclick="openSpecModal('${prod.id}')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="16" y1="12" y2="12"/><line x1="12" x2="12" y1="8" y2="12"/></svg>
-          Quick Specs
+          Telemetry &amp; Specs
         </button>
-        <button class="btn btn-emerald btn-sm" onclick="initiateRfqForProduct('${prod.title}')">
-          RFQ
+        <button class="btn btn-emerald rfq-action-btn" onclick="initiateRfqForProduct('${prod.title}')">
+          Request Quote
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
       </div>
     </article>
-  `).join("");
+    `;
+  }).join("");
+
+  // Re-attach interactive spotlight glow on freshly rendered cards
+  setupCardSpotlights();
 }
 
 // 4. Product Filters & Search
@@ -550,6 +578,14 @@ function setupHeaderAndKeyEvents() {
       closeSpecModal();
       if (window.closeDrawer) window.closeDrawer();
     }
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      const searchInput = document.getElementById("productSearchInput");
+      if (searchInput) {
+        e.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      }
+    }
   });
 
   const specModalOverlay = document.getElementById("specModalOverlay");
@@ -756,7 +792,7 @@ function setupScrollReveal() {
 // 17. Interactive Mouse Spotlight Glow on Cards
 // =========================================================================
 function setupCardSpotlights() {
-  const cards = document.querySelectorAll(".why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner, .why-kpi-ribbon, .kpi-ribbon-card");
+  const cards = document.querySelectorAll(".prod-card, .why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner, .why-kpi-ribbon, .kpi-ribbon-card");
   cards.forEach(card => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
