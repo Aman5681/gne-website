@@ -23,7 +23,7 @@ const HOTSPOT_DATA = {
     data: [
       { label: "Nominal DC Energy", value: "5,016 kWh (5.01 MWh)" },
       { label: "DC System Voltage", value: "1,000 VDC – 1,500 VDC" },
-      { label: "Cycle Longevity", value: "≥ 6,000 Cycles (@ 80% DoD)" },
+      { label: "Cycle Longevity", value: "≥ 8,000 Cycles (@ 80% DoD)" },
       { label: "Cell Format", value: "Prismatic 314Ah LiFePO₄" }
     ]
   },
@@ -104,7 +104,7 @@ const PRODUCTS_DATA = [
       { label: "Cell Chemistry", value: "Lithium Iron Phosphate (LiFePO₄)" },
       { label: "DC Voltage Range", value: "1,000 VDC – 1,500 VDC" },
       { label: "Cooling Architecture", value: "Active Industrial Liquid Cooling" },
-      { label: "Cycle Life", value: "≥ 6,000 Cycles (@ 80% DoD, 25°C)" },
+      { label: "Cycle Life", value: "≥ 8,000 Cycles (@ 80% DoD, 25°C)" },
       { label: "Container Enclosure", value: "20ft High Cube ISO Container (IP55)" }
     ],
     highlights: [
