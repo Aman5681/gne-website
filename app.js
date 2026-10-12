@@ -110,7 +110,7 @@ const PRODUCTS_DATA = [
     highlights: [
       { title: "Grid Ready", text: "CE, IEC 62619, UL9540A test compliant" },
       { title: "Liquid Cooled", text: "Uniform cell temp within ±2.5°C delta" },
-      { title: "Turnkey FAT", text: "100% factory pre-commissioned in Bengaluru" }
+      { title: "Turnkey FAT", text: "100% factory pre-commissioned & tested" }
     ],
     fullDetails: "Engineered specifically for utility solar firming, transmission peak shaving, and frequency response. The container comes pre-wired with high-voltage DC combiners, HVAC chillers, multi-sensor gas detection, NFPA 855-aligned aerosol fire suppression, and Senterra Tier-3 Master BMS controllers."
   },
