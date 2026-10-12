@@ -737,6 +737,240 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
+   Compact Why Senterra Spacing & Credibility KPI Ribbon (why-senterra.html)
+   ========================================================================== */
+.why-standalone-main {
+  padding: 0 0 70px 0 !important;
+}
+
+.why-senterra-section {
+  padding: 30px 0 80px 0 !important;
+}
+
+.why-kpi-ribbon {
+  position: relative;
+  background: linear-gradient(145deg, rgba(10, 22, 45, 0.78) 0%, rgba(6, 14, 30, 0.88) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  padding: 22px 24px 20px 24px;
+  margin: 0 auto 36px auto;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-kpi-ribbon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00D26A 30%, #00F0FF 70%, transparent);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.why-kpi-ribbon:hover {
+  border-color: rgba(0, 210, 106, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 210, 106, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.kpi-ribbon-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+}
+
+.kpi-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 210, 106, 0.1);
+  border: 1px solid rgba(0, 210, 106, 0.32);
+  color: var(--emerald, #00D26A);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.kpi-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00D26A;
+  box-shadow: 0 0 8px #00D26A;
+  position: relative;
+  display: inline-block;
+}
+
+.kpi-pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid #00D26A;
+  animation: ctaPingRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.kpi-ribbon-caption {
+  font-size: 12.5px;
+  color: #94A3B8;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.kpi-ribbon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.kpi-ribbon-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 16px 16px 14px 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.kpi-ribbon-card:hover {
+  transform: translateY(-4px);
+  background: rgba(0, 210, 106, 0.07);
+  border-color: rgba(0, 210, 106, 0.45);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 22px rgba(0, 210, 106, 0.18);
+}
+
+.kpi-ribbon-card.cyan-kpi:hover {
+  background: rgba(0, 240, 255, 0.07);
+  border-color: rgba(0, 240, 255, 0.45);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 22px rgba(0, 240, 255, 0.18);
+}
+
+.kpi-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.kpi-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.kpi-icon-wrap.emerald-icon {
+  background: rgba(0, 210, 106, 0.14);
+  color: #00D26A;
+  border: 1px solid rgba(0, 210, 106, 0.25);
+}
+
+.kpi-icon-wrap.cyan-icon {
+  background: rgba(0, 240, 255, 0.14);
+  color: #00F0FF;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+}
+
+.kpi-ribbon-card:hover .kpi-icon-wrap {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.kpi-tag-chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #00D26A;
+  background: rgba(0, 210, 106, 0.08);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.kpi-tag-chip.cyan-chip {
+  color: #00F0FF;
+  background: rgba(0, 240, 255, 0.08);
+}
+
+.kpi-number {
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.kpi-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.kpi-desc {
+  font-size: 11.5px;
+  color: #94A3B8;
+  line-height: 1.45;
+  flex-grow: 1;
+}
+
+.kpi-arrow-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #00D26A;
+  margin-top: 10px;
+  opacity: 0.75;
+  transition: gap 0.2s ease, opacity 0.2s ease;
+}
+
+.cyan-kpi .kpi-arrow-cue {
+  color: #00F0FF;
+}
+
+.kpi-ribbon-card:hover .kpi-arrow-cue {
+  opacity: 1;
+  gap: 7px;
+}
+
+@media (max-width: 992px) {
+  .kpi-ribbon-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .why-kpi-ribbon {
+    padding: 18px 16px;
+    margin-bottom: 24px;
+  }
+  .kpi-ribbon-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
    Compact Why Senterra Credibility Pillars (why-senterra.html)
    ========================================================================== */
 .why-segmented-tabs {
@@ -2477,7 +2711,7 @@ input:checked + .slider.round:before {
 
 .subpage-hero {
   position: relative;
-  padding: 150px 0 60px 0;
+  padding: 135px 0 42px 0;
   background: radial-gradient(circle at 50% 0%, rgba(0, 210, 106, 0.08) 0%, transparent 70%),
               linear-gradient(180deg, #070B0E 0%, #0B1116 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);

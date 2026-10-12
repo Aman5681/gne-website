@@ -756,7 +756,7 @@ function setupScrollReveal() {
 // 17. Interactive Mouse Spotlight Glow on Cards
 // =========================================================================
 function setupCardSpotlights() {
-  const cards = document.querySelectorAll(".why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner");
+  const cards = document.querySelectorAll(".why-card, .joule-sol-card, .epc-card, .senterra-why-card, .senterra-sol-card, .senterra-frame-card, .kind-metric-card, .glassmorphic-stat-card, .statement-card, .senterra-cta-banner, .why-kpi-ribbon, .kpi-ribbon-card");
   cards.forEach(card => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
@@ -1162,6 +1162,22 @@ function setupWhyFilterTabs() {
           card.style.display = "none";
         }
       });
+    });
+  });
+
+  // Enable clicking KPI ribbon cards to jump to corresponding pillar tab
+  const kpiCards = document.querySelectorAll(".kpi-ribbon-card[data-target-filter]");
+  kpiCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const targetFilter = card.getAttribute("data-target-filter");
+      const matchingBtn = document.querySelector(`.why-tab-btn[data-filter="${targetFilter}"]`);
+      if (matchingBtn) {
+        matchingBtn.click();
+        const tabsSection = document.querySelector(".why-segmented-tabs");
+        if (tabsSection) {
+          tabsSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      }
     });
   });
 }

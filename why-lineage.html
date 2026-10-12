@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.6">
 </head>
 <body>
 
@@ -189,9 +189,79 @@
   </section>
 
   <!-- Main Page Content -->
-  <main class="standalone-section">
+  <main class="standalone-section why-standalone-main">
     <section class="section why-senterra-section" id="why-senterra">
     <div class="container">
+      
+      <!-- Credibility & Performance KPI Ribbon (Gap Bridge) -->
+      <div class="why-kpi-ribbon">
+        <div class="kpi-ribbon-header">
+          <div class="kpi-live-pill">
+            <span class="kpi-pulse-dot"></span>
+            <span>VERIFIED BENCHMARKS</span>
+          </div>
+          <span class="kpi-ribbon-caption">Core Engineering Capabilities Across 4 Strategic Pillars</span>
+        </div>
+
+        <div class="kpi-ribbon-grid">
+          <!-- Metric 1: 5 GWh Capacity -->
+          <div class="kpi-ribbon-card" data-target-filter="integration" title="Click to view Integration Hub pillar">
+            <div class="kpi-card-top">
+              <span class="kpi-icon-wrap emerald-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"/><path d="M6 20V8l6-4 6 4v12"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+              </span>
+              <span class="kpi-tag-chip">PILLAR 01</span>
+            </div>
+            <div class="kpi-number text-emerald">5 GWh+</div>
+            <div class="kpi-title">Integration Hub</div>
+            <div class="kpi-desc">Robotic pack assembly &amp; MES traceability</div>
+            <div class="kpi-arrow-cue">Explore Pillar <span>→</span></div>
+          </div>
+
+          <!-- Metric 2: ±2.5°C Delta -->
+          <div class="kpi-ribbon-card cyan-kpi" data-target-filter="thermal" title="Click to view Liquid Cooling pillar">
+            <div class="kpi-card-top">
+              <span class="kpi-icon-wrap cyan-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6"/><path d="M12 18v4"/><path d="M4.93 4.93l4.24 4.24"/><path d="M14.83 14.83l4.24 4.24"/><path d="M2 12h6"/><path d="M18 12h4"/><path d="M4.93 19.07l4.24-4.24"/><path d="M14.83 9.17l4.24-4.24"/></svg>
+              </span>
+              <span class="kpi-tag-chip cyan-chip">PILLAR 02</span>
+            </div>
+            <div class="kpi-number text-cyan">±2.5°C</div>
+            <div class="kpi-title">Active Thermal Delta</div>
+            <div class="kpi-desc">Multi-channel liquid coolant plate loops</div>
+            <div class="kpi-arrow-cue">Explore Pillar <span>→</span></div>
+          </div>
+
+          <!-- Metric 3: 99.5%+ Availability -->
+          <div class="kpi-ribbon-card" data-target-filter="bankability" title="Click to view EPC Bankability pillar">
+            <div class="kpi-card-top">
+              <span class="kpi-icon-wrap emerald-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <span class="kpi-tag-chip">PILLAR 03</span>
+            </div>
+            <div class="kpi-number text-emerald">99.5%+</div>
+            <div class="kpi-title">EPC Bankability</div>
+            <div class="kpi-desc">Guaranteed uptime &amp; 20-year LTSA model</div>
+            <div class="kpi-arrow-cue">Explore Pillar <span>→</span></div>
+          </div>
+
+          <!-- Metric 4: < 10ms Telemetry -->
+          <div class="kpi-ribbon-card cyan-kpi" data-target-filter="bms" title="Click to view Multi-Tier BMS pillar">
+            <div class="kpi-card-top">
+              <span class="kpi-icon-wrap cyan-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </span>
+              <span class="kpi-tag-chip cyan-chip">PILLAR 04</span>
+            </div>
+            <div class="kpi-number text-cyan">&lt; 10 ms</div>
+            <div class="kpi-title">Sub-Second BMS</div>
+            <div class="kpi-desc">Multi-tier battery telemetry &amp; edge safety</div>
+            <div class="kpi-arrow-cue">Explore Pillar <span>→</span></div>
+          </div>
+        </div>
+      </div>
+
       <!-- Segmented Pillar Filter Tabs -->
       <div class="why-segmented-tabs" role="tablist" aria-label="Why Senterra Pillars">
         <button class="why-tab-btn active" data-filter="all">
