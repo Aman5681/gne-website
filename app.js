@@ -924,13 +924,15 @@ function setupMobileNav() {
 function setupHeaderAndKeyEvents() {
   const navbar = document.getElementById("navbar");
   if (navbar) {
-    window.addEventListener("scroll", () => {
+    // Registered via the unified scroll loop (see bottom of file) — no direct listener here
+    window.__headerScrollUpdate = () => {
       if (window.scrollY > 20) {
         navbar.classList.add("scrolled");
       } else {
         navbar.classList.remove("scrolled");
       }
-    });
+    };
+    window.__headerScrollUpdate();
   }
 
   window.addEventListener("keydown", (e) => {
@@ -1082,19 +1084,16 @@ function setupScrollProgress() {
   const progressBar = document.getElementById("scrollProgress");
   if (!progressBar) return;
 
-  const updateProgress = () => {
+  // Registered via the unified scroll loop — no direct listener here
+  window.__scrollProgressUpdate = () => {
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (totalHeight <= 0) {
-      progressBar.style.width = "0%";
-      return;
-    }
+    if (totalHeight <= 0) { progressBar.style.width = "0%"; return; }
     const scrolled = (window.scrollY / totalHeight) * 100;
     progressBar.style.width = Math.min(100, Math.max(0, scrolled)) + "%";
   };
 
-  window.addEventListener("scroll", updateProgress, { passive: true });
-  window.addEventListener("resize", updateProgress);
-  updateProgress();
+  window.addEventListener("resize", window.__scrollProgressUpdate);
+  window.__scrollProgressUpdate();
 }
 
 // =========================================================================
@@ -1200,9 +1199,11 @@ function setupHeroParallax() {
   const heroBg = document.querySelector(".senterra-hero-bg");
   if (!heroCard || !heroBg) return;
 
-  let ticking = false;
+  // Promote the parallax layer to its own compositor layer up-front
+  heroBg.style.willChange = "transform";
 
-  const updateParallax = () => {
+  // Registered via the unified scroll loop — no direct listener here
+  window.__heroParallaxUpdate = () => {
     const rect = heroCard.getBoundingClientRect();
     if (rect.bottom > 0 && rect.top < window.innerHeight) {
       const scrollDistance = -rect.top;
@@ -1215,17 +1216,9 @@ function setupHeroParallax() {
         heroBg.style.transform = "scale(1) translateY(0px) translateZ(0)";
       }
     }
-    ticking = false;
   };
 
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  updateParallax();
+  window.__heroParallaxUpdate();
 }
 
 // =========================================================================
@@ -1293,15 +1286,15 @@ function setupCircuitDividers() {
 
   if (!dividers.length) return;
 
-  let ticking = false;
-
-  const updateCircuits = () => {
+  // Registered via the unified scroll loop — no direct listener here
+  window.__circuitsUpdate = () => {
     const vh = window.innerHeight;
 
     dividers.forEach(item => {
       const rect = item.el.getBoundingClientRect();
-      // Start tracing when the divider top enters 85% of viewport
-      // Complete tracing when the divider reaches 25% of viewport
+      // Only process if near the viewport
+      if (rect.bottom < -200 || rect.top > vh + 200) return;
+
       const startPoint = vh * 0.85;
       const endPoint = vh * 0.25;
       const distance = startPoint - endPoint;
@@ -1312,27 +1305,19 @@ function setupCircuitDividers() {
       const offset = item.totalLength * (1 - progress);
       item.path.style.strokeDashoffset = `${offset}`;
 
-      if (item.node) {
+      // getPointAtLength is expensive — only call it when node is visible
+      if (item.node && progress > 0.02) {
         try {
           const ptDist = Math.max(0.1, Math.min(item.totalLength, item.totalLength * progress));
           const point = item.path.getPointAtLength(ptDist);
           item.node.setAttribute("transform", `translate(${point.x.toFixed(1)}, ${point.y.toFixed(1)})`);
-          item.node.style.opacity = progress > 0.02 ? "1" : "0";
-        } catch (e) {
-          // Fallback if SVG measurement is unavailable
-        }
+          item.node.style.opacity = "1";
+        } catch (e) {}
+      } else if (item.node) {
+        item.node.style.opacity = "0";
       }
     });
-
-    ticking = false;
   };
-
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(updateCircuits);
-      ticking = true;
-    }
-  }, { passive: true });
 
   window.addEventListener("resize", () => {
     dividers.forEach(item => {
@@ -1341,10 +1326,10 @@ function setupCircuitDividers() {
         item.path.style.strokeDasharray = `${item.totalLength} ${item.totalLength}`;
       } catch (e) {}
     });
-    updateCircuits();
+    window.__circuitsUpdate && window.__circuitsUpdate();
   });
 
-  updateCircuits();
+  window.__circuitsUpdate();
 }
 
 // =========================================================================
@@ -1391,15 +1376,24 @@ function setupTextScrub() {
 
   scrubTargets.forEach(el => wrapTextNodesInWords(el));
 
-  let ticking = false;
+  // Cache word NodeLists once, outside the scroll hot-path
+  const cachedWords = [];
+  scrubTargets.forEach(container => {
+    cachedWords.push({
+      container,
+      words: Array.from(container.querySelectorAll(".scrub-word"))
+    });
+  });
 
-  const updateScrub = () => {
+  // Registered via the unified scroll loop — no direct listener here
+  window.__textScrubUpdate = () => {
     const vh = window.innerHeight;
 
-    scrubTargets.forEach(container => {
-      const rect = container.getBoundingClientRect();
-      const words = container.querySelectorAll(".scrub-word");
+    cachedWords.forEach(({ container, words }) => {
       if (!words.length) return;
+      const rect = container.getBoundingClientRect();
+      // Skip if far out of view
+      if (rect.bottom < -50 || rect.top > vh + 50) return;
 
       const start = vh * 0.88;
       const end = vh * 0.32;
@@ -1409,26 +1403,18 @@ function setupTextScrub() {
 
       const activeIdx = Math.floor(progress * (words.length + 1));
       words.forEach((w, i) => {
-        if (i < activeIdx && progress > 0) {
+        const shouldIlluminate = i < activeIdx && progress > 0;
+        if (shouldIlluminate && !w.classList.contains("illuminated")) {
           w.classList.add("illuminated");
-        } else {
+        } else if (!shouldIlluminate && w.classList.contains("illuminated")) {
           w.classList.remove("illuminated");
         }
       });
     });
-
-    ticking = false;
   };
 
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(updateScrub);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  window.addEventListener("resize", updateScrub);
-  updateScrub();
+  window.addEventListener("resize", () => window.__textScrubUpdate && window.__textScrubUpdate());
+  window.__textScrubUpdate();
 }
 
 // =========================================================================
@@ -1610,9 +1596,11 @@ function setupServicesScrollMotion() {
   const spineContainer = document.querySelector(".services-circuit-spine");
   if (!cards.length) return;
 
-  let ticking = false;
+  // Promote service cards to GPU layer for smooth kinetic drift
+  cards.forEach(card => { card.style.willChange = "transform"; });
 
-  const updateScrollMotion = () => {
+  // Registered via the unified scroll loop — no direct listener here
+  window.__servicesScrollUpdate = () => {
     const vh = window.innerHeight;
     const vhCenter = vh * 0.5;
 
@@ -1624,7 +1612,6 @@ function setupServicesScrollMotion() {
         const norm = (cardCenter - vhCenter) / vhCenter;
         const clampedNorm = Math.max(-1.5, Math.min(1.5, norm));
 
-        // Column 1 (idx 0,2,4,6) vs Column 2 (idx 1,3,5,7)
         const isCol2 = idx % 2 === 1;
         const driftFactor = isCol2 ? 26 : -26;
         const driftY = (clampedNorm * driftFactor).toFixed(1);
@@ -1648,25 +1635,10 @@ function setupServicesScrollMotion() {
         spineGlow.style.top = `${topPos.toFixed(1)}px`;
       }
     }
-
-    ticking = false;
   };
 
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(updateScrollMotion);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  window.addEventListener("resize", () => {
-    if (!ticking) {
-      requestAnimationFrame(updateScrollMotion);
-      ticking = true;
-    }
-  });
-
-  updateScrollMotion();
+  window.addEventListener("resize", () => window.__servicesScrollUpdate && window.__servicesScrollUpdate());
+  window.__servicesScrollUpdate();
 
   // 3. Interactive 3D physical tilt on cursor hover
   cards.forEach(card => {
@@ -1752,6 +1724,36 @@ function setupNocLiveSimulation() {
     }, 4500);
   }
 }
+
+// =========================================================================
+// UNIFIED SCROLL ENGINE
+// Single passive scroll listener → single rAF tick → all handlers dispatched.
+// This eliminates the 6 separate rAF queues that were causing scroll jank.
+// =========================================================================
+(function initUnifiedScrollEngine() {
+  let rafPending = false;
+
+  const handlers = [
+    () => window.__headerScrollUpdate && window.__headerScrollUpdate(),
+    () => window.__scrollProgressUpdate && window.__scrollProgressUpdate(),
+    () => window.__heroParallaxUpdate && window.__heroParallaxUpdate(),
+    () => window.__circuitsUpdate && window.__circuitsUpdate(),
+    () => window.__textScrubUpdate && window.__textScrubUpdate(),
+    () => window.__servicesScrollUpdate && window.__servicesScrollUpdate()
+  ];
+
+  function onFrame() {
+    handlers.forEach(fn => fn());
+    rafPending = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!rafPending) {
+      rafPending = true;
+      requestAnimationFrame(onFrame);
+    }
+  }, { passive: true });
+})();
 
 // 14. Initialization
 document.addEventListener("DOMContentLoaded", () => {

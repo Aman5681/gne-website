@@ -50,7 +50,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Lenis smooth scroll handles all inertia in JS — keep CSS at 'auto' to avoid conflicts */
+  scroll-behavior: auto;
   scroll-padding-top: calc(var(--header-height) + 20px);
   color-scheme: dark;
 }
@@ -6167,6 +6168,8 @@ input:checked + .slider.round:before {
   border: 1px solid var(--border-glass-strong);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
   background-color: #070e1e;
+  /* Isolate hero repaint to its own compositor layer */
+  contain: layout;
 }
 
 .senterra-hero-bg {
@@ -7811,6 +7814,10 @@ html.lenis, html.lenis body {
 }
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
+}
+/* Ensure html also stays at auto when Lenis is active */
+html.lenis {
+  scroll-behavior: auto !important;
 }
 
 /* 1. Kind Energy Clean-Tech Marquee Ribbon */
